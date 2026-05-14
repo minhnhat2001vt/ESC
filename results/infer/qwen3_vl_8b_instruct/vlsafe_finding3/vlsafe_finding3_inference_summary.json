@@ -1,0 +1,10 @@
+{
+  "finding": "vlsafe_finding3",
+  "model": "Qwen3-VL-8B-Instruct",
+  "timestamp": "2026-05-06T05:00:59.586644",
+  "output_dir": "/workspace/results/infer/qwen3_vl_8b_instruct/vlsafe_finding3",
+  "datasets": {
+    "vlsafe_finding3_NEUTRAL": 1110
+  },
+  "total_samples": 1110
+}

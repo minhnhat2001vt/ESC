@@ -1,0 +1,14 @@
+{
+  "method": "method1_detect_then_regenerate",
+  "timestamp": "2026-03-09T03:53:19.352024",
+  "model_a": "Qwen2-VL-7B",
+  "model_b": "InternVL2.5-8B",
+  "total_samples": 1110,
+  "step2_judged_safe": 483,
+  "step2_judged_unsafe": 627,
+  "step2_unsafe_rate": 0.5648648648648649,
+  "step5_chose_regenerated": 428,
+  "step5_kept_original": 682,
+  "final_regeneration_rate": 0.3855855855855856,
+  "results_file": "method1_results_20260309_035319.json"
+}

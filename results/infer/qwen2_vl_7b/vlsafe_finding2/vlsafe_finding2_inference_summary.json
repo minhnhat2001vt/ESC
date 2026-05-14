@@ -1,0 +1,10 @@
+{
+  "finding": "vlsafe_finding2",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-03-01T10:11:28.156281",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/vlsafe_finding2",
+  "datasets": {
+    "vlsafe_finding2_PSYCHOLOGICAL": 1110
+  },
+  "total_samples": 1110
+}

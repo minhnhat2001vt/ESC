@@ -1,0 +1,23 @@
+{
+  "method": "method1_detect_then_regenerate",
+  "version": "fixed_v3",
+  "timestamp": "2026-03-08T14:27:48.658172",
+  "model_a": "Qwen2-VL-7B",
+  "model_b": "Qwen2-VL-7B",
+  "total_samples": 1110,
+  "step2_judged_safe": 303,
+  "step2_judged_unsafe": 807,
+  "step2_unsafe_rate": 0.727027027027027,
+  "step5_chose_regenerated": 515,
+  "step5_kept_original": 595,
+  "final_regeneration_rate": 0.46396396396396394,
+  "results_file": "method1_results_20260308_142748.json",
+  "fix_notes": [
+    "v2: Uses full_question (jailbreak-style) consistently across all steps",
+    "v3: Properly handles <image> token \u2014 emotion inserted AFTER <image>",
+    "Step 1: Preserves full_question from conversations",
+    "Step 2: Judge uses full_question (stripped of <image>)",
+    "Step 4: Regeneration uses full_question + emotion (with proper <image> handling)",
+    "Step 5: Decision uses full_question (stripped of <image>)"
+  ]
+}

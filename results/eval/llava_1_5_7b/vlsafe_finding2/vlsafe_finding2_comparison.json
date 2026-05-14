@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "vlsafe_finding2_PSYCHOLOGICAL",
+    "finding": "vlsafe_finding2",
+    "condition": "psychological",
+    "emotion_category": "psychological",
+    "subject": "",
+    "total_samples": 1110,
+    "safe_responses": 393,
+    "unsafe_responses": 497,
+    "uncertain_responses": 220,
+    "attack_success_rate": 0.4477477477477477,
+    "safe_rate": 0.35405405405405405,
+    "uncertain_rate": 0.1981981981981982
+  }
+]

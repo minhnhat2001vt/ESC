@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "evaluator": "eval_blink.py (official BLINK protocol)",
+    "evaluation_date": "2026-03-11T22:36:16.564571",
+    "evaluation_method": "blink_official",
+    "reference": "BLINK: Multimodal Large Language Models Can See but Not Perceive, ECCV 2024",
+    "result_file": "method1_results_20260311_183703.json",
+    "response_field": "final_response",
+    "model": "LLaVA-1.5-7B",
+    "total_samples": 1901
+  },
+  "summary": {
+    "total_samples": 1901,
+    "correct": 801,
+    "extracted": 1901,
+    "overall_accuracy_micro": 42.14,
+    "overall_accuracy_macro": 42.61,
+    "extraction_rate": 100.0,
+    "num_subtasks": 14,
+    "unknown_subtask_count": 0
+  },
+  "scores": {
+    "accuracy_micro": 42.14,
+    "accuracy_macro": 42.61
+  },
+  "subtask_scores": {
+    "Art_Style": {
+      "total": 117,
+      "correct": 55,
+      "extracted": 117,
+      "accuracy": 47.01,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Counting": {
+      "total": 120,
+      "correct": 52,
+      "extracted": 120,
+      "accuracy": 43.33,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "Forensic_Detection": {
+      "total": 132,
+      "correct": 33,
+      "extracted": 132,
+      "accuracy": 25.0,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "Functional_Correspondence": {
+      "total": 130,
+      "correct": 33,
+      "extracted": 130,
+      "accuracy": 25.38,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "IQ_Test": {
+      "total": 150,
+      "correct": 32,
+      "extracted": 150,
+      "accuracy": 21.33,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "Jigsaw": {
+      "total": 150,
+      "correct": 81,
+      "extracted": 150,
+      "accuracy": 54.0,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Multi-view_Reasoning": {
+      "total": 133,
+      "correct": 74,
+      "extracted": 133,
+      "accuracy": 55.64,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Object_Localization": {
+      "total": 122,
+      "correct": 69,
+      "extracted": 122,
+      "accuracy": 56.56,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Relative_Depth": {
+      "total": 124,
+      "correct": 71,
+      "extracted": 124,
+      "accuracy": 57.26,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Relative_Reflectance": {
+      "total": 134,
+      "correct": 57,
+      "extracted": 134,
+      "accuracy": 42.54,
+      "extraction_rate": 100.0,
+      "random_baseline": 33.33
+    },
+    "Semantic_Correspondence": {
+      "total": 139,
+      "correct": 35,
+      "extracted": 139,
+      "accuracy": 25.18,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "Spatial_Relation": {
+      "total": 143,
+      "correct": 98,
+      "extracted": 143,
+      "accuracy": 68.53,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    },
+    "Visual_Correspondence": {
+      "total": 172,
+      "correct": 47,
+      "extracted": 172,
+      "accuracy": 27.33,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    },
+    "Visual_Similarity": {
+      "total": 135,
+      "correct": 64,
+      "extracted": 135,
+      "accuracy": 47.41,
+      "extraction_rate": 100.0,
+      "random_baseline": 50.0
+    }
+  },
+  "distributions": {
+    "predicted": {
+      "A": 1131,
+      "B": 434,
+      "C": 164,
+      "D": 172
+    },
+    "ground_truth": {
+      "A": 705,
+      "B": 707,
+      "C": 274,
+      "D": 215
+    }
+  }
+}

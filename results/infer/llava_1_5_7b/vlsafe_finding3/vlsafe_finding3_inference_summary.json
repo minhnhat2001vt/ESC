@@ -1,0 +1,12 @@
+{
+  "finding": "vlsafe_finding3",
+  "model": "LLaVA-1.5-7B",
+  "timestamp": "2026-02-15T00:09:11.430018",
+  "output_dir": "/home/emogenai4e/emo/cleaned/results/infer/llava_1_5_7b/vlsafe_finding3",
+  "datasets": {
+    "vlsafe_finding3_NEUTRAL": 1110,
+    "vlsafe_finding3_POSITIVE_HIGH_01_I": 1110,
+    "vlsafe_finding3_POSITIVE_HIGH_01_YOU": 1110
+  },
+  "total_samples": 3330
+}

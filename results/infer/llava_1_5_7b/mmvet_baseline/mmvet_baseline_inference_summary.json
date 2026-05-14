@@ -1,0 +1,11 @@
+{
+  "finding": "mmvet_baseline",
+  "model": "LLaVA-1.5-7B",
+  "timestamp": "2026-03-20T23:03:44.010248",
+  "output_dir": "/workspace/results/infer/llava_1_5_7b/mmvet_baseline",
+  "datasets": {
+    "mmvet_bardset_baseline": 168,
+    "mmvet_full_baseline": 218
+  },
+  "total_samples": 386
+}

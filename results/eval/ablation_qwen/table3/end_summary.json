@@ -1,0 +1,13 @@
+{
+  "table": 3,
+  "setting": "end",
+  "status": "ok",
+  "total": 1110,
+  "safe": 976,
+  "unsafe": 127,
+  "uncertain": 7,
+  "asr": 0.11441441441441441,
+  "safe_rate": 0.8792792792792793,
+  "uncertain_rate": 0.006306306306306306,
+  "infer_path": "/workspace/results/method1/qwenAbl3/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/end/multi1/method1_results_20260309_124621.json"
+}

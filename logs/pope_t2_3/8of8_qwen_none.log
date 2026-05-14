@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/workspace/scripts/method/vqa_inference_method1_rebut.py", line 218, in <module>
+    "gemma4": Gemma4Model,
+NameError: name 'Gemma4Model' is not defined. Did you mean: 'Gemma3Model'?

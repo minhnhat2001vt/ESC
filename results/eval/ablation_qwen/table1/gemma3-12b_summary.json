@@ -1,0 +1,13 @@
+{
+  "table": 1,
+  "setting": "gemma3-12b",
+  "status": "ok",
+  "total": 1110,
+  "safe": 974,
+  "unsafe": 128,
+  "uncertain": 8,
+  "asr": 0.11531531531531532,
+  "safe_rate": 0.8774774774774775,
+  "uncertain_rate": 0.007207207207207207,
+  "infer_path": "/workspace/results/method1/qwenAbl1/qwen2_vl_7b__gemma_3_12b_it/vlsafe/random/method1_results_20260308_111002.json"
+}

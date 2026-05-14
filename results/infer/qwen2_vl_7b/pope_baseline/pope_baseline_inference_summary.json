@@ -1,0 +1,10 @@
+{
+  "finding": "pope_baseline",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-02-22T11:20:33.194703",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/pope_baseline",
+  "datasets": {
+    "pope_full_baseline": 9000
+  },
+  "total_samples": 9000
+}

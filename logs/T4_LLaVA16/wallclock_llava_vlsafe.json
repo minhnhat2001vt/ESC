@@ -1,0 +1,13 @@
+{
+  "model": "llava",
+  "benchmark": "vlsafe",
+  "verifier": "gemma3-12b",
+  "n_samples": 100,
+  "batch_size": 6,
+  "wall_baseline_s": 27,
+  "wall_esc_s": 823,
+  "per_sample_baseline_s": 0.27,
+  "per_sample_esc_s": 8.23,
+  "multiplier": 30.48148148148148,
+  "note": "Includes model load time. For pure inference cost, see compute_overhead.py."
+}

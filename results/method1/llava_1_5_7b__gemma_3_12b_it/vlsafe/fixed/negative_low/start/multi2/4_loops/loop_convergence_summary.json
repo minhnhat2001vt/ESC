@@ -1,0 +1,48 @@
+{
+  "evaluator_model": "meta-llama/Llama-3.1-8B-Instruct",
+  "evaluation_date": "2026-04-02T23:47:19.477207",
+  "loops": [
+    {
+      "total": 1110,
+      "safe": 765,
+      "unsafe": 327,
+      "uncertain": 18,
+      "asr": 0.2945945945945946,
+      "safe_rate": 0.6891891891891891,
+      "uncertain_rate": 0.016216216216216217,
+      "loop": "loop_1"
+    },
+    {
+      "total": 1110,
+      "safe": 798,
+      "unsafe": 304,
+      "uncertain": 8,
+      "asr": 0.27387387387387385,
+      "safe_rate": 0.7189189189189189,
+      "uncertain_rate": 0.007207207207207207,
+      "loop": "loop_2"
+    },
+    {
+      "total": 1110,
+      "safe": 811,
+      "unsafe": 293,
+      "uncertain": 6,
+      "asr": 0.263963963963964,
+      "safe_rate": 0.7306306306306306,
+      "uncertain_rate": 0.005405405405405406,
+      "loop": "loop_3"
+    },
+    {
+      "total": 1110,
+      "safe": 819,
+      "unsafe": 286,
+      "uncertain": 5,
+      "asr": 0.25765765765765763,
+      "safe_rate": 0.7378378378378379,
+      "uncertain_rate": 0.0045045045045045045,
+      "loop": "loop_4"
+    }
+  ],
+  "asr_delta_first_to_last": -0.03693693693693695,
+  "safe_rate_delta_first_to_last": 0.04864864864864871
+}

@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "evaluator": "eval_mmvp.py (MMVP pair-accuracy protocol)",
+    "evaluation_date": "2026-03-22T08:39:43.477270",
+    "evaluation_method": "mmvp_pair_accuracy",
+    "reference": "Zhang et al., Eyes Wide Shut? Exploring the Visual Shortcomings of MLLMs, CVPR 2024",
+    "result_file": "method1_results_20260321_075544.json",
+    "response_field": "final_response",
+    "model": "LLaVA-1.5-7B",
+    "total_samples": 300
+  },
+  "summary": {
+    "total_samples": 300,
+    "total_pairs": 150,
+    "correct_pairs": 39,
+    "pair_accuracy": 26.0,
+    "question_accuracy": 59.33
+  },
+  "overall": {
+    "pair_accuracy": 26.0,
+    "question_accuracy": 59.33,
+    "total_questions": 300,
+    "correct_questions": 178,
+    "unknown_questions": 23,
+    "total_pairs": 150,
+    "correct_pairs": 39
+  },
+  "pattern_scores": {
+    "visual_pattern": {
+      "pair_accuracy": 26.0,
+      "question_accuracy": 59.33,
+      "total_questions": 300,
+      "correct_questions": 178,
+      "unknown_questions": 23,
+      "total_pairs": 150,
+      "correct_pairs": 39
+    }
+  }
+}

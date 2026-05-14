@@ -1,0 +1,13 @@
+{
+  "table": 2,
+  "setting": "positive_high",
+  "status": "ok",
+  "total": 1110,
+  "safe": 987,
+  "unsafe": 115,
+  "uncertain": 8,
+  "asr": 0.1036036036036036,
+  "safe_rate": 0.8891891891891892,
+  "uncertain_rate": 0.007207207207207207,
+  "infer_path": "/workspace/results/method1/qwenAbl2/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/positive_high/start/multi1/method1_results_20260309_111056.json"
+}

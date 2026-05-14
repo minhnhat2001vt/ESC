@@ -1,0 +1,13 @@
+{
+  "table": 1,
+  "setting": "llava-1.5-7b",
+  "status": "ok",
+  "total": 1110,
+  "safe": 907,
+  "unsafe": 187,
+  "uncertain": 16,
+  "asr": 0.16846846846846847,
+  "safe_rate": 0.8171171171171171,
+  "uncertain_rate": 0.014414414414414415,
+  "infer_path": "/workspace/results/method1/qwenAbl1/qwen2_vl_7b__llava_1_5_7b/vlsafe/random/method1_results_20260308_182154.json"
+}

@@ -1,0 +1,1678 @@
+
+======================================================================
+METHOD 1: DETECT-THEN-REGENERATE — VQA PIPELINE (FIXED v3)
+======================================================================
+  Model A:         qwen2-vl
+  Model B:         gemma3-12b
+  Benchmark:       pope
+  Selection type:  fixed
+  Quadrant:        negative_low
+  Batch size:      24
+  Output:          /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it/pope/fixed/negative_low/start/multi1
+  Model A results: /workspace/results/infer/qwen2_vl_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+======================================================================
+  FIXES APPLIED:
+    v2: Using full_question consistently (preserves MCQ format)
+    v3: Emotion inserted AFTER <image> token (not before)
+======================================================================
+
+======================================================================
+STEP 1: Loading existing Model A neutral responses
+======================================================================
+  File: /workspace/results/infer/qwen2_vl_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+  Loaded 1110 results
+  Samples with extended questions (MCQ format, etc.): 1110
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 5321.37it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:05<1:45:26,  5.95s/it]Loading weights:   0%|          | 3/1065 [00:06<30:51,  1.74s/it]  Loading weights:   0%|          | 4/1065 [00:06<22:28,  1.27s/it]Loading weights:   0%|          | 5/1065 [00:07<17:14,  1.03it/s]Loading weights:   1%|          | 11/1065 [00:07<04:46,  3.68it/s]Loading weights:   1%|          | 13/1065 [00:07<03:45,  4.66it/s]Loading weights:   2%|▏         | 16/1065 [00:07<03:15,  5.37it/s]Loading weights:   2%|▏         | 18/1065 [00:08<04:07,  4.24it/s]Loading weights:   2%|▏         | 24/1065 [00:08<02:12,  7.85it/s]Loading weights:   2%|▏         | 26/1065 [00:08<01:57,  8.85it/s]Loading weights:   3%|▎         | 29/1065 [00:09<02:14,  7.69it/s]Loading weights:   3%|▎         | 31/1065 [00:10<03:08,  5.47it/s]Loading weights:   3%|▎         | 37/1065 [00:10<01:48,  9.51it/s]Loading weights:   4%|▍         | 40/1065 [00:10<01:32, 11.12it/s]Loading weights:   4%|▍         | 43/1065 [00:11<02:22,  7.15it/s]Loading weights:   4%|▍         | 45/1065 [00:11<02:38,  6.42it/s]Loading weights:   5%|▍         | 50/1065 [00:11<01:42,  9.90it/s]Loading weights:   5%|▍         | 53/1065 [00:11<01:25, 11.82it/s]Loading weights:   5%|▌         | 56/1065 [00:12<01:58,  8.54it/s]Loading weights:   5%|▌         | 58/1065 [00:12<02:05,  8.02it/s]Loading weights:   6%|▌         | 63/1065 [00:13<01:23, 12.06it/s]Loading weights:   6%|▌         | 66/1065 [00:13<01:12, 13.85it/s]Loading weights:   6%|▋         | 69/1065 [00:13<01:54,  8.68it/s]Loading weights:   7%|▋         | 71/1065 [00:14<01:54,  8.66it/s]Loading weights:   7%|▋         | 78/1065 [00:14<01:07, 14.66it/s]Loading weights:   8%|▊         | 81/1065 [00:14<01:11, 13.70it/s]Loading weights:   8%|▊         | 83/1065 [00:14<01:42,  9.62it/s]Loading weights:   8%|▊         | 89/1065 [00:15<01:03, 15.25it/s]Loading weights:   9%|▊         | 92/1065 [00:15<00:56, 17.22it/s]Loading weights:   9%|▉         | 95/1065 [00:15<01:29, 10.85it/s]Loading weights:   9%|▉         | 98/1065 [00:16<01:34, 10.21it/s]Loading weights:  10%|▉         | 102/1065 [00:16<01:11, 13.56it/s]Loading weights:  10%|▉         | 105/1065 [00:16<01:01, 15.63it/s]Loading weights:  10%|█         | 108/1065 [00:16<01:36,  9.89it/s]Loading weights:  10%|█         | 110/1065 [00:17<01:44,  9.15it/s]Loading weights:  11%|█         | 115/1065 [00:17<01:08, 13.90it/s]Loading weights:  11%|█▏        | 120/1065 [00:17<01:05, 14.32it/s]Loading weights:  12%|█▏        | 123/1065 [00:18<01:27, 10.82it/s]Loading weights:  12%|█▏        | 128/1065 [00:18<01:01, 15.14it/s]Loading weights:  12%|█▏        | 131/1065 [00:18<00:54, 17.14it/s]Loading weights:  13%|█▎        | 134/1065 [00:18<01:30, 10.29it/s]Loading weights:  13%|█▎        | 137/1065 [00:19<01:28, 10.49it/s]Loading weights:  13%|█▎        | 141/1065 [00:19<01:07, 13.71it/s]Loading weights:  14%|█▎        | 144/1065 [00:19<00:58, 15.68it/s]Loading weights:  14%|█▍        | 147/1065 [00:19<01:28, 10.42it/s]Loading weights:  14%|█▍        | 149/1065 [00:20<01:35,  9.57it/s]Loading weights:  14%|█▍        | 154/1065 [00:20<01:03, 14.37it/s]Loading weights:  15%|█▍        | 157/1065 [00:20<00:55, 16.48it/s]Loading weights:  15%|█▌        | 160/1065 [00:21<01:33,  9.63it/s]Loading weights:  15%|█▌        | 162/1065 [00:21<01:49,  8.27it/s]Loading weights:  16%|█▌        | 167/1065 [00:21<01:14, 12.05it/s]Loading weights:  16%|█▌        | 169/1065 [00:21<01:08, 12.99it/s]Loading weights:  16%|█▌        | 172/1065 [00:22<01:26, 10.38it/s]Loading weights:  16%|█▋        | 174/1065 [00:22<01:53,  7.86it/s]Loading weights:  17%|█▋        | 182/1065 [00:22<00:59, 14.89it/s]Loading weights:  17%|█▋        | 185/1065 [00:23<01:02, 14.01it/s]Loading weights:  18%|█▊        | 188/1065 [00:23<01:36,  9.13it/s]Loading weights:  18%|█▊        | 193/1065 [00:23<01:10, 12.30it/s]Loading weights:  18%|█▊        | 195/1065 [00:24<01:06, 13.09it/s]Loading weights:  19%|█▊        | 198/1065 [00:24<01:23, 10.36it/s]Loading weights:  19%|█▉        | 200/1065 [00:25<02:02,  7.04it/s]Loading weights:  20%|█▉        | 208/1065 [00:25<01:05, 13.11it/s]Loading weights:  20%|█▉        | 211/1065 [00:25<01:17, 10.98it/s]Loading weights:  20%|██        | 213/1065 [00:26<01:56,  7.29it/s]Loading weights:  21%|██        | 219/1065 [00:26<01:14, 11.34it/s]Loading weights:  21%|██        | 222/1065 [00:26<01:04, 13.14it/s]Loading weights:  21%|██        | 225/1065 [00:27<01:32,  9.10it/s]Loading weights:  21%|██▏       | 227/1065 [00:27<01:32,  9.05it/s]Loading weights:  22%|██▏       | 234/1065 [00:27<00:55, 14.88it/s]Loading weights:  22%|██▏       | 237/1065 [00:27<00:59, 13.95it/s]Loading weights:  23%|██▎       | 240/1065 [00:28<01:27,  9.46it/s]Loading weights:  23%|██▎       | 245/1065 [00:28<01:04, 12.76it/s]Loading weights:  23%|██▎       | 248/1065 [00:28<00:57, 14.21it/s]Loading weights:  24%|██▎       | 251/1065 [00:29<01:21, 10.02it/s]Loading weights:  24%|██▍       | 253/1065 [00:29<01:29,  9.04it/s]Loading weights:  24%|██▍       | 258/1065 [00:29<01:01, 13.06it/s]Loading weights:  25%|██▍       | 261/1065 [00:30<00:54, 14.63it/s]Loading weights:  25%|██▍       | 264/1065 [00:30<01:17, 10.34it/s]Loading weights:  25%|██▍       | 266/1065 [00:30<01:20,  9.96it/s]Loading weights:  25%|██▌       | 271/1065 [00:30<00:57, 13.86it/s]Loading weights:  26%|██▌       | 273/1065 [00:31<00:55, 14.35it/s]Loading weights:  26%|██▌       | 276/1065 [00:31<01:18, 10.02it/s]Loading weights:  26%|██▌       | 278/1065 [00:32<01:45,  7.46it/s]Loading weights:  27%|██▋       | 284/1065 [00:32<01:00, 12.89it/s]Loading weights:  27%|██▋       | 287/1065 [00:32<00:53, 14.46it/s]Loading weights:  27%|██▋       | 290/1065 [00:32<01:20,  9.57it/s]Loading weights:  27%|██▋       | 292/1065 [00:33<01:22,  9.36it/s]Loading weights:  28%|██▊       | 297/1065 [00:33<00:54, 14.02it/s]Loading weights:  28%|██▊       | 300/1065 [00:33<00:47, 16.21it/s]Loading weights:  28%|██▊       | 303/1065 [00:33<01:14, 10.24it/s]Loading weights:  29%|██▊       | 305/1065 [00:34<01:18,  9.65it/s]Loading weights:  29%|██▉       | 310/1065 [00:34<00:51, 14.62it/s]Loading weights:  29%|██▉       | 313/1065 [00:34<00:44, 16.75it/s]Loading weights:  30%|██▉       | 316/1065 [00:35<01:15,  9.91it/s]Loading weights:  30%|██▉       | 318/1065 [00:35<01:24,  8.88it/s]Loading weights:  30%|███       | 323/1065 [00:35<00:56, 13.13it/s]Loading weights:  31%|███       | 326/1065 [00:35<00:47, 15.41it/s]Loading weights:  31%|███       | 329/1065 [00:36<01:07, 10.85it/s]Loading weights:  31%|███       | 331/1065 [00:36<01:13, 10.01it/s]Loading weights:  32%|███▏      | 336/1065 [00:36<00:48, 15.05it/s]Loading weights:  32%|███▏      | 339/1065 [00:36<00:41, 17.30it/s]Loading weights:  32%|███▏      | 342/1065 [00:37<01:07, 10.65it/s]Loading weights:  32%|███▏      | 344/1065 [00:37<01:12,  9.98it/s]Loading weights:  33%|███▎      | 349/1065 [00:37<00:47, 14.97it/s]Loading weights:  33%|███▎      | 352/1065 [00:37<00:42, 16.86it/s]Loading weights:  33%|███▎      | 355/1065 [00:38<01:03, 11.21it/s]Loading weights:  34%|███▎      | 357/1065 [00:38<01:09, 10.18it/s]Loading weights:  34%|███▍      | 362/1065 [00:38<00:46, 14.97it/s]Loading weights:  34%|███▍      | 365/1065 [00:38<00:41, 17.04it/s]Loading weights:  35%|███▍      | 368/1065 [00:39<01:06, 10.53it/s]Loading weights:  35%|███▍      | 370/1065 [00:39<01:10,  9.80it/s]Loading weights:  35%|███▌      | 377/1065 [00:39<00:42, 16.20it/s]Loading weights:  36%|███▌      | 380/1065 [00:39<00:51, 13.18it/s]Loading weights:  36%|███▌      | 382/1065 [00:40<01:30,  7.56it/s]Loading weights:  36%|███▋      | 388/1065 [00:40<00:56, 12.09it/s]Loading weights:  37%|███▋      | 391/1065 [00:40<00:48, 13.89it/s]Loading weights:  37%|███▋      | 394/1065 [00:41<01:07,  9.91it/s]Loading weights:  37%|███▋      | 396/1065 [00:41<01:09,  9.67it/s]Loading weights:  38%|███▊      | 403/1065 [00:41<00:42, 15.75it/s]Loading weights:  38%|███▊      | 406/1065 [00:42<00:49, 13.40it/s]Loading weights:  38%|███▊      | 408/1065 [00:42<01:08,  9.57it/s]Loading weights:  39%|███▉      | 416/1065 [00:42<00:39, 16.26it/s]Loading weights:  39%|███▉      | 419/1065 [00:43<00:43, 14.89it/s]Loading weights:  40%|███▉      | 422/1065 [00:43<00:59, 10.82it/s]Loading weights:  40%|████      | 427/1065 [00:43<00:45, 14.13it/s]Loading weights:  40%|████      | 430/1065 [00:43<00:42, 15.11it/s]Loading weights:  41%|████      | 433/1065 [00:44<00:56, 11.24it/s]Loading weights:  41%|████      | 435/1065 [00:44<01:00, 10.40it/s]Loading weights:  41%|████▏     | 440/1065 [00:44<00:41, 15.14it/s]Loading weights:  42%|████▏     | 443/1065 [00:44<00:37, 16.80it/s]Loading weights:  42%|████▏     | 446/1065 [00:45<00:55, 11.14it/s]Loading weights:  42%|████▏     | 448/1065 [00:45<00:59, 10.33it/s]Loading weights:  43%|████▎     | 453/1065 [00:45<00:39, 15.49it/s]Loading weights:  43%|████▎     | 458/1065 [00:46<00:40, 15.01it/s]Loading weights:  43%|████▎     | 461/1065 [00:46<01:03,  9.50it/s]Loading weights:  44%|████▍     | 466/1065 [00:46<00:46, 12.91it/s]Loading weights:  44%|████▍     | 469/1065 [00:47<00:40, 14.60it/s]Loading weights:  44%|████▍     | 472/1065 [00:47<01:00,  9.85it/s]Loading weights:  45%|████▍     | 474/1065 [00:48<01:10,  8.39it/s]Loading weights:  45%|████▍     | 479/1065 [00:48<00:48, 12.00it/s]Loading weights:  45%|████▌     | 481/1065 [00:48<00:45, 12.87it/s]Loading weights:  45%|████▌     | 484/1065 [00:48<00:52, 11.03it/s]Loading weights:  46%|████▌     | 486/1065 [00:49<01:18,  7.34it/s]Loading weights:  46%|████▌     | 492/1065 [00:49<00:45, 12.69it/s]Loading weights:  46%|████▋     | 495/1065 [00:49<00:38, 14.80it/s]Loading weights:  47%|████▋     | 498/1065 [00:49<00:53, 10.53it/s]Loading weights:  47%|████▋     | 501/1065 [00:50<00:52, 10.69it/s]Loading weights:  47%|████▋     | 505/1065 [00:50<00:39, 14.12it/s]Loading weights:  48%|████▊     | 508/1065 [00:50<00:34, 16.19it/s]Loading weights:  48%|████▊     | 511/1065 [00:51<00:54, 10.19it/s]Loading weights:  48%|████▊     | 513/1065 [00:51<00:58,  9.43it/s]Loading weights:  49%|████▊     | 518/1065 [00:51<00:39, 14.02it/s]Loading weights:  49%|████▉     | 521/1065 [00:51<00:35, 15.20it/s]Loading weights:  49%|████▉     | 524/1065 [00:52<00:59,  9.04it/s]Loading weights:  49%|████▉     | 526/1065 [00:52<01:00,  8.89it/s]Loading weights:  50%|█████     | 533/1065 [00:52<00:35, 14.94it/s]Loading weights:  50%|█████     | 536/1065 [00:53<00:43, 12.23it/s]Loading weights:  51%|█████     | 538/1065 [00:53<01:09,  7.62it/s]Loading weights:  51%|█████     | 544/1065 [00:53<00:43, 11.90it/s]Loading weights:  51%|█████▏    | 547/1065 [00:54<00:38, 13.58it/s]Loading weights:  52%|█████▏    | 550/1065 [00:54<00:52,  9.79it/s]Loading weights:  52%|█████▏    | 552/1065 [00:54<01:01,  8.36it/s]Loading weights:  52%|█████▏    | 557/1065 [00:55<00:42, 11.97it/s]Loading weights:  53%|█████▎    | 560/1065 [00:55<00:36, 13.80it/s]Loading weights:  53%|█████▎    | 563/1065 [00:55<00:49, 10.16it/s]Loading weights:  53%|█████▎    | 565/1065 [00:56<01:00,  8.24it/s]Loading weights:  54%|█████▎    | 570/1065 [00:56<00:41, 11.79it/s]Loading weights:  54%|█████▎    | 572/1065 [00:56<00:38, 12.66it/s]Loading weights:  54%|█████▍    | 575/1065 [00:56<00:42, 11.49it/s]Loading weights:  54%|█████▍    | 577/1065 [00:57<00:58,  8.36it/s]Loading weights:  55%|█████▍    | 583/1065 [00:57<00:34, 13.95it/s]Loading weights:  55%|█████▌    | 586/1065 [00:57<00:30, 15.80it/s]Loading weights:  55%|█████▌    | 589/1065 [00:58<00:44, 10.63it/s]Loading weights:  55%|█████▌    | 591/1065 [00:58<00:47,  9.97it/s]Loading weights:  56%|█████▌    | 596/1065 [00:58<00:31, 14.93it/s]Loading weights:  56%|█████▌    | 599/1065 [00:58<00:27, 16.78it/s]Loading weights:  57%|█████▋    | 602/1065 [00:59<00:44, 10.31it/s]Loading weights:  57%|█████▋    | 604/1065 [00:59<00:47,  9.65it/s]Loading weights:  57%|█████▋    | 609/1065 [00:59<00:31, 14.61it/s]Loading weights:  58%|█████▊    | 614/1065 [00:59<00:33, 13.33it/s]Loading weights:  58%|█████▊    | 617/1065 [01:00<00:51,  8.65it/s]Loading weights:  58%|█████▊    | 622/1065 [01:00<00:35, 12.43it/s]Loading weights:  59%|█████▉    | 627/1065 [01:00<00:26, 16.34it/s]Loading weights:  61%|██████    | 645/1065 [01:00<00:10, 38.94it/s]Loading weights:  63%|██████▎   | 671/1065 [01:01<00:05, 73.32it/s]Loading weights:  65%|██████▍   | 689/1065 [01:01<00:04, 93.15it/s]Loading weights:  66%|██████▌   | 705/1065 [01:01<00:03, 106.10it/s]Loading weights:  68%|██████▊   | 721/1065 [01:01<00:02, 116.40it/s]Loading weights:  69%|██████▉   | 737/1065 [01:01<00:02, 125.32it/s]Loading weights:  71%|███████   | 755/1065 [01:01<00:02, 136.98it/s]Loading weights:  73%|███████▎  | 773/1065 [01:01<00:01, 147.73it/s]Loading weights:  74%|███████▍  | 790/1065 [01:01<00:01, 153.14it/s]Loading weights:  77%|███████▋  | 815/1065 [01:01<00:01, 174.14it/s]Loading weights:  79%|███████▉  | 845/1065 [01:02<00:01, 203.06it/s]Loading weights:  82%|████████▏ | 869/1065 [01:02<00:00, 211.31it/s]Loading weights:  84%|████████▍ | 895/1065 [01:02<00:00, 218.67it/s]Loading weights:  87%|████████▋ | 925/1065 [01:02<00:00, 232.88it/s]Loading weights:  89%|████████▉ | 949/1065 [01:02<00:00, 232.38it/s]Loading weights:  91%|█████████▏| 973/1065 [01:02<00:00, 233.54it/s]Loading weights:  94%|█████████▎| 997/1065 [01:02<00:00, 218.03it/s]Loading weights:  96%|█████████▌| 1021/1065 [01:02<00:00, 220.78it/s]Loading weights:  98%|█████████▊| 1044/1065 [01:02<00:00, 213.37it/s]Loading weights: 100%|██████████| 1065/1065 [01:03<00:00, 16.90it/s] 
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 2: Model B judges correctness (yes/no)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 1110
+  Resuming from 9000 already-judged samples
+  Processing 1110 remaining samples...
+Step 2: Judging:   0%|          | 0/47 [00:00<?, ?it/s]Step 2: Judging:   2%|▏         | 1/47 [00:08<06:48,  8.89s/it]Step 2: Judging:   4%|▍         | 2/47 [00:16<05:53,  7.86s/it]Step 2: Judging:   6%|▋         | 3/47 [00:23<05:34,  7.60s/it]Step 2: Judging:   9%|▊         | 4/47 [00:29<05:08,  7.17s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000051977.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479095.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000554408.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000403134.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048848.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000118968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000538420.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000420231.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462023.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000482157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576756.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000530686.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000113668.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000000584.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000453352.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000060457.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000449019.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400966.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000174749.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134008.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266959.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000294323.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000116393.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190568.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000428502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000504987.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000494628.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000444744.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000154648.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000516455.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000140065.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000163186.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000141448.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000437435.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491212.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000523473.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000449467.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000173096.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000423424.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000580152.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000408139.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000525169.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000299560.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491361.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001774.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000558455.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000051871.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172406.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237622.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000210426.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000181857.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000274632.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000451803.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000219802.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000090346.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000111598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000405920.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506341.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000495334.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000149366.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285826.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000411705.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000357656.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555640.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422603.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000241421.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000493953.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000367461.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000393127.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000509949.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000028875.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122118.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000349129.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000217395.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000041742.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000081675.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009774.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000231315.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178901.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000248283.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471599.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000357290.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471132.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000088635.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000496410.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000004490.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000515704.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378736.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213203.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000226866.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000016836.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000161818.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000350310.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000542090.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000273932.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000188621.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000258528.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000446872.jpg
+Step 2: Judging:  11%|█         | 5/47 [00:35<04:45,  6.81s/it]Step 2: Judging:  13%|█▎        | 6/47 [00:41<04:23,  6.44s/it]Step 2: Judging:  15%|█▍        | 7/47 [00:47<04:10,  6.27s/it]Step 2: Judging:  17%|█▋        | 8/47 [00:54<04:06,  6.33s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000530999.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052219.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000341198.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000397606.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000477226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000430149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000067220.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000545705.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506838.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000233271.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000570817.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000387598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000381199.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576343.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000490479.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576430.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000116497.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000298353.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000100558.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000563301.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000123800.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000345987.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000188787.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000295166.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000308509.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000365578.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000265453.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000168873.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000388347.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000425944.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000223754.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000443296.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000177163.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000459466.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000094952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108170.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000412535.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000050511.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000315994.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000468132.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000126161.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000065610.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237423.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000093247.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000170809.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000006225.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000446536.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078213.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471783.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000461915.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363747.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000432912.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134819.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052270.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000424482.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000381485.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000439374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398473.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000135796.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000269355.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030712.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121446.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000469173.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000075458.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000197718.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557119.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000139702.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000497275.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000366811.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256475.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000094632.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000194742.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292977.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000369338.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000379645.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000428665.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052974.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292993.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009709.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208262.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097040.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422269.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000153426.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000227638.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000198119.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237944.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000412901.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000460897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000219442.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000573062.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000103547.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108293.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499135.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000524314.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000429809.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000293980.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000205022.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000183811.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000210371.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000026468.jpg
+Step 2: Judging:  19%|█▉        | 9/47 [01:01<04:08,  6.55s/it]Step 2: Judging:  21%|██▏       | 10/47 [01:08<04:09,  6.74s/it]Step 2: Judging:  23%|██▎       | 11/47 [01:15<04:08,  6.91s/it]Step 2: Judging:  26%|██▌       | 12/47 [01:21<03:46,  6.48s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000471755.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000465765.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027158.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000409105.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000253202.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000036574.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000442394.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000483639.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000320472.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000470720.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180037.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560326.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000142208.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435435.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000455952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000168506.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000273425.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000157435.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208640.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000281952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000005483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108282.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000102163.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000215844.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266120.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000269749.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000115003.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000450509.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000233381.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331904.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000188749.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000153476.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000199028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000066157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000376283.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000117838.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042336.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190957.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000024861.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000128136.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256285.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000302715.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000163571.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000233399.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000438145.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078320.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285018.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000090251.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000573775.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000511373.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000200289.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009542.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000488488.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208727.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178171.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000234642.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000159453.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000451133.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000123177.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000028131.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398164.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000142014.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328271.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000081838.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000173634.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000226102.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000293577.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000286159.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000396866.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000081504.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208723.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000160443.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000531837.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000250360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000235925.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578063.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000064827.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400558.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078413.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000249663.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000361738.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000160901.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000139240.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074544.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000072007.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000482929.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000003442.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000511571.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000445397.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000249515.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000306456.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122460.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000144488.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331457.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000381664.jpg
+Step 2: Judging:  28%|██▊       | 13/47 [01:27<03:38,  6.42s/it]Step 2: Judging:  30%|██▉       | 14/47 [01:34<03:37,  6.60s/it]Step 2: Judging:  32%|███▏      | 15/47 [01:40<03:25,  6.42s/it]Step 2: Judging:  34%|███▍      | 16/47 [01:46<03:12,  6.22s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000281887.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000399203.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190363.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467904.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000133580.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288194.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000521667.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000275691.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557610.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000033656.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000359059.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000272051.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378710.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000472968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000531782.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000226162.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000516329.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000516088.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000050757.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000037695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237077.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000124280.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000497265.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000452643.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000258869.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000049199.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000354766.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000210080.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000224470.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000371360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000029304.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000486545.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178430.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435766.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000385795.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000442593.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000355947.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000572353.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042416.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000337707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000343201.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000105374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000392964.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000359678.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048531.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000092559.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000336221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000184463.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000167057.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000093883.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000444537.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000417887.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000212698.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297911.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074415.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000342797.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000193709.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000538270.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000245272.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000245780.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000494309.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237608.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000524983.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000175227.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479629.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309552.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213902.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000429335.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000144683.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000280898.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000367523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000198997.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190466.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292823.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297851.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000298475.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000367951.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000554783.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000260844.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462022.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000104177.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000531949.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000191511.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000160152.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255770.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549490.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000550028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000051941.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000541147.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000140100.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000511070.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000302707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456736.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000232227.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000330728.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000215521.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000036034.jpg
+Step 2: Judging:  36%|███▌      | 17/47 [01:52<03:04,  6.14s/it]Step 2: Judging:  38%|███▊      | 18/47 [01:59<03:09,  6.52s/it]Step 2: Judging:  40%|████      | 19/47 [02:05<03:00,  6.45s/it]Step 2: Judging:  43%|████▎     | 20/47 [02:11<02:47,  6.21s/it]Step 2: Judging:  45%|████▍     | 21/47 [02:18<02:44,  6.34s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000358113.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549759.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000551947.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000005615.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410323.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000312926.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000528131.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208075.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000075322.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557627.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000100157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000186685.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027556.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000386996.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000553586.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078359.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422623.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000325569.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000087207.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000439126.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000280062.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000434053.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000287360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000382969.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000385533.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000111853.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000176896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000158451.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000443823.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000007669.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000411450.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000545238.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000512845.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255419.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000325723.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000272997.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000264511.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000307182.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000498427.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000201188.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000550610.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000147701.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548357.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000313577.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000314392.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172727.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000561371.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328348.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000296943.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000091697.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000044047.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285074.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578580.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000026775.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122109.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256549.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000357799.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000218990.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000099629.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000114776.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000013158.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000011422.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000257528.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000321495.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000476679.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000495387.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329847.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000327849.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000545447.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000236262.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000053301.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121884.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000458232.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000574140.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000368490.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052011.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000103230.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000390345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000233463.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000316669.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121083.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506045.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000207471.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190064.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000154817.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000025147.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000056695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000429526.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000375473.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000354874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000181393.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000518100.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000344806.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000509939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000367853.jpg
+Step 2: Judging:  47%|████▋     | 22/47 [02:23<02:32,  6.12s/it]Step 2: Judging:  49%|████▉     | 23/47 [02:29<02:27,  6.14s/it]Step 2: Judging:  51%|█████     | 24/47 [02:36<02:26,  6.38s/it]Step 2: Judging:  53%|█████▎    | 25/47 [02:44<02:27,  6.69s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000166082.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000099844.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000177160.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000015394.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266383.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421996.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000335421.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000021459.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000520684.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000060526.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000175756.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000100271.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479361.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398407.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063867.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000525409.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165105.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027207.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000316471.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000111189.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000160938.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000204060.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000567914.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000136375.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000455613.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000447615.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000268227.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001098.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000572536.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560748.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000417544.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000409897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000519939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000368702.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505104.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165299.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578128.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000303178.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000093916.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000311521.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000170323.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000440002.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000388928.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000317935.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000569725.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000014537.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548136.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000050018.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309937.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000354045.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000382469.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000320066.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000286704.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000579127.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000356671.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000437395.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576089.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000224079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000147342.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427154.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000351112.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097130.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000261496.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000359830.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000207698.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000094004.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000403335.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000254714.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000071684.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328223.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000316759.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000154020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000159331.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560262.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391324.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323379.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171647.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000508502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000066327.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000474123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000369778.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000553909.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000554426.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285042.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400093.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000558142.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400504.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000520176.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000104191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048908.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000114083.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000092301.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471410.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000017551.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171158.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000519910.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000115992.jpg
+Step 2: Judging:  55%|█████▌    | 26/47 [02:51<02:25,  6.91s/it]Step 2: Judging:  57%|█████▋    | 27/47 [02:58<02:16,  6.84s/it]Step 2: Judging:  60%|█████▉    | 28/47 [03:05<02:09,  6.79s/it]Step 2: Judging:  62%|██████▏   | 29/47 [03:11<02:03,  6.83s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000298835.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000425289.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421105.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083368.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000553189.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471900.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000353276.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000214464.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000057828.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000546594.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052924.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000478375.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000105546.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000148677.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042105.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000235842.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000241206.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000262541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000393553.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000360475.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000349243.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000564072.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378907.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000162688.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555254.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000174066.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576010.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000075516.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331082.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000380096.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319115.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097998.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000272785.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000296617.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000498986.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000411885.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000509114.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422469.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304528.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172800.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000313244.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190455.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000346196.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000092710.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000220896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000306049.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000176155.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000496926.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000248834.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000295053.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000227040.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027227.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122498.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000396572.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000264598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000257711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000392631.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000433200.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000033625.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000419468.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000115374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000540273.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000047189.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435342.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000136945.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000013650.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000575052.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000379564.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000470398.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000373184.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000339020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000359141.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000423585.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000159472.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000239532.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000147492.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000007239.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000194413.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000484336.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106525.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000500891.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106383.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000534722.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000450856.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000035880.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000428266.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000021175.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000085933.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052128.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052518.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000489939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000232329.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000045366.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000160660.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555882.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078322.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000537213.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000085179.jpg
+Step 2: Judging:  64%|██████▍   | 30/47 [03:18<01:54,  6.74s/it]Step 2: Judging:  66%|██████▌   | 31/47 [03:24<01:45,  6.58s/it]Step 2: Judging:  68%|██████▊   | 32/47 [03:30<01:36,  6.44s/it]Step 2: Judging:  70%|███████   | 33/47 [03:35<01:23,  5.94s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000340699.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462791.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318556.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000103386.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000445684.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000085372.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000424459.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000211909.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000086668.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000402213.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471697.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000401183.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256617.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377694.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000574818.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000284794.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000226502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000113021.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000392879.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000015618.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000112860.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000477420.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000402362.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000196226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000237098.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000423630.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000152003.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106750.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000199390.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000368983.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000312935.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000453883.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000327332.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000569389.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467537.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000317365.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000008469.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456309.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000163220.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323626.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000419120.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000342140.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000465143.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213039.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309295.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323820.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000559356.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000070688.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000358719.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000227329.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000099046.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329148.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000000572.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000045558.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000480773.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578250.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000564240.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000330614.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000008027.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106145.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000416976.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000576518.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000438751.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000117637.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000563233.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000244812.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332069.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000369589.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256855.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000186483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000508328.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000006488.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000004741.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000075052.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000434291.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000218446.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000406755.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000546511.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000265070.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000408233.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000333664.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319543.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000096630.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000420939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000205131.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000043411.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000433643.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000138351.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000065594.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165674.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000159013.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000352925.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000333978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106748.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145755.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208172.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000561406.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000116894.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000369126.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000260581.jpg
+Step 2: Judging:  72%|███████▏  | 34/47 [03:41<01:16,  5.85s/it]Step 2: Judging:  74%|███████▍  | 35/47 [03:47<01:13,  6.10s/it]Step 2: Judging:  77%|███████▋  | 36/47 [03:52<01:02,  5.67s/it]Step 2: Judging:  79%|███████▊  | 37/47 [03:59<01:00,  6.02s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000398373.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000090523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323462.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000299190.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377017.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000155914.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000073035.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000295294.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000132102.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427051.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000531179.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000565243.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000029154.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000249869.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000140909.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462501.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000423096.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000546959.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297308.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000562196.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000550310.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000246553.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000478016.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000494680.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000290544.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000571331.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410708.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000140733.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000373893.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000179965.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122551.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000533051.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000152659.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000070161.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000240074.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000044123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000449712.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063636.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000395627.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000473842.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000562247.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000271791.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000167393.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000161234.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000381961.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000395318.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000021531.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285478.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000306663.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000485099.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000277243.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000118920.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000201421.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000453003.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456155.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328115.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000554215.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000345951.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000508577.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000493939.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000079671.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000486315.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145767.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180086.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000380729.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000434234.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000524830.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000293679.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000473060.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000129108.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000416190.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000325390.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000307259.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000024319.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000350510.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000490031.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000120360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001709.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319822.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332606.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106107.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549924.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000272218.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318307.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000098944.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000252925.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000409956.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000283631.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000487058.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000069874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000210813.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000146226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000457521.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292833.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000028642.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134538.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467339.jpg
+Step 2: Judging:  81%|████████  | 38/47 [04:05<00:53,  5.96s/it]Step 2: Judging:  83%|████████▎ | 39/47 [04:11<00:49,  6.19s/it]Step 2: Judging:  85%|████████▌ | 40/47 [04:17<00:42,  6.01s/it]Step 2: Judging:  87%|████████▋ | 41/47 [04:23<00:35,  5.98s/it]Step 2: Judging:  89%|████████▉ | 42/47 [04:30<00:31,  6.22s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000444206.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000278393.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000311452.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000345455.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000355301.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000478485.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000133660.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180197.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000355133.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378921.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000556748.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000374878.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030055.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000049128.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000245810.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000455112.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108649.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000114786.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000301970.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000483213.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000376907.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000431304.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000274574.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292238.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000151646.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000432339.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171155.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560784.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000539068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001392.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000223404.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000175000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329753.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000379771.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000438462.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000231320.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266228.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000081845.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000568658.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000353080.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000264079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000511485.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000393735.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000356908.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506331.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557987.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000104403.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171649.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000430481.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000358744.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309979.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000375529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000245792.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548861.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000270172.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000200794.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145280.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000351288.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000257712.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328935.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000287361.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000580523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000446846.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000447877.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000038891.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000017583.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319273.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000532638.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000314297.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000327330.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000173019.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000283825.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145499.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000533041.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000034063.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255728.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000324427.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555921.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000493952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000384173.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165034.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000110269.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000016343.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000463739.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000340903.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000448616.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000105804.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213364.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000404236.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000374976.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000200195.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000429225.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000492801.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000065869.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000206530.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000561468.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000439595.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000272162.jpg
+Step 2: Judging:  91%|█████████▏| 43/47 [04:35<00:23,  5.83s/it]Step 2: Judging:  94%|█████████▎| 44/47 [04:42<00:18,  6.17s/it]Step 2: Judging:  96%|█████████▌| 45/47 [04:48<00:12,  6.29s/it]Step 2: Judging:  98%|█████████▊| 46/47 [04:54<00:06,  6.04s/it]Step 2: Judging: 100%|██████████| 47/47 [04:55<00:00,  4.64s/it]Step 2: Judging: 100%|██████████| 47/47 [04:55<00:00,  6.29s/it]
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000023287.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000547411.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000366643.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000222691.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363410.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000049331.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000186145.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000431973.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000512022.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000223154.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121693.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000289005.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000032773.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000046382.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000289333.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479780.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000281214.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000413291.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000364770.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000406977.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000259446.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172092.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000218628.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000336541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000114403.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000021535.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000420711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000019929.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000185127.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000392136.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000459018.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000225036.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000274437.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000507157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505980.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000365458.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000382863.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000170221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000092122.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000571848.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000157989.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000338431.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000091508.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000200618.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000321215.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000438979.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000564803.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000520617.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000394972.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000507798.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000540464.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000092425.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332953.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471358.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000432831.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548822.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000020367.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000536776.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000382500.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000375897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000153856.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000017817.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427301.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000343948.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000011719.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000415497.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000415529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000075352.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180436.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000254660.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000383746.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000368081.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000184806.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097841.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363525.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000250576.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000541816.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329105.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000325665.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000196096.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000216579.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074039.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074110.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000570143.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000211593.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000162282.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318231.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292519.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000469336.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000568208.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000183554.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000257350.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000425847.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000012240.jpg
+  ✅ Judging complete: 9817 safe (yes), 293 unsafe (no)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 3: Routing
+======================================================================
+  Correct (keep original):    9817
+  Incorrect (regenerate):     293
+  Regeneration rate:       2.9%
+
+🚀 Loading Qwen2-VL-7B...
+   Model: Qwen/Qwen2-VL-7B-Instruct
+   4-bit: True
+   Device: auto
+   Max pixels: 401,408 (~633x633)
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 2650.93it/s]
+Loading weights:   0%|          | 0/730 [00:00<?, ?it/s]Loading weights:   0%|          | 1/730 [00:02<31:25,  2.59s/it]Loading weights:   0%|          | 2/730 [00:05<30:32,  2.52s/it]Loading weights:   1%|          | 4/730 [00:05<12:51,  1.06s/it]Loading weights:   1%|          | 5/730 [00:05<10:12,  1.18it/s]Loading weights:   1%|          | 6/730 [00:06<08:15,  1.46it/s]Loading weights:   2%|▏         | 12/730 [00:06<02:25,  4.93it/s]Loading weights:   2%|▏         | 16/730 [00:06<01:45,  6.76it/s]Loading weights:   2%|▏         | 18/730 [00:07<02:02,  5.79it/s]Loading weights:   3%|▎         | 24/730 [00:07<01:08, 10.26it/s]Loading weights:   4%|▍         | 28/730 [00:07<01:02, 11.26it/s]Loading weights:   4%|▍         | 31/730 [00:08<01:24,  8.24it/s]Loading weights:   5%|▍         | 36/730 [00:08<00:57, 11.97it/s]Loading weights:   5%|▌         | 40/730 [00:08<01:01, 11.21it/s]Loading weights:   6%|▌         | 43/730 [00:09<01:32,  7.47it/s]Loading weights:   7%|▋         | 48/730 [00:09<01:03, 10.79it/s]Loading weights:   7%|▋         | 52/730 [00:09<01:02, 10.79it/s]Loading weights:   8%|▊         | 55/730 [00:10<01:26,  7.79it/s]Loading weights:   8%|▊         | 60/730 [00:10<01:02, 10.80it/s]Loading weights:   9%|▉         | 64/730 [00:11<01:03, 10.45it/s]Loading weights:   9%|▉         | 66/730 [00:11<01:34,  7.04it/s]Loading weights:  10%|▉         | 72/730 [00:12<00:58, 11.20it/s]Loading weights:  10%|█         | 76/730 [00:12<00:56, 11.61it/s]Loading weights:  11%|█         | 79/730 [00:13<01:17,  8.35it/s]Loading weights:  12%|█▏        | 84/730 [00:13<00:55, 11.62it/s]Loading weights:  12%|█▏        | 88/730 [00:13<00:51, 12.35it/s]Loading weights:  12%|█▏        | 91/730 [00:13<01:06,  9.60it/s]Loading weights:  13%|█▎        | 96/730 [00:14<00:47, 13.37it/s]Loading weights:  14%|█▎        | 100/730 [00:14<00:46, 13.62it/s]Loading weights:  14%|█▍        | 103/730 [00:14<01:01, 10.18it/s]Loading weights:  15%|█▍        | 108/730 [00:14<00:43, 14.15it/s]Loading weights:  15%|█▌        | 112/730 [00:15<00:46, 13.39it/s]Loading weights:  16%|█▌        | 115/730 [00:16<01:16,  8.07it/s]Loading weights:  16%|█▋        | 120/730 [00:16<00:54, 11.15it/s]Loading weights:  17%|█▋        | 124/730 [00:16<00:51, 11.75it/s]Loading weights:  17%|█▋        | 126/730 [00:17<01:10,  8.55it/s]Loading weights:  18%|█▊        | 132/730 [00:17<00:44, 13.32it/s]Loading weights:  19%|█▊        | 136/730 [00:17<00:48, 12.16it/s]Loading weights:  19%|█▉        | 139/730 [00:18<01:12,  8.20it/s]Loading weights:  20%|█▉        | 144/730 [00:18<00:52, 11.16it/s]Loading weights:  20%|██        | 148/730 [00:18<00:48, 12.05it/s]Loading weights:  21%|██        | 150/730 [00:19<01:05,  8.85it/s]Loading weights:  21%|██▏       | 156/730 [00:19<00:41, 13.76it/s]Loading weights:  22%|██▏       | 160/730 [00:19<00:41, 13.83it/s]Loading weights:  22%|██▏       | 163/730 [00:20<00:56, 10.12it/s]Loading weights:  23%|██▎       | 168/730 [00:20<00:40, 13.95it/s]Loading weights:  24%|██▎       | 172/730 [00:20<00:41, 13.60it/s]Loading weights:  24%|██▍       | 175/730 [00:21<00:55,  9.96it/s]Loading weights:  25%|██▍       | 180/730 [00:21<00:39, 13.80it/s]Loading weights:  25%|██▌       | 184/730 [00:21<00:39, 13.81it/s]Loading weights:  26%|██▌       | 187/730 [00:22<00:54, 10.05it/s]Loading weights:  26%|██▋       | 192/730 [00:22<00:38, 13.92it/s]Loading weights:  27%|██▋       | 196/730 [00:22<00:38, 13.90it/s]Loading weights:  27%|██▋       | 199/730 [00:23<00:52, 10.03it/s]Loading weights:  28%|██▊       | 204/730 [00:23<00:38, 13.84it/s]Loading weights:  28%|██▊       | 208/730 [00:23<00:37, 13.79it/s]Loading weights:  29%|██▉       | 211/730 [00:24<00:51, 10.12it/s]Loading weights:  30%|██▉       | 216/730 [00:24<00:36, 14.15it/s]Loading weights:  30%|███       | 220/730 [00:24<00:35, 14.45it/s]Loading weights:  31%|███       | 223/730 [00:25<00:50, 10.13it/s]Loading weights:  31%|███       | 228/730 [00:25<00:37, 13.38it/s]Loading weights:  32%|███▏      | 232/730 [00:25<00:37, 13.11it/s]Loading weights:  32%|███▏      | 234/730 [00:26<01:03,  7.85it/s]Loading weights:  33%|███▎      | 240/730 [00:26<00:41, 11.85it/s]Loading weights:  33%|███▎      | 244/730 [00:26<00:40, 12.00it/s]Loading weights:  34%|███▎      | 246/730 [00:27<00:59,  8.15it/s]Loading weights:  35%|███▍      | 252/730 [00:27<00:37, 12.61it/s]Loading weights:  35%|███▌      | 256/730 [00:27<00:36, 12.95it/s]Loading weights:  35%|███▌      | 259/730 [00:28<00:54,  8.59it/s]Loading weights:  36%|███▌      | 264/730 [00:28<00:39, 11.73it/s]Loading weights:  37%|███▋      | 268/730 [00:29<00:41, 11.26it/s]Loading weights:  37%|███▋      | 270/730 [00:29<01:03,  7.26it/s]Loading weights:  38%|███▊      | 276/730 [00:30<00:39, 11.38it/s]Loading weights:  38%|███▊      | 280/730 [00:30<00:38, 11.72it/s]Loading weights:  39%|███▉      | 283/730 [00:31<00:53,  8.38it/s]Loading weights:  39%|███▉      | 288/730 [00:31<00:38, 11.55it/s]Loading weights:  40%|████      | 292/730 [00:31<00:35, 12.23it/s]Loading weights:  40%|████      | 294/730 [00:31<00:49,  8.76it/s]Loading weights:  41%|████      | 300/730 [00:32<00:31, 13.53it/s]Loading weights:  42%|████▏     | 304/730 [00:32<00:31, 13.33it/s]Loading weights:  42%|████▏     | 307/730 [00:32<00:42, 10.01it/s]Loading weights:  43%|████▎     | 312/730 [00:33<00:30, 13.89it/s]Loading weights:  43%|████▎     | 316/730 [00:33<00:31, 13.08it/s]Loading weights:  44%|████▎     | 319/730 [00:34<00:48,  8.43it/s]Loading weights:  44%|████▍     | 324/730 [00:34<00:35, 11.58it/s]Loading weights:  45%|████▍     | 328/730 [00:34<00:35, 11.18it/s]Loading weights:  45%|████▌     | 330/730 [00:35<00:58,  6.89it/s]Loading weights:  46%|████▌     | 336/730 [00:35<00:37, 10.56it/s]Loading weights:  48%|████▊     | 347/730 [00:35<00:19, 20.02it/s]Loading weights:  50%|█████     | 367/730 [00:35<00:08, 40.84it/s]Loading weights:  52%|█████▏    | 381/730 [00:36<00:06, 54.27it/s]Loading weights:  54%|█████▍    | 395/730 [00:36<00:05, 66.78it/s]Loading weights:  57%|█████▋    | 414/730 [00:36<00:03, 90.00it/s]Loading weights:  58%|█████▊    | 427/730 [00:36<00:03, 97.79it/s]Loading weights:  60%|██████    | 441/730 [00:36<00:02, 104.13it/s]Loading weights:  62%|██████▏   | 455/730 [00:36<00:02, 110.07it/s]Loading weights:  65%|██████▌   | 475/730 [00:36<00:01, 128.62it/s]Loading weights:  67%|██████▋   | 490/730 [00:36<00:01, 129.44it/s]Loading weights:  69%|██████▉   | 504/730 [00:36<00:01, 129.34it/s]Loading weights:  72%|███████▏  | 523/730 [00:37<00:01, 140.56it/s]Loading weights:  74%|███████▎  | 538/730 [00:37<00:01, 139.39it/s]Loading weights:  76%|███████▌  | 553/730 [00:37<00:01, 138.25it/s]Loading weights:  78%|███████▊  | 571/730 [00:37<00:01, 144.47it/s]Loading weights:  80%|████████  | 586/730 [00:37<00:01, 142.43it/s]Loading weights:  82%|████████▏ | 601/730 [00:37<00:00, 140.77it/s]Loading weights:  85%|████████▍ | 619/730 [00:37<00:00, 145.82it/s]Loading weights:  87%|████████▋ | 634/730 [00:37<00:00, 143.69it/s]Loading weights:  89%|████████▉ | 649/730 [00:37<00:00, 141.67it/s]Loading weights:  91%|█████████▏| 667/730 [00:38<00:00, 145.75it/s]Loading weights:  93%|█████████▎| 682/730 [00:38<00:00, 143.94it/s]Loading weights:  95%|█████████▌| 697/730 [00:38<00:00, 141.20it/s]Loading weights:  98%|█████████▊| 715/730 [00:38<00:00, 144.65it/s]Loading weights: 100%|██████████| 730/730 [00:38<00:00, 97.17it/s] Loading weights: 100%|██████████| 730/730 [00:38<00:00, 18.89it/s]
+✅ Qwen2-VL-7B loaded successfully!
+
+
+======================================================================
+STEP 4: Model A regenerates
+======================================================================
+  Model A:        Qwen2-VL-7B
+  Samples:        293
+  Prompt source:  emotion
+  Selection type: fixed
+  Location:       start
+  #Prompts:       1
+  Quadrant:       negative_low
+  Processing 293 remaining samples...
+Step 4: Regenerating:   0%|          | 0/13 [00:00<?, ?it/s]Step 4: Regenerating:   8%|▊         | 1/13 [00:03<00:47,  3.94s/it]Step 4: Regenerating:  15%|█▌        | 2/13 [00:07<00:39,  3.58s/it]Step 4: Regenerating:  23%|██▎       | 3/13 [00:38<02:40, 16.01s/it]Step 4: Regenerating:  31%|███       | 4/13 [01:09<03:20, 22.26s/it]Step 4: Regenerating:  38%|███▊      | 5/13 [01:40<03:22, 25.31s/it]Step 4: Regenerating:  46%|████▌     | 6/13 [02:21<03:34, 30.71s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000479095.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000538420.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000482157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000530686.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134008.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000294323.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491212.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001774.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000181857.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000111598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422603.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000357290.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471132.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000515704.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378736.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000016836.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000430149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000067220.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506838.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000570817.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000308509.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000388347.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000223754.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000065610.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471783.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000269355.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030712.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000197718.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557119.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052974.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009709.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208262.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422269.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000227638.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499135.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000205022.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000253202.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000320472.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180037.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000142208.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435435.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000281952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000005483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190957.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285018.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000090251.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009542.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178171.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398164.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000250360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000072007.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000445397.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000249515.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122460.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000144488.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467904.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288194.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000472968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000516329.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000050757.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178430.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000337707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000343201.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000336221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297911.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000342797.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479629.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213902.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297851.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549490.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000302707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208075.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000553586.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000434053.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000385533.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000443823.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000512845.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255419.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000313577.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328348.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122109.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000011422.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000390345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000316669.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121083.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000354874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329541.jpg
+Step 4: Regenerating:  54%|█████▍    | 7/13 [02:51<03:03, 30.50s/it]Step 4: Regenerating:  62%|██████▏   | 8/13 [03:32<02:48, 33.76s/it]Step 4: Regenerating:  69%|██████▉   | 9/13 [04:10<02:20, 35.18s/it]Step 4: Regenerating:  77%|███████▋  | 10/13 [04:42<01:41, 33.96s/it]Step 4: Regenerating:  85%|████████▍ | 11/13 [05:23<01:12, 36.26s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000177160.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266383.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421996.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398407.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063867.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000447615.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000572536.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560748.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505104.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165299.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000303178.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000440002.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309937.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000579127.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000224079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000147342.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328223.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000154020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000508502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285042.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000558142.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400504.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000104191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000115992.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000214464.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052924.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378907.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555254.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331082.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319115.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000498986.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000411885.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304528.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000220896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000433200.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000339020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000239532.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000500891.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000045366.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078322.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462791.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318556.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000103386.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377694.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000112860.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000196226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000008469.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000559356.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000070688.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000000572.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578250.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000330614.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106145.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332069.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000408233.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000138351.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208172.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000116894.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462501.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410708.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000152659.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063636.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000562247.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000306663.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000118920.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000345951.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000473060.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000129108.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000416190.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000024319.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000490031.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319822.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332606.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106107.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000069874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000146226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292833.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000028642.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000444206.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378921.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030055.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000049128.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108649.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000274574.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171155.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000539068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001392.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000175000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000568658.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000264079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000356908.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548861.jpg
+Step 4: Regenerating:  92%|█████████▏| 12/13 [06:03<00:37, 37.49s/it]Step 4: Regenerating: 100%|██████████| 13/13 [06:19<00:00, 30.84s/it]Step 4: Regenerating: 100%|██████████| 13/13 [06:19<00:00, 29.19s/it]
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000287361.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000327330.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000283825.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145499.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000493952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000463739.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000340903.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000492801.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000032773.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479780.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000406977.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172092.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000420711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000019929.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505980.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000170221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471358.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000020367.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000536776.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000184806.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097841.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074110.jpg
+  ✅ Regenerated 293 samples
+   Qwen2-VL-7B unloaded from memory
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 4457.28it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<05:10,  3.43it/s]Loading weights:   2%|▏         | 16/1065 [00:00<00:20, 50.64it/s]Loading weights:   3%|▎         | 31/1065 [00:00<00:13, 78.57it/s]Loading weights:   5%|▌         | 55/1065 [00:00<00:08, 124.14it/s]Loading weights:   7%|▋         | 71/1065 [00:00<00:07, 126.32it/s]Loading weights:   9%|▊         | 91/1065 [00:00<00:06, 146.32it/s]Loading weights:  10%|█         | 108/1065 [00:00<00:06, 139.56it/s]Loading weights:  12%|█▏        | 124/1065 [00:01<00:06, 143.76it/s]Loading weights:  14%|█▎        | 146/1065 [00:01<00:05, 161.72it/s]Loading weights:  15%|█▌        | 163/1065 [00:01<00:05, 158.84it/s]Loading weights:  17%|█▋        | 185/1065 [00:01<00:05, 170.50it/s]Loading weights:  19%|█▉        | 203/1065 [00:01<00:05, 163.54it/s]Loading weights:  21%|██        | 220/1065 [00:01<00:05, 163.06it/s]Loading weights:  22%|██▏       | 238/1065 [00:01<00:05, 159.88it/s]Loading weights:  24%|██▍       | 258/1065 [00:01<00:04, 169.25it/s]Loading weights:  26%|██▌       | 276/1065 [00:01<00:04, 165.45it/s]Loading weights:  28%|██▊       | 293/1065 [00:02<00:04, 160.24it/s]Loading weights:  29%|██▉       | 313/1065 [00:02<00:04, 170.07it/s]Loading weights:  31%|███       | 331/1065 [00:02<00:04, 149.58it/s]Loading weights:  33%|███▎      | 354/1065 [00:02<00:04, 161.34it/s]Loading weights:  35%|███▍      | 371/1065 [00:02<00:04, 161.61it/s]Loading weights:  37%|███▋      | 393/1065 [00:02<00:03, 169.83it/s]Loading weights:  39%|███▊      | 411/1065 [00:02<00:03, 165.25it/s]Loading weights:  41%|████      | 433/1065 [00:02<00:03, 174.76it/s]Loading weights:  43%|████▎     | 458/1065 [00:03<00:03, 186.31it/s]Loading weights:  45%|████▍     | 477/1065 [00:03<00:03, 185.20it/s]Loading weights:  47%|████▋     | 497/1065 [00:03<00:03, 183.07it/s]Loading weights:  48%|████▊     | 516/1065 [00:03<00:02, 183.40it/s]Loading weights:  50%|█████     | 536/1065 [00:03<00:02, 176.50it/s]Loading weights:  52%|█████▏    | 554/1065 [00:03<00:02, 171.91it/s]Loading weights:  54%|█████▍    | 575/1065 [00:03<00:02, 181.96it/s]Loading weights:  56%|█████▌    | 594/1065 [00:03<00:02, 179.83it/s]Loading weights:  58%|█████▊    | 615/1065 [00:03<00:02, 181.55it/s]Loading weights:  70%|███████   | 749/1065 [00:04<00:00, 503.68it/s]Loading weights:  87%|████████▋ | 925/1065 [00:04<00:00, 860.02it/s]Loading weights: 100%|██████████| 1065/1065 [00:04<00:00, 253.97it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 5: Model B decides (original A vs regenerated B)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 293
+  Processing 293 remaining samples...
+Step 5: Deciding:   0%|          | 0/13 [00:00<?, ?it/s]Step 5: Deciding:   8%|▊         | 1/13 [00:04<00:58,  4.89s/it]Step 5: Deciding:  15%|█▌        | 2/13 [00:09<00:54,  4.96s/it]Step 5: Deciding:  23%|██▎       | 3/13 [00:17<01:03,  6.35s/it]Step 5: Deciding:  31%|███       | 4/13 [00:26<01:06,  7.43s/it]Step 5: Deciding:  38%|███▊      | 5/13 [00:35<01:03,  7.91s/it]Step 5: Deciding:  46%|████▌     | 6/13 [00:45<00:58,  8.40s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000479095.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000538420.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000482157.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000530686.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134008.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000294323.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491212.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000027374.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001774.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000181857.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000111598.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000363252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422603.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000357290.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471132.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000515704.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378736.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000016836.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000430149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000067220.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000506838.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000570817.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000308509.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000388347.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000223754.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000065610.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471783.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000269355.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030712.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000197718.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000557119.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052974.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009709.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208262.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000422269.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000227638.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499135.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000205022.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000253202.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000134068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000320472.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000180037.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000142208.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000435435.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000281952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000005483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000456149.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000190957.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285018.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000090251.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000042529.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000009542.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178171.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398164.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000250360.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000048384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000072007.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000445397.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000249515.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122460.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000144488.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000467904.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288194.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000472968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331978.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000516329.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000050757.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000178430.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000337707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000343201.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000336221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297911.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000342797.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479629.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000213902.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000297851.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318541.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549490.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000302707.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377252.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000499028.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208075.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000553586.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578523.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000434053.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000385533.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000443823.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000512845.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000255419.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000313577.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328348.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000122109.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000011422.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000390345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000316669.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000121083.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000354874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000329541.jpg
+Step 5: Deciding:  54%|█████▍    | 7/13 [00:53<00:49,  8.25s/it]Step 5: Deciding:  62%|██████▏   | 8/13 [01:02<00:42,  8.54s/it]Step 5: Deciding:  69%|██████▉   | 9/13 [01:10<00:33,  8.35s/it]Step 5: Deciding:  77%|███████▋  | 10/13 [01:18<00:25,  8.44s/it]Step 5: Deciding:  85%|████████▍ | 11/13 [01:27<00:17,  8.55s/it]   ⚠️ Image not found: /workspace/original_data/pope/images/000000177160.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000266383.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421996.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000398407.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063867.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000447615.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304483.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000572536.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000560748.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505104.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000165299.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000303178.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000440002.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000309937.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000579127.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000224079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000147342.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000427384.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000328223.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000154020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000508502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000285042.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000558142.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000400504.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000104191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000115992.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000214464.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000052924.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378907.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000555254.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000331082.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319115.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000498986.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000411885.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000304528.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000220896.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000433200.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000288721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000339020.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000239532.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000500891.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000491191.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000045366.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000421502.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000078322.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462791.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000318556.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000103386.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000377694.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000112860.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000196226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000008469.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000559356.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000070688.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000000572.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578250.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000330614.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106145.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332069.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000408233.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000138351.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000208172.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000116894.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000462501.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000549711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410708.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000152659.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000063636.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000562247.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000306663.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000118920.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000323695.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000345951.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000473060.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000129108.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000416190.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000024319.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000490031.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000319822.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000332606.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000106107.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000069874.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000146226.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000292833.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000028642.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000444206.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000378921.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000030055.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000049128.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000108649.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000083968.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000274574.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000171155.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000539068.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000001392.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000175000.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000568658.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000264079.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000356908.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000548861.jpg
+Step 5: Deciding:  92%|█████████▏| 12/13 [01:36<00:08,  8.77s/it]Step 5: Deciding: 100%|██████████| 13/13 [01:38<00:00,  6.57s/it]Step 5: Deciding: 100%|██████████| 13/13 [01:38<00:00,  7.57s/it]
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000287361.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000256897.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000327330.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000283825.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000145499.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000493952.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000463739.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000340903.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000492801.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000391721.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000032773.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000479780.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000406977.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000172092.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000420711.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000019929.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000505980.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000170221.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000578345.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000471358.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000020367.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000536776.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000184806.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000097841.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000410123.jpg
+   ⚠️ Image not found: /workspace/original_data/pope/images/000000074110.jpg
+  ✅ Decide complete: 73 kept original (A), 220 chose regenerated (B)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 6: Assembling final results
+======================================================================
+  Total:                   10110
+  Step 2 — Safe (yes):     9817
+  Step 2 — Unsafe (no):    293 (2.9%)
+  Step 5 — Chose regen:    220
+  Step 5 — Kept original:  9890
+  Final regen rate:        2.2%
+  Results:  /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it/pope/fixed/negative_low/start/multi1/method1_results_20260511_064104.json
+  Summary:  /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it/pope/fixed/negative_low/start/multi1/method1_summary_20260511_064104.json
+
+======================================================================
+✅ METHOD 1 VQA PIPELINE COMPLETE (6 Steps) — FIXED v3
+======================================================================
+

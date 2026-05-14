@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "evaluator": "eval_blink.py (official BLINK protocol)",
+    "evaluation_date": "2026-03-11T21:02:53.181784",
+    "evaluation_method": "blink_official",
+    "reference": "BLINK: Multimodal Large Language Models Can See but Not Perceive, ECCV 2024",
+    "result_file": "results_blink_iq_test_baseline.json",
+    "response_field": "response",
+    "model": "LLaVA-1.5-7B",
+    "total_samples": 150
+  },
+  "summary": {
+    "total_samples": 150,
+    "correct": 32,
+    "extracted": 150,
+    "overall_accuracy_micro": 21.33,
+    "overall_accuracy_macro": 21.33,
+    "extraction_rate": 100.0,
+    "num_subtasks": 1,
+    "unknown_subtask_count": 0
+  },
+  "scores": {
+    "accuracy_micro": 21.33,
+    "accuracy_macro": 21.33
+  },
+  "subtask_scores": {
+    "IQ_Test": {
+      "total": 150,
+      "correct": 32,
+      "extracted": 150,
+      "accuracy": 21.33,
+      "extraction_rate": 100.0,
+      "random_baseline": 25.0
+    }
+  },
+  "distributions": {
+    "predicted": {
+      "A": 133,
+      "B": 17
+    },
+    "ground_truth": {
+      "A": 30,
+      "B": 40,
+      "C": 40,
+      "D": 40
+    }
+  }
+}

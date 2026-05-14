@@ -1,0 +1,54 @@
+
+================================================================================
+MATHVISTA EVALUATION (Single-file mode)
+================================================================================
+Input:    /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260505_034409.json
+Output:   /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/mathvista/random
+Method:   Official MathVista metrics (Accuracy)
+Field:    final_response
+
+Loading: /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260505_034409.json
+  Loaded 1000 samples
+
+================================================================================
+MATHVISTA EVALUATION RESULTS — Qwen2-VL-7B
+================================================================================
+
+  Total samples:      1000
+  Extraction rate:    98.8%
+  Overall Accuracy:   55.7%
+
+  By Question Type:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    free_form                              460      209   45.4%
+    multi_choice                           540      348   64.4%
+
+  By Answer Type:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      557   55.7%
+
+  By Task:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      557   55.7%
+
+  By Category:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    general-vqa                            460      309   67.2%
+    math-targeted-vqa                      540      248   45.9%
+
+  By Grade:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      557   55.7%
+================================================================================
+
+✅ Evaluation saved: /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260505_034409_mathvista_eval.json
+✅ Detailed eval saved: /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260505_034409_evaluated.json
+
+================================================================================
+✅ MATHVISTA EVALUATION COMPLETE
+================================================================================

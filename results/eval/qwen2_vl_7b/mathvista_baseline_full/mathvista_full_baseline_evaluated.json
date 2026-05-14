@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "evaluator": "eval_mathvista.py (official MathVista protocol)",
+    "evaluation_date": "2026-03-21T21:37:07.734251",
+    "evaluation_method": "mathvista_official",
+    "reference": "Lu et al., MathVista: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts, ICLR 2024",
+    "result_file": "results_mathvista_full_baseline.json",
+    "response_field": "response",
+    "model": "Qwen2-VL-7B",
+    "total_samples": 1000
+  },
+  "summary": {
+    "total_samples": 1000,
+    "correct": 561,
+    "extracted": 987,
+    "overall_accuracy": 56.1,
+    "extraction_rate": 98.7
+  },
+  "scores": {
+    "overall_accuracy": 56.1
+  },
+  "by_question_type": {
+    "free_form": {
+      "total": 460,
+      "correct": 207,
+      "accuracy": 45.0
+    },
+    "multi_choice": {
+      "total": 540,
+      "correct": 354,
+      "accuracy": 65.56
+    }
+  },
+  "by_answer_type": {
+    "unknown": {
+      "total": 1000,
+      "correct": 561,
+      "accuracy": 56.1
+    }
+  },
+  "by_task": {
+    "unknown": {
+      "total": 1000,
+      "correct": 561,
+      "accuracy": 56.1
+    }
+  },
+  "by_category": {
+    "general-vqa": {
+      "total": 460,
+      "correct": 312,
+      "accuracy": 67.83
+    },
+    "math-targeted-vqa": {
+      "total": 540,
+      "correct": 249,
+      "accuracy": 46.11
+    }
+  },
+  "by_grade": {
+    "unknown": {
+      "total": 1000,
+      "correct": 561,
+      "accuracy": 56.1
+    }
+  },
+  "by_context": {
+    "unknown": {
+      "total": 1000,
+      "correct": 561,
+      "accuracy": 56.1
+    }
+  }
+}

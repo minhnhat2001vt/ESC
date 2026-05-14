@@ -1,0 +1,41 @@
+
+======================================================================
+METHOD 1: DETECT-THEN-REGENERATE — VQA PIPELINE (FIXED v3)
+======================================================================
+  Model A:         qwen2-vl
+  Model B:         gemma3-12b
+  Benchmark:       pope
+  Selection type:  random
+  Batch size:      24
+  Output:          /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_psychological/pope/random
+  Model A results: /workspace/results/infer/qwen2_vl_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+======================================================================
+  FIXES APPLIED:
+    v2: Using full_question consistently (preserves MCQ format)
+    v3: Emotion inserted AFTER <image> token (not before)
+======================================================================
+
+======================================================================
+STEP 1: Loading existing Model A neutral responses
+======================================================================
+  File: /workspace/results/infer/qwen2_vl_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+  Loaded 1110 results
+  Samples with extended questions (MCQ format, etc.): 1110
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 6576.21it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<06:08,  2.88it/s]Loading weights:   0%|          | 3/1065 [00:00<02:17,  7.73it/s]Loading weights:   2%|▏         | 17/1065 [00:00<00:22, 45.65it/s]Loading weights:   3%|▎         | 31/1065 [00:00<00:14, 70.15it/s]Loading weights:   5%|▍         | 50/1065 [00:00<00:09, 103.32it/s]Loading weights:   6%|▌         | 66/1065 [00:00<00:08, 119.16it/s]Loading weights:   8%|▊         | 82/1065 [00:00<00:07, 125.25it/s]Loading weights:  10%|▉         | 102/1065 [00:01<00:06, 144.62it/s]Loading weights:  11%|█▏        | 120/1065 [00:01<00:06, 149.11it/s]Loading weights:  13%|█▎        | 136/1065 [00:01<00:06, 139.58it/s]Loading weights:  15%|█▍        | 156/1065 [00:01<00:05, 153.22it/s]Loading weights:  16%|█▌        | 172/1065 [00:01<00:06, 144.82it/s]Loading weights:  18%|█▊        | 187/1065 [00:01<00:06, 139.91it/s]Loading weights:  20%|█▉        | 208/1065 [00:01<00:05, 157.55it/s]Loading weights:  21%|██        | 225/1065 [00:01<00:05, 150.47it/s]Loading weights:  23%|██▎       | 241/1065 [00:02<00:05, 149.74it/s]Loading weights:  25%|██▍       | 261/1065 [00:02<00:04, 163.34it/s]Loading weights:  26%|██▌       | 278/1065 [00:02<00:05, 144.80it/s]Loading weights:  28%|██▊       | 302/1065 [00:02<00:04, 164.44it/s]Loading weights:  30%|██▉       | 319/1065 [00:02<00:04, 153.92it/s]Loading weights:  32%|███▏      | 342/1065 [00:02<00:04, 165.39it/s]Loading weights:  34%|███▎      | 359/1065 [00:02<00:04, 164.49it/s]Loading weights:  36%|███▌      | 380/1065 [00:02<00:04, 169.20it/s]Loading weights:  37%|███▋      | 398/1065 [00:02<00:03, 171.41it/s]Loading weights:  39%|███▉      | 416/1065 [00:03<00:03, 170.22it/s]Loading weights:  41%|████      | 434/1065 [00:03<00:04, 149.27it/s]Loading weights:  43%|████▎     | 455/1065 [00:03<00:03, 162.61it/s]Loading weights:  44%|████▍     | 472/1065 [00:03<00:03, 153.03it/s]Loading weights:  46%|████▌     | 488/1065 [00:03<00:03, 152.98it/s]Loading weights:  48%|████▊     | 510/1065 [00:03<00:03, 164.92it/s]Loading weights:  49%|████▉     | 527/1065 [00:03<00:03, 160.07it/s]Loading weights:  52%|█████▏    | 549/1065 [00:03<00:03, 170.13it/s]Loading weights:  53%|█████▎    | 567/1065 [00:04<00:02, 169.09it/s]Loading weights:  55%|█████▌    | 588/1065 [00:04<00:02, 172.76it/s]Loading weights:  57%|█████▋    | 606/1065 [00:04<00:02, 165.90it/s]Loading weights:  59%|█████▉    | 630/1065 [00:04<00:02, 185.92it/s]Loading weights:  61%|██████    | 649/1065 [00:04<00:02, 181.95it/s]Loading weights:  64%|██████▎   | 678/1065 [00:04<00:01, 209.17it/s]Loading weights:  66%|██████▌   | 703/1065 [00:04<00:01, 219.32it/s]Loading weights:  68%|██████▊   | 726/1065 [00:04<00:01, 218.64it/s]Loading weights:  71%|███████   | 751/1065 [00:04<00:01, 226.81it/s]Loading weights:  73%|███████▎  | 782/1065 [00:04<00:01, 248.15it/s]Loading weights:  76%|███████▌  | 807/1065 [00:05<00:01, 240.88it/s]Loading weights:  78%|███████▊  | 835/1065 [00:05<00:00, 250.92it/s]Loading weights:  81%|████████  | 863/1065 [00:05<00:00, 257.47it/s]Loading weights:  84%|████████▍ | 893/1065 [00:05<00:00, 267.77it/s]Loading weights:  86%|████████▋ | 920/1065 [00:05<00:00, 249.03it/s]Loading weights:  89%|████████▉ | 946/1065 [00:05<00:00, 246.15it/s]Loading weights:  92%|█████████▏| 976/1065 [00:05<00:00, 258.12it/s]Loading weights:  94%|█████████▍| 1002/1065 [00:05<00:00, 248.61it/s]Loading weights:  97%|█████████▋| 1028/1065 [00:05<00:00, 242.36it/s]Loading weights:  99%|█████████▉| 1055/1065 [00:06<00:00, 248.28it/s]Loading weights: 100%|██████████| 1065/1065 [00:06<00:00, 174.15it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 2: Model B judges correctness (yes/no)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 1110
+  Resuming from 9000 already-judged samples
+  Processing 1110 remaining samples...
+Step 2: Judging:   0%|          | 0/47 [00:00<?, ?it/s]Step 2: Judging:   2%|▏         | 1/47 [00:07<05:34,  7.27s/it]Step 2: Judging:   4%|▍         | 2/47 [00:13<04:50,  6.47s/it]Step 2: Judging:   6%|▋         | 3/47 [00:20<04:59,  6.80s/it]

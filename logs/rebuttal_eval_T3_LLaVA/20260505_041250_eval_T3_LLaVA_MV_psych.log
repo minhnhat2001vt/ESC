@@ -1,0 +1,54 @@
+
+================================================================================
+MATHVISTA EVALUATION (Single-file mode)
+================================================================================
+Input:    /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260504_233903.json
+Output:   /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_psychological/mathvista/random
+Method:   Official MathVista metrics (Accuracy)
+Field:    final_response
+
+Loading: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260504_233903.json
+  Loaded 1000 samples
+
+================================================================================
+MATHVISTA EVALUATION RESULTS — LLaVA-1.5-7B
+================================================================================
+
+  Total samples:      1000
+  Extraction rate:    100.0%
+  Overall Accuracy:   22.7%
+
+  By Question Type:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    free_form                              460       42    9.1%
+    multi_choice                           540      185   34.3%
+
+  By Answer Type:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      227   22.7%
+
+  By Task:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      227   22.7%
+
+  By Category:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    general-vqa                            460      144   31.3%
+    math-targeted-vqa                      540       83   15.4%
+
+  By Grade:
+    Name                                 Total  Correct    Acc%
+    ----------------------------------- ------ -------- -------
+    unknown                               1000      227   22.7%
+================================================================================
+
+✅ Evaluation saved: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260504_233903_mathvista_eval.json
+✅ Detailed eval saved: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_psychological/mathvista/random/method1_results_20260504_233903_evaluated.json
+
+================================================================================
+✅ MATHVISTA EVALUATION COMPLETE
+================================================================================

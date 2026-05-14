@@ -1,0 +1,114 @@
+The image processor of type `Gemma3ImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+
+======================================================================
+METHOD 1: DETECT-THEN-REGENERATE — VQA PIPELINE (FIXED v3)
+======================================================================
+  Model A:         qwen2-vl
+  Model B:         gemma3-12b
+  Benchmark:       mathvista
+  Selection type:  random
+  Batch size:      27
+  Output:          /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_none/mathvista/random
+  Model A results: /workspace/results/infer/qwen2_vl_7b/mathvista_baseline_full/results_mathvista_full_baseline.json
+======================================================================
+  FIXES APPLIED:
+    v2: Using full_question consistently (preserves MCQ format)
+    v3: Emotion inserted AFTER <image> token (not before)
+======================================================================
+
+======================================================================
+STEP 1: Loading existing Model A neutral responses
+======================================================================
+  File: /workspace/results/infer/qwen2_vl_7b/mathvista_baseline_full/results_mathvista_full_baseline.json
+  Loaded 1000 results
+  Samples with extended questions (MCQ format, etc.): 1000
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 4220.47it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<04:42,  3.77it/s]Loading weights:   0%|          | 3/1065 [00:00<03:04,  5.77it/s]Loading weights:   0%|          | 4/1065 [00:00<04:02,  4.38it/s]Loading weights:   0%|          | 5/1065 [00:01<04:05,  4.33it/s]Loading weights:   1%|          | 10/1065 [00:01<01:43, 10.20it/s]Loading weights:   1%|          | 12/1065 [00:01<01:55,  9.11it/s]Loading weights:   1%|▏         | 14/1065 [00:02<02:57,  5.92it/s]Loading weights:   2%|▏         | 16/1065 [00:02<02:56,  5.94it/s]Loading weights:   2%|▏         | 17/1065 [00:02<03:36,  4.85it/s]Loading weights:   2%|▏         | 18/1065 [00:03<04:29,  3.88it/s]Loading weights:   2%|▏         | 23/1065 [00:03<02:34,  6.75it/s]Loading weights:   2%|▏         | 24/1065 [00:04<03:05,  5.62it/s]Loading weights:   2%|▏         | 26/1065 [00:04<03:01,  5.74it/s]Loading weights:   3%|▎         | 27/1065 [00:04<03:49,  4.53it/s]Loading weights:   3%|▎         | 29/1065 [00:05<03:40,  4.69it/s]Loading weights:   3%|▎         | 30/1065 [00:05<04:07,  4.19it/s]Loading weights:   3%|▎         | 31/1065 [00:06<04:39,  3.70it/s]Loading weights:   3%|▎         | 36/1065 [00:06<02:28,  6.93it/s]Loading weights:   3%|▎         | 37/1065 [00:06<02:56,  5.82it/s]Loading weights:   4%|▎         | 39/1065 [00:06<02:43,  6.29it/s]Loading weights:   4%|▍         | 40/1065 [00:07<02:47,  6.13it/s]Loading weights:   5%|▍         | 50/1065 [00:07<00:55, 18.17it/s]Loading weights:   5%|▌         | 57/1065 [00:07<00:39, 25.48it/s]Loading weights:   6%|▌         | 66/1065 [00:07<00:27, 35.82it/s]Loading weights:  12%|█▏        | 131/1065 [00:07<00:05, 157.07it/s]Loading weights:  25%|██▍       | 264/1065 [00:07<00:01, 414.52it/s]Loading weights:  38%|███▊      | 401/1065 [00:07<00:01, 642.49it/s]Loading weights:  51%|█████     | 542/1065 [00:07<00:00, 837.57it/s]Loading weights:  73%|███████▎  | 782/1065 [00:07<00:00, 1253.69it/s]Loading weights: 100%|██████████| 1065/1065 [00:08<00:00, 132.20it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 2: Model B judges correctness (yes/no)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 1000
+  Processing 1000 remaining samples...
+Step 2: Judging:   0%|          | 0/38 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Step 2: Judging:   3%|▎         | 1/38 [00:07<04:44,  7.70s/it]Step 2: Judging:   5%|▌         | 2/38 [00:13<03:47,  6.33s/it]Step 2: Judging:   8%|▊         | 3/38 [00:17<03:15,  5.58s/it]Step 2: Judging:  11%|█         | 4/38 [00:21<02:49,  4.98s/it]Step 2: Judging:  13%|█▎        | 5/38 [00:26<02:39,  4.84s/it]Step 2: Judging:  16%|█▌        | 6/38 [00:30<02:28,  4.65s/it]Step 2: Judging:  18%|█▊        | 7/38 [00:34<02:20,  4.53s/it]Step 2: Judging:  21%|██        | 8/38 [00:41<02:34,  5.16s/it]Step 2: Judging:  24%|██▎       | 9/38 [00:45<02:23,  4.95s/it]Step 2: Judging:  26%|██▋       | 10/38 [00:52<02:30,  5.36s/it]Step 2: Judging:  29%|██▉       | 11/38 [00:56<02:15,  5.03s/it]Step 2: Judging:  32%|███▏      | 12/38 [01:03<02:24,  5.55s/it]Step 2: Judging:  34%|███▍      | 13/38 [01:07<02:09,  5.19s/it]Step 2: Judging:  37%|███▋      | 14/38 [01:14<02:15,  5.66s/it]Step 2: Judging:  39%|███▉      | 15/38 [01:18<02:00,  5.23s/it]Step 2: Judging:  42%|████▏     | 16/38 [01:25<02:05,  5.69s/it]Step 2: Judging:  45%|████▍     | 17/38 [01:31<01:59,  5.70s/it]Step 2: Judging:  47%|████▋     | 18/38 [01:35<01:47,  5.40s/it]Step 2: Judging:  50%|█████     | 19/38 [01:39<01:35,  5.03s/it]Step 2: Judging:  53%|█████▎    | 20/38 [01:49<01:55,  6.41s/it]Step 2: Judging:  55%|█████▌    | 21/38 [01:53<01:38,  5.78s/it]Step 2: Judging:  58%|█████▊    | 22/38 [02:00<01:35,  5.98s/it]Step 2: Judging:  61%|██████    | 23/38 [02:04<01:22,  5.50s/it]Step 2: Judging:  63%|██████▎   | 24/38 [02:10<01:18,  5.61s/it]Step 2: Judging:  66%|██████▌   | 25/38 [02:14<01:07,  5.19s/it]Step 2: Judging:  68%|██████▊   | 26/38 [02:20<01:05,  5.48s/it]Step 2: Judging:  71%|███████   | 27/38 [02:25<00:58,  5.28s/it]Step 2: Judging:  74%|███████▎  | 28/38 [02:30<00:51,  5.15s/it]Step 2: Judging:  76%|███████▋  | 29/38 [02:36<00:48,  5.35s/it]Step 2: Judging:  79%|███████▉  | 30/38 [02:43<00:46,  5.81s/it]Step 2: Judging:  82%|████████▏ | 31/38 [02:49<00:40,  5.84s/it]Step 2: Judging:  84%|████████▍ | 32/38 [02:56<00:37,  6.19s/it]Step 2: Judging:  87%|████████▋ | 33/38 [03:00<00:27,  5.47s/it]Step 2: Judging:  89%|████████▉ | 34/38 [03:03<00:20,  5.02s/it]Step 2: Judging:  92%|█████████▏| 35/38 [03:08<00:14,  4.88s/it]Step 2: Judging:  95%|█████████▍| 36/38 [03:12<00:09,  4.69s/it]Step 2: Judging:  97%|█████████▋| 37/38 [03:17<00:04,  4.67s/it]Step 2: Judging: 100%|██████████| 38/38 [03:17<00:00,  3.44s/it]Step 2: Judging: 100%|██████████| 38/38 [03:17<00:00,  5.21s/it]
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+  ✅ Judging complete: 727 safe (yes), 273 unsafe (no)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 3: Routing
+======================================================================
+  Correct (keep original):    727
+  Incorrect (regenerate):     273
+  Regeneration rate:       27.3%
+
+🚀 Loading Qwen2-VL-7B...
+   Model: Qwen/Qwen2-VL-7B-Instruct
+   4-bit: True
+   Device: auto
+   Max pixels: 401,408 (~633x633)
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 4993.22it/s]
+Loading weights:   0%|          | 0/730 [00:00<?, ?it/s]Loading weights:   0%|          | 2/730 [00:00<01:26,  8.42it/s]Loading weights:   1%|          | 4/730 [00:00<01:05, 11.15it/s]Loading weights:   1%|          | 6/730 [00:00<01:04, 11.28it/s]Loading weights:   1%|▏         | 10/730 [00:00<00:44, 16.06it/s]Loading weights:   2%|▏         | 14/730 [00:00<00:38, 18.51it/s]Loading weights:   2%|▏         | 17/730 [00:01<00:39, 17.83it/s]Loading weights:   3%|▎         | 21/730 [00:01<00:36, 19.18it/s]Loading weights:   3%|▎         | 24/730 [00:01<00:38, 18.19it/s]Loading weights:   4%|▎         | 26/730 [00:01<00:39, 17.83it/s]Loading weights:   4%|▍         | 28/730 [00:01<00:38, 18.29it/s]Loading weights:   4%|▍         | 30/730 [00:01<00:50, 13.83it/s]Loading weights:   5%|▍         | 33/730 [00:02<00:41, 16.90it/s]Loading weights:   5%|▍         | 36/730 [00:02<00:41, 16.83it/s]Loading weights:   5%|▌         | 38/730 [00:02<00:40, 17.18it/s]Loading weights:   5%|▌         | 40/730 [00:02<00:42, 16.17it/s]Loading weights:   6%|▌         | 42/730 [00:02<00:59, 11.63it/s]Loading weights:   6%|▌         | 45/730 [00:02<00:46, 14.82it/s]Loading weights:   8%|▊         | 58/730 [00:02<00:17, 37.94it/s]Loading weights:  10%|█         | 76/730 [00:03<00:09, 68.61it/s]Loading weights:  13%|█▎        | 94/730 [00:03<00:06, 93.45it/s]Loading weights:  25%|██▌       | 184/730 [00:03<00:01, 295.40it/s]Loading weights:  47%|████▋     | 341/730 [00:03<00:00, 630.56it/s]Loading weights: 100%|██████████| 730/730 [00:03<00:00, 211.09it/s]
+✅ Qwen2-VL-7B loaded successfully!
+
+
+======================================================================
+STEP 4: Model A regenerates
+======================================================================
+  Model A:        Qwen2-VL-7B
+  Samples:        273
+  Prompt source:  none
+  Selection type: random
+  Location:       start
+  #Prompts:       1
+  (no text inserted — verifier-loop only baseline)
+  Processing 273 remaining samples...
+Step 4: Regenerating:   0%|          | 0/11 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Step 4: Regenerating:   9%|▉         | 1/11 [00:02<00:20,  2.01s/it]Step 4: Regenerating:  18%|█▊        | 2/11 [00:04<00:19,  2.22s/it]Step 4: Regenerating:  27%|██▋       | 3/11 [00:57<03:23, 25.42s/it]Step 4: Regenerating:  36%|███▋      | 4/11 [01:50<04:15, 36.46s/it]Step 4: Regenerating:  45%|████▌     | 5/11 [02:43<04:13, 42.31s/it]Step 4: Regenerating:  55%|█████▍    | 6/11 [03:36<03:49, 45.83s/it]Step 4: Regenerating:  64%|██████▎   | 7/11 [03:39<02:08, 32.05s/it]Step 4: Regenerating:  73%|███████▎  | 8/11 [03:41<01:07, 22.52s/it]Step 4: Regenerating:  82%|████████▏ | 9/11 [04:15<00:51, 25.82s/it]Step 4: Regenerating:  91%|█████████ | 10/11 [04:17<00:18, 18.58s/it]Step 4: Regenerating: 100%|██████████| 11/11 [04:20<00:00, 13.75s/it]Step 4: Regenerating: 100%|██████████| 11/11 [04:20<00:00, 23.65s/it]
+  ✅ Regenerated 273 samples
+   Qwen2-VL-7B unloaded from memory
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 2555.63it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 3/1065 [00:00<01:10, 15.09it/s]Loading weights:   0%|          | 5/1065 [00:00<03:10,  5.55it/s]Loading weights:   1%|          | 10/1065 [00:01<01:43, 10.17it/s]Loading weights:   1%|          | 12/1065 [00:01<01:53,  9.25it/s]Loading weights:   1%|▏         | 14/1065 [00:01<02:57,  5.91it/s]Loading weights:   2%|▏         | 16/1065 [00:02<02:49,  6.18it/s]Loading weights:   2%|▏         | 17/1065 [00:02<03:16,  5.34it/s]Loading weights:   2%|▏         | 18/1065 [00:03<04:14,  4.12it/s]Loading weights:   2%|▏         | 23/1065 [00:03<02:23,  7.24it/s]Loading weights:   2%|▏         | 24/1065 [00:03<02:55,  5.93it/s]Loading weights:   2%|▏         | 26/1065 [00:04<03:04,  5.64it/s]Loading weights:   3%|▎         | 27/1065 [00:04<03:28,  4.97it/s]Loading weights:   3%|▎         | 29/1065 [00:04<03:17,  5.25it/s]Loading weights:   3%|▎         | 30/1065 [00:05<03:44,  4.62it/s]Loading weights:   3%|▎         | 31/1065 [00:05<03:41,  4.67it/s]Loading weights:   3%|▎         | 36/1065 [00:05<02:10,  7.86it/s]Loading weights:   3%|▎         | 37/1065 [00:06<02:44,  6.25it/s]Loading weights:   4%|▎         | 39/1065 [00:06<02:55,  5.83it/s]Loading weights:   4%|▍         | 40/1065 [00:06<02:56,  5.79it/s]Loading weights:   5%|▍         | 50/1065 [00:06<00:58, 17.28it/s]Loading weights:   6%|▌         | 62/1065 [00:06<00:31, 31.54it/s]Loading weights:   6%|▋         | 68/1065 [00:06<00:27, 35.90it/s]Loading weights:  14%|█▍        | 147/1065 [00:07<00:05, 181.99it/s]Loading weights:  27%|██▋       | 286/1065 [00:07<00:01, 443.14it/s]Loading weights:  39%|███▉      | 420/1065 [00:07<00:00, 654.75it/s]Loading weights:  54%|█████▍    | 576/1065 [00:07<00:00, 880.91it/s]Loading weights:  81%|████████▏ | 867/1065 [00:07<00:00, 1415.94it/s]Loading weights: 100%|██████████| 1065/1065 [00:07<00:00, 141.97it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 5: Model B decides (original A vs regenerated B)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 273
+  Processing 273 remaining samples...
+Step 5: Deciding:   0%|          | 0/11 [00:00<?, ?it/s]Step 5: Deciding:   9%|▉         | 1/11 [00:59<09:58, 59.87s/it]Step 5: Deciding:  18%|█▊        | 2/11 [02:28<11:30, 76.67s/it]Step 5: Deciding:  27%|██▋       | 3/11 [02:38<06:09, 46.25s/it]Step 5: Deciding:  36%|███▋      | 4/11 [04:30<08:24, 72.12s/it]Step 5: Deciding:  45%|████▌     | 5/11 [06:22<08:40, 86.80s/it]Step 5: Deciding:  55%|█████▍    | 6/11 [08:08<07:46, 93.24s/it]Step 5: Deciding:  64%|██████▎   | 7/11 [09:02<05:21, 80.37s/it]Step 5: Deciding:  73%|███████▎  | 8/11 [10:44<04:21, 87.19s/it]Step 5: Deciding:  82%|████████▏ | 9/11 [12:31<03:06, 93.31s/it]Step 5: Deciding:  91%|█████████ | 10/11 [13:03<01:14, 74.59s/it]Step 5: Deciding: 100%|██████████| 11/11 [13:04<00:00, 51.97s/it]Step 5: Deciding: 100%|██████████| 11/11 [13:04<00:00, 71.32s/it]
+  ✅ Decide complete: 148 kept original (A), 125 chose regenerated (B)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 6: Assembling final results
+======================================================================
+  Total:                   1000
+  Step 2 — Safe (yes):     727
+  Step 2 — Unsafe (no):    273 (27.3%)
+  Step 5 — Chose regen:    125
+  Step 5 — Kept original:  875
+  Final regen rate:        12.5%
+  Results:  /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_none/mathvista/random/method1_results_20260505_040602.json
+  Summary:  /workspace/results/method1/qwen2_vl_7b__gemma_3_12b_it_none/mathvista/random/method1_summary_20260505_040602.json
+
+======================================================================
+✅ METHOD 1 VQA PIPELINE COMPLETE (6 Steps) — FIXED v3
+======================================================================
+

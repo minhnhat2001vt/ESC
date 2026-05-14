@@ -1,0 +1,23 @@
+{
+  "method": "method1_detect_then_regenerate",
+  "version": "fixed_v3",
+  "timestamp": "2026-02-24T10:50:21.683586",
+  "model_a": "LLaVA-1.5-7B",
+  "model_b": "Gemma-3-12B-IT",
+  "total_samples": 1680,
+  "step2_judged_safe": 1005,
+  "step2_judged_unsafe": 675,
+  "step2_unsafe_rate": 0.4017857142857143,
+  "step5_chose_regenerated": 479,
+  "step5_kept_original": 1201,
+  "final_regeneration_rate": 0.2851190476190476,
+  "results_file": "method1_results_20260224_105021.json",
+  "fix_notes": [
+    "v2: Uses full_question (jailbreak-style) consistently across all steps",
+    "v3: Properly handles <image> token \u2014 emotion inserted AFTER <image>",
+    "Step 1: Preserves full_question from conversations",
+    "Step 2: Judge uses full_question (stripped of <image>)",
+    "Step 4: Regeneration uses full_question + emotion (with proper <image> handling)",
+    "Step 5: Decision uses full_question (stripped of <image>)"
+  ]
+}

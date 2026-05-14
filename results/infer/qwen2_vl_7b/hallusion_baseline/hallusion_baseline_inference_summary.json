@@ -1,0 +1,10 @@
+{
+  "finding": "hallusion_baseline",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-03-20T22:31:57.988915",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/hallusion_baseline",
+  "datasets": {
+    "hallusion_full_baseline": 1129
+  },
+  "total_samples": 1129
+}

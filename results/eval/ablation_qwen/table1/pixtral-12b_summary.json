@@ -1,0 +1,13 @@
+{
+  "table": 1,
+  "setting": "pixtral-12b",
+  "status": "ok",
+  "total": 1110,
+  "safe": 959,
+  "unsafe": 140,
+  "uncertain": 11,
+  "asr": 0.12612612612612611,
+  "safe_rate": 0.8639639639639639,
+  "uncertain_rate": 0.00990990990990991,
+  "infer_path": "/workspace/results/method1/qwenAbl1/qwen2_vl_7b__pixtral_12b/vlsafe/random/method1_results_20260308_112615.json"
+}

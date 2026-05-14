@@ -1,0 +1,10 @@
+{
+  "finding": "mmvp_baseline",
+  "model": "LLaVA-1.5-7B",
+  "timestamp": "2026-03-20T11:11:06.853917",
+  "output_dir": "/workspace/results/infer/llava_1_5_7b/mmvp_baseline",
+  "datasets": {
+    "mmvp_full_baseline": 300
+  },
+  "total_samples": 300
+}

@@ -1,0 +1,10 @@
+{
+  "finding": "vlsafe_finding3",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-02-12T09:29:16.114187",
+  "output_dir": "/home/emogenai4e/emo/cleaned/results/infer/qwen2_vl_7b/vlsafe_finding3",
+  "datasets": {
+    "vlsafe_finding3_POSITIVE_HIGH_01_I": 1110
+  },
+  "total_samples": 1110
+}

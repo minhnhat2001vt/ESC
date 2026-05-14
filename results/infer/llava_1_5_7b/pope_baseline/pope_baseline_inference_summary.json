@@ -1,0 +1,10 @@
+{
+  "finding": "pope_baseline",
+  "model": "LLaVA-1.5-7B",
+  "timestamp": "2026-02-22T10:41:50.396482",
+  "output_dir": "/workspace/results/infer/llava_1_5_7b/pope_baseline",
+  "datasets": {
+    "pope_full_baseline": 9000
+  },
+  "total_samples": 9000
+}

@@ -1,0 +1,30 @@
+
+================================================================================
+VLSAFE EVALUATION (impartial judge) — METHOD 1 DIRECT PATH
+================================================================================
+Evaluator: meta-llama/Llama-3.1-8B-Instruct
+Batch size: 32
+Results path: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_none/vlsafe/random
+🔍 Loading evaluator: meta-llama/Llama-3.1-8B-Instruct
+   Device: cuda
+   Using 4-bit quantization
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:34,  8.33it/s]Loading weights:   1%|          | 2/291 [00:00<00:40,  7.05it/s]Loading weights:   1%|▏         | 4/291 [00:00<00:40,  7.09it/s]Loading weights:   2%|▏         | 5/291 [00:00<00:55,  5.15it/s]Loading weights:   2%|▏         | 6/291 [00:01<01:08,  4.17it/s]Loading weights:   3%|▎         | 8/291 [00:01<01:03,  4.44it/s]Loading weights:   3%|▎         | 9/291 [00:02<01:19,  3.56it/s]Loading weights:   3%|▎         | 10/291 [00:02<01:29,  3.14it/s]Loading weights:   4%|▍         | 11/291 [00:02<01:30,  3.10it/s]Loading weights:   4%|▍         | 13/291 [00:03<01:02,  4.43it/s]Loading weights:  42%|████▏     | 121/291 [00:03<00:01, 135.44it/s]Loading weights:  82%|████████▏ | 240/291 [00:03<00:00, 291.74it/s]Loading weights: 100%|██████████| 291/291 [00:03<00:00, 88.83it/s] 
+✅ Evaluator loaded successfully!
+
+================================================================================
+METHOD 1 (ESC) EVALUATION
+================================================================================
+  Path: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_none/vlsafe/random
+================================================================================
+  Found 1 result file(s):
+    - method1_results_20260503_215027.json
+  Using: method1_results_20260503_215027.json
+  Samples: 1110
+Evaluating:   0%|          | 0/35 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Evaluating:   3%|▎         | 1/35 [00:36<20:51, 36.81s/it]Evaluating:   6%|▌         | 2/35 [01:07<18:09, 33.02s/it]Evaluating:   9%|▊         | 3/35 [01:39<17:22, 32.57s/it]Evaluating:  11%|█▏        | 4/35 [02:12<16:55, 32.77s/it]Evaluating:  14%|█▍        | 5/35 [02:51<17:33, 35.11s/it]Evaluating:  17%|█▋        | 6/35 [03:19<15:50, 32.78s/it]Evaluating:  20%|██        | 7/35 [03:55<15:47, 33.84s/it]Evaluating:  23%|██▎       | 8/35 [04:21<14:03, 31.24s/it]Evaluating:  26%|██▌       | 9/35 [04:49<13:05, 30.20s/it]Evaluating:  29%|██▊       | 10/35 [05:24<13:12, 31.72s/it]Evaluating:  31%|███▏      | 11/35 [05:58<13:00, 32.52s/it]Evaluating:  34%|███▍      | 12/35 [06:24<11:43, 30.57s/it]Evaluating:  37%|███▋      | 13/35 [07:00<11:44, 32.02s/it]Evaluating:  40%|████      | 14/35 [07:29<10:53, 31.11s/it]Evaluating:  43%|████▎     | 15/35 [08:00<10:22, 31.12s/it]Evaluating:  46%|████▌     | 16/35 [08:34<10:06, 31.92s/it]Evaluating:  49%|████▊     | 17/35 [09:08<09:46, 32.58s/it]Evaluating:  51%|█████▏    | 18/35 [09:37<08:55, 31.49s/it]Evaluating:  54%|█████▍    | 19/35 [10:10<08:33, 32.08s/it]Evaluating:  57%|█████▋    | 20/35 [10:42<07:57, 31.82s/it]Evaluating:  60%|██████    | 21/35 [11:10<07:09, 30.68s/it]Evaluating:  63%|██████▎   | 22/35 [11:44<06:52, 31.70s/it]Evaluating:  66%|██████▌   | 23/35 [12:15<06:20, 31.68s/it]Evaluating:  69%|██████▊   | 24/35 [12:43<05:36, 30.59s/it]Evaluating:  71%|███████▏  | 25/35 [13:18<05:17, 31.72s/it]Evaluating:  74%|███████▍  | 26/35 [13:42<04:24, 29.44s/it]Evaluating:  77%|███████▋  | 27/35 [14:08<03:47, 28.46s/it]Evaluating:  80%|████████  | 28/35 [14:42<03:31, 30.24s/it]Evaluating:  83%|████████▎ | 29/35 [15:09<02:54, 29.04s/it]Evaluating:  86%|████████▌ | 30/35 [15:47<02:38, 31.76s/it]Evaluating:  89%|████████▊ | 31/35 [16:16<02:04, 31.13s/it]Evaluating:  91%|█████████▏| 32/35 [16:50<01:35, 31.86s/it]Evaluating:  94%|█████████▍| 33/35 [17:18<01:01, 30.61s/it]Evaluating:  97%|█████████▋| 34/35 [17:53<00:31, 31.96s/it]Evaluating: 100%|██████████| 35/35 [18:27<00:00, 32.65s/it]Evaluating: 100%|██████████| 35/35 [18:27<00:00, 31.64s/it]
+  ✅ ASR: 0.691 | Safe: 0.146 | Uncertain: 0.163
+  💾 Saved: /workspace/results/method1/llava_1_5_7b__gemma_3_12b_it_none/vlsafe/random/method1_evaluated.json
+
+================================================================================
+✅ METHOD 1 EVALUATION COMPLETE
+================================================================================

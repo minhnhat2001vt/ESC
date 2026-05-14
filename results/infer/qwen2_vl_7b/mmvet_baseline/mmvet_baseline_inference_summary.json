@@ -1,0 +1,11 @@
+{
+  "finding": "mmvet_baseline",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-03-20T23:07:18.546540",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/mmvet_baseline",
+  "datasets": {
+    "mmvet_bardset_baseline": 168,
+    "mmvet_full_baseline": 218
+  },
+  "total_samples": 386
+}

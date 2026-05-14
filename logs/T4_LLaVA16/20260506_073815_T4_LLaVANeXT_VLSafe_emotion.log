@@ -1,0 +1,43 @@
+The image processor of type `Gemma3ImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+
+======================================================================
+METHOD 1: DETECT-THEN-REGENERATE — FULL PIPELINE
+  Steps: 1 → 2 → 3 → 4 → 5 → 6
+======================================================================
+  Model A:         llava
+  Model B:         gemma3-12b
+  Selection type:  fixed
+  Quadrant:        negative_low
+  Batch size:      16
+  Output:          /workspace/results/method1/llava_1_6_vicuna_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi2
+  Model A results: /workspace/results/infer/llava_1_6_vicuna_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+======================================================================
+  FIXES APPLIED:
+    v2: Using full_question consistently across all steps
+    v3: Emotion inserted AFTER <image> token (not before)
+======================================================================
+
+======================================================================
+STEP 1: Loading existing Model A neutral responses
+======================================================================
+  File: /workspace/results/infer/llava_1_6_vicuna_7b/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+  Loaded 1110 results
+  Samples with jailbreak-style questions: 1110
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 7172.20it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<03:47,  4.68it/s]Loading weights:   0%|          | 3/1065 [00:00<05:21,  3.30it/s]Loading weights:   0%|          | 4/1065 [00:01<04:29,  3.94it/s]Loading weights:   0%|          | 5/1065 [00:01<04:30,  3.92it/s]Loading weights:   1%|          | 10/1065 [00:01<01:58,  8.91it/s]Loading weights:   1%|          | 11/1065 [00:01<02:18,  7.63it/s]Loading weights:   1%|          | 13/1065 [00:02<02:13,  7.87it/s]Loading weights:   1%|▏         | 14/1065 [00:02<02:26,  7.20it/s]Loading weights:   2%|▏         | 16/1065 [00:02<02:22,  7.35it/s]Loading weights:   2%|▏         | 17/1065 [00:02<02:45,  6.34it/s]Loading weights:   2%|▏         | 18/1065 [00:02<03:05,  5.64it/s]Loading weights:   2%|▏         | 23/1065 [00:03<01:36, 10.77it/s]Loading weights:   2%|▏         | 25/1065 [00:03<01:45,  9.89it/s]Loading weights:   3%|▎         | 27/1065 [00:03<02:07,  8.15it/s]Loading weights:   3%|▎         | 29/1065 [00:04<02:09,  7.97it/s]Loading weights:   3%|▎         | 30/1065 [00:04<02:20,  7.37it/s]Loading weights:   3%|▎         | 31/1065 [00:04<02:32,  6.78it/s]Loading weights:   3%|▎         | 36/1065 [00:04<01:21, 12.59it/s]Loading weights:   4%|▎         | 38/1065 [00:04<01:27, 11.74it/s]Loading weights:   4%|▍         | 40/1065 [00:05<01:59,  8.59it/s]Loading weights:   4%|▍         | 42/1065 [00:05<01:55,  8.89it/s]Loading weights:   4%|▍         | 44/1065 [00:05<01:59,  8.55it/s]Loading weights:  16%|█▌        | 167/1065 [00:05<00:04, 186.65it/s]Loading weights:  28%|██▊       | 297/1065 [00:05<00:02, 377.66it/s]Loading weights:  44%|████▍     | 469/1065 [00:05<00:00, 641.98it/s]Loading weights:  60%|█████▉    | 637/1065 [00:06<00:00, 860.48it/s]Loading weights:  90%|█████████ | 959/1065 [00:06<00:00, 1418.55it/s]Loading weights: 100%|██████████| 1065/1065 [00:06<00:00, 172.15it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 2: Model B judges safety (yes/no)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 1110
+  Processing 1110 remaining samples...
+Step 2: Judging:   0%|          | 0/70 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Step 2: Judging:   1%|▏         | 1/70 [00:05<06:53,  5.99s/it]Step 2: Judging:   3%|▎         | 2/70 [00:10<06:01,  5.32s/it]

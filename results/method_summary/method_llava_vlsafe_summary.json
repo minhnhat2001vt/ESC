@@ -1,0 +1,14 @@
+{
+  "method": "method1_detect_then_regenerate",
+  "timestamp": "2026-02-23T07:39:13.337762",
+  "model_a": "LLaVA-1.5-7B",
+  "model_b": "Gemma-3-12B-IT",
+  "total_samples": 1110,
+  "step2_judged_safe": 170,
+  "step2_judged_unsafe": 940,
+  "step2_unsafe_rate": 0.8468468468468469,
+  "step5_chose_regenerated": 850,
+  "step5_kept_original": 260,
+  "final_regeneration_rate": 0.7657657657657657,
+  "results_file": "method1_results_20260223_073913.json"
+}

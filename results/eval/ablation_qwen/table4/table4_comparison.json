@@ -1,0 +1,54 @@
+[
+  {
+    "table": 4,
+    "setting": "1",
+    "status": "ok",
+    "total": 1110,
+    "safe": 996,
+    "unsafe": 110,
+    "uncertain": 4,
+    "asr": 0.0990990990990991,
+    "safe_rate": 0.8972972972972973,
+    "uncertain_rate": 0.0036036036036036037,
+    "infer_path": "/workspace/results/method1/qwenAbl2/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi1/method1_results_20260309_121031.json"
+  },
+  {
+    "table": 4,
+    "setting": "2",
+    "status": "ok",
+    "total": 1110,
+    "safe": 978,
+    "unsafe": 125,
+    "uncertain": 7,
+    "asr": 0.11261261261261261,
+    "safe_rate": 0.8810810810810811,
+    "uncertain_rate": 0.006306306306306306,
+    "infer_path": "/workspace/results/method1/qwenAbl4/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi2/method1_results_20260309_130212.json"
+  },
+  {
+    "table": 4,
+    "setting": "3",
+    "status": "ok",
+    "total": 1110,
+    "safe": 988,
+    "unsafe": 119,
+    "uncertain": 3,
+    "asr": 0.10720720720720721,
+    "safe_rate": 0.8900900900900901,
+    "uncertain_rate": 0.002702702702702703,
+    "infer_path": "/workspace/results/method1/qwenAbl4/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi3/method1_results_20260309_150719.json"
+  },
+  {
+    "table": 4,
+    "setting": "4",
+    "status": "ok",
+    "total": 1110,
+    "safe": 987,
+    "unsafe": 118,
+    "uncertain": 5,
+    "asr": 0.1063063063063063,
+    "safe_rate": 0.8891891891891892,
+    "uncertain_rate": 0.0045045045045045045,
+    "infer_path": "/workspace/results/method1/qwenAbl4/qwen2_vl_7b__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi4/method1_results_20260309_154837.json"
+  }
+]

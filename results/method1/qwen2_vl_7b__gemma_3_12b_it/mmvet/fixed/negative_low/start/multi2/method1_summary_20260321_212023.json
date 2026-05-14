@@ -1,0 +1,21 @@
+{
+  "method": "method1_detect_then_regenerate",
+  "version": "vqa_fixed_v3",
+  "timestamp": "2026-03-21T21:20:23.942081",
+  "model_a": "Qwen2-VL-7B",
+  "model_b": "Gemma-3-12B-IT",
+  "total_samples": 218,
+  "step2_judged_safe": 178,
+  "step2_judged_unsafe": 40,
+  "step2_unsafe_rate": 0.1834862385321101,
+  "step5_chose_regenerated": 3,
+  "step5_kept_original": 215,
+  "final_regeneration_rate": 0.013761467889908258,
+  "results_file": "method1_results_20260321_212023.json",
+  "fix_notes": [
+    "VQA version with same fixes as safety benchmarks",
+    "v2: Uses full_question consistently across all steps",
+    "v3: Properly handles <image> token \u2014 emotion inserted AFTER <image>",
+    "Preserves MCQ format instructions for VQA benchmarks"
+  ]
+}

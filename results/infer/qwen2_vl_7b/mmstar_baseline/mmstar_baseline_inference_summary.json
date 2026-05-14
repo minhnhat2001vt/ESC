@@ -1,0 +1,10 @@
+{
+  "finding": "mmstar_baseline",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-02-28T02:59:09.702922",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/mmstar_baseline",
+  "datasets": {
+    "mmstar_full_baseline": 1500
+  },
+  "total_samples": 1500
+}

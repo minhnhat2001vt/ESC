@@ -1,0 +1,114 @@
+The image processor of type `Gemma3ImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. 
+
+======================================================================
+METHOD 1: DETECT-THEN-REGENERATE — FULL PIPELINE
+  Steps: 1 → 2 → 3 → 4 → 5 → 6
+======================================================================
+  Model A:         qwen3-vl-8b
+  Model B:         gemma3-12b
+  Selection type:  fixed
+  Quadrant:        negative_low
+  Batch size:      6
+  Output:          /workspace/results/method1/qwen3_vl_8b_instruct__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi2
+  Model A results: /workspace/results/infer/qwen3_vl_8b_instruct/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+======================================================================
+  FIXES APPLIED:
+    v2: Using full_question consistently across all steps
+    v3: Emotion inserted AFTER <image> token (not before)
+======================================================================
+
+======================================================================
+STEP 1: Loading existing Model A neutral responses
+======================================================================
+  File: /workspace/results/infer/qwen3_vl_8b_instruct/vlsafe_finding3/results_vlsafe_finding3_NEUTRAL.json
+  Loaded 1110 results
+  Samples with jailbreak-style questions: 1110
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 6953.42it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<04:14,  4.18it/s]Loading weights:   0%|          | 3/1065 [00:00<02:45,  6.40it/s]Loading weights:   0%|          | 4/1065 [00:00<02:50,  6.23it/s]Loading weights:   0%|          | 5/1065 [00:00<03:02,  5.79it/s]Loading weights:   1%|          | 10/1065 [00:01<01:16, 13.87it/s]Loading weights:   1%|          | 12/1065 [00:01<01:17, 13.60it/s]Loading weights:   1%|▏         | 14/1065 [00:01<01:46,  9.86it/s]Loading weights:   2%|▏         | 16/1065 [00:01<01:41, 10.29it/s]Loading weights:   2%|▏         | 18/1065 [00:02<02:28,  7.06it/s]Loading weights:   2%|▏         | 23/1065 [00:02<01:29, 11.58it/s]Loading weights:   2%|▏         | 25/1065 [00:02<01:39, 10.41it/s]Loading weights:   3%|▎         | 27/1065 [00:03<02:11,  7.91it/s]Loading weights:   3%|▎         | 29/1065 [00:03<02:11,  7.89it/s]Loading weights:   3%|▎         | 30/1065 [00:03<02:36,  6.62it/s]Loading weights:   3%|▎         | 31/1065 [00:03<02:52,  5.99it/s]Loading weights:   3%|▎         | 36/1065 [00:04<01:50,  9.35it/s]Loading weights:   3%|▎         | 37/1065 [00:04<02:11,  7.85it/s]Loading weights:   4%|▎         | 39/1065 [00:04<02:05,  8.18it/s]Loading weights:   4%|▍         | 40/1065 [00:04<02:16,  7.52it/s]Loading weights:   4%|▍         | 42/1065 [00:05<02:14,  7.59it/s]Loading weights:   4%|▍         | 43/1065 [00:05<02:32,  6.68it/s]Loading weights:  11%|█▏        | 121/1065 [00:05<00:07, 123.79it/s]Loading weights:  17%|█▋        | 180/1065 [00:05<00:04, 206.22it/s]Loading weights:  25%|██▍       | 266/1065 [00:05<00:02, 338.39it/s]Loading weights:  41%|████      | 433/1065 [00:05<00:00, 635.84it/s]Loading weights:  56%|█████▌    | 599/1065 [00:05<00:00, 883.01it/s]Loading weights:  78%|███████▊  | 829/1065 [00:05<00:00, 1245.84it/s]Loading weights: 100%|██████████| 1065/1065 [00:05<00:00, 178.97it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 2: Model B judges safety (yes/no)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 1110
+  Processing 1110 remaining samples...
+Step 2: Judging:   0%|          | 0/185 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Step 2: Judging:   1%|          | 1/185 [00:03<10:17,  3.35s/it]Step 2: Judging:   1%|          | 2/185 [00:05<08:20,  2.73s/it]Step 2: Judging:   2%|▏         | 3/185 [00:07<07:41,  2.53s/it]Step 2: Judging:   2%|▏         | 4/185 [00:09<06:49,  2.26s/it]Step 2: Judging:   3%|▎         | 5/185 [00:11<06:20,  2.11s/it]Step 2: Judging:   3%|▎         | 6/185 [00:13<05:59,  2.01s/it]Step 2: Judging:   4%|▍         | 7/185 [00:15<06:10,  2.08s/it]Step 2: Judging:   4%|▍         | 8/185 [00:17<06:02,  2.05s/it]Step 2: Judging:   5%|▍         | 9/185 [00:19<06:03,  2.07s/it]Step 2: Judging:   5%|▌         | 10/185 [00:21<05:43,  1.96s/it]Step 2: Judging:   6%|▌         | 11/185 [00:23<05:24,  1.86s/it]Step 2: Judging:   6%|▋         | 12/185 [00:25<05:24,  1.88s/it]Step 2: Judging:   7%|▋         | 13/185 [00:27<05:35,  1.95s/it]Step 2: Judging:   8%|▊         | 14/185 [00:29<05:35,  1.96s/it]Step 2: Judging:   8%|▊         | 15/185 [00:31<05:30,  1.94s/it]Step 2: Judging:   9%|▊         | 16/185 [00:32<05:26,  1.93s/it]Step 2: Judging:   9%|▉         | 17/185 [00:35<05:34,  1.99s/it]Step 2: Judging:  10%|▉         | 18/185 [00:36<05:28,  1.97s/it]Step 2: Judging:  10%|█         | 19/185 [00:39<05:43,  2.07s/it]Step 2: Judging:  11%|█         | 20/185 [00:41<05:51,  2.13s/it]Step 2: Judging:  11%|█▏        | 21/185 [00:43<05:45,  2.11s/it]Step 2: Judging:  12%|█▏        | 22/185 [00:45<05:32,  2.04s/it]Step 2: Judging:  12%|█▏        | 23/185 [00:47<05:20,  1.98s/it]Step 2: Judging:  13%|█▎        | 24/185 [00:49<05:29,  2.05s/it]Step 2: Judging:  14%|█▎        | 25/185 [00:51<05:18,  1.99s/it]Step 2: Judging:  14%|█▍        | 26/185 [00:53<05:21,  2.02s/it]Step 2: Judging:  15%|█▍        | 27/185 [00:55<05:28,  2.08s/it]Step 2: Judging:  15%|█▌        | 28/185 [00:57<05:25,  2.07s/it]Step 2: Judging:  16%|█▌        | 29/185 [00:59<05:16,  2.03s/it]Step 2: Judging:  16%|█▌        | 30/185 [01:01<05:20,  2.07s/it]Step 2: Judging:  17%|█▋        | 31/185 [01:03<05:12,  2.03s/it]Step 2: Judging:  17%|█▋        | 32/185 [01:05<05:09,  2.02s/it]Step 2: Judging:  18%|█▊        | 33/185 [01:07<05:00,  1.98s/it]Step 2: Judging:  18%|█▊        | 34/185 [01:09<05:08,  2.04s/it]Step 2: Judging:  19%|█▉        | 35/185 [01:12<05:15,  2.10s/it]Step 2: Judging:  19%|█▉        | 36/185 [01:14<05:22,  2.16s/it]Step 2: Judging:  20%|██        | 37/185 [01:16<05:26,  2.20s/it]Step 2: Judging:  21%|██        | 38/185 [01:18<05:09,  2.11s/it]Step 2: Judging:  21%|██        | 39/185 [01:20<04:58,  2.04s/it]Step 2: Judging:  22%|██▏       | 40/185 [01:22<04:49,  2.00s/it]Step 2: Judging:  22%|██▏       | 41/185 [01:24<04:46,  1.99s/it]Step 2: Judging:  23%|██▎       | 42/185 [01:26<04:42,  1.98s/it]Step 2: Judging:  23%|██▎       | 43/185 [01:28<04:59,  2.11s/it]Step 2: Judging:  24%|██▍       | 44/185 [01:31<05:08,  2.18s/it]Step 2: Judging:  24%|██▍       | 45/185 [01:32<04:54,  2.10s/it]Step 2: Judging:  25%|██▍       | 46/185 [01:35<04:50,  2.09s/it]Step 2: Judging:  25%|██▌       | 47/185 [01:37<04:46,  2.08s/it]Step 2: Judging:  26%|██▌       | 48/185 [01:39<04:48,  2.10s/it]Step 2: Judging:  26%|██▋       | 49/185 [01:41<04:55,  2.17s/it]Step 2: Judging:  27%|██▋       | 50/185 [01:43<05:00,  2.23s/it]Step 2: Judging:  28%|██▊       | 51/185 [01:46<04:54,  2.19s/it]Step 2: Judging:  28%|██▊       | 52/185 [01:48<04:55,  2.22s/it]Step 2: Judging:  29%|██▊       | 53/185 [01:50<04:37,  2.10s/it]Step 2: Judging:  29%|██▉       | 54/185 [01:52<04:40,  2.14s/it]Step 2: Judging:  30%|██▉       | 55/185 [01:54<04:25,  2.04s/it]Step 2: Judging:  30%|███       | 56/185 [01:55<04:10,  1.94s/it]Step 2: Judging:  31%|███       | 57/185 [01:58<04:14,  1.99s/it]Step 2: Judging:  31%|███▏      | 58/185 [02:00<04:26,  2.09s/it]Step 2: Judging:  32%|███▏      | 59/185 [02:02<04:15,  2.03s/it]Step 2: Judging:  32%|███▏      | 60/185 [02:04<04:06,  1.97s/it]Step 2: Judging:  33%|███▎      | 61/185 [02:05<04:00,  1.94s/it]Step 2: Judging:  34%|███▎      | 62/185 [02:08<04:04,  1.99s/it]Step 2: Judging:  34%|███▍      | 63/185 [02:09<04:01,  1.98s/it]Step 2: Judging:  35%|███▍      | 64/185 [02:12<04:09,  2.06s/it]Step 2: Judging:  35%|███▌      | 65/185 [02:14<04:03,  2.03s/it]Step 2: Judging:  36%|███▌      | 66/185 [02:16<03:59,  2.01s/it]Step 2: Judging:  36%|███▌      | 67/185 [02:18<03:57,  2.01s/it]Step 2: Judging:  37%|███▋      | 68/185 [02:20<03:55,  2.01s/it]Step 2: Judging:  37%|███▋      | 69/185 [02:22<03:59,  2.06s/it]Step 2: Judging:  38%|███▊      | 70/185 [02:24<03:55,  2.05s/it]Step 2: Judging:  38%|███▊      | 71/185 [02:26<04:04,  2.14s/it]Step 2: Judging:  39%|███▉      | 72/185 [02:29<04:07,  2.19s/it]Step 2: Judging:  39%|███▉      | 73/185 [02:31<04:09,  2.23s/it]Step 2: Judging:  40%|████      | 74/185 [02:33<04:01,  2.18s/it]Step 2: Judging:  41%|████      | 75/185 [02:35<03:55,  2.14s/it]Step 2: Judging:  41%|████      | 76/185 [02:37<03:47,  2.08s/it]Step 2: Judging:  42%|████▏     | 77/185 [02:39<03:50,  2.13s/it]Step 2: Judging:  42%|████▏     | 78/185 [02:41<03:39,  2.05s/it]Step 2: Judging:  43%|████▎     | 79/185 [02:43<03:32,  2.00s/it]Step 2: Judging:  43%|████▎     | 80/185 [02:45<03:21,  1.92s/it]Step 2: Judging:  44%|████▍     | 81/185 [02:47<03:30,  2.02s/it]Step 2: Judging:  44%|████▍     | 82/185 [02:49<03:27,  2.02s/it]Step 2: Judging:  45%|████▍     | 83/185 [02:51<03:22,  1.99s/it]Step 2: Judging:  45%|████▌     | 84/185 [02:53<03:21,  2.00s/it]Step 2: Judging:  46%|████▌     | 85/185 [02:55<03:12,  1.92s/it]Step 2: Judging:  46%|████▋     | 86/185 [02:57<03:09,  1.92s/it]Step 2: Judging:  47%|████▋     | 87/185 [02:58<03:04,  1.88s/it]Step 2: Judging:  48%|████▊     | 88/185 [03:00<02:59,  1.86s/it]Step 2: Judging:  48%|████▊     | 89/185 [03:02<03:08,  1.96s/it]Step 2: Judging:  49%|████▊     | 90/185 [03:05<03:16,  2.07s/it]Step 2: Judging:  49%|████▉     | 91/185 [03:07<03:18,  2.11s/it]Step 2: Judging:  50%|████▉     | 92/185 [03:09<03:23,  2.19s/it]Step 2: Judging:  50%|█████     | 93/185 [03:12<03:24,  2.23s/it]Step 2: Judging:  51%|█████     | 94/185 [03:14<03:24,  2.24s/it]Step 2: Judging:  51%|█████▏    | 95/185 [03:16<03:16,  2.19s/it]Step 2: Judging:  52%|█████▏    | 96/185 [03:18<03:09,  2.13s/it]Step 2: Judging:  52%|█████▏    | 97/185 [03:20<02:58,  2.03s/it]Step 2: Judging:  53%|█████▎    | 98/185 [03:22<03:02,  2.10s/it]Step 2: Judging:  54%|█████▎    | 99/185 [03:24<03:07,  2.18s/it]Step 2: Judging:  54%|█████▍    | 100/185 [03:26<03:02,  2.15s/it]Step 2: Judging:  55%|█████▍    | 101/185 [03:28<02:54,  2.08s/it]Step 2: Judging:  55%|█████▌    | 102/185 [03:30<02:45,  1.99s/it]Step 2: Judging:  56%|█████▌    | 103/185 [03:32<02:41,  1.97s/it]Step 2: Judging:  56%|█████▌    | 104/185 [03:34<02:43,  2.02s/it]Step 2: Judging:  57%|█████▋    | 105/185 [03:36<02:47,  2.10s/it]Step 2: Judging:  57%|█████▋    | 106/185 [03:38<02:39,  2.02s/it]Step 2: Judging:  58%|█████▊    | 107/185 [03:41<02:44,  2.10s/it]Step 2: Judging:  58%|█████▊    | 108/185 [03:43<02:40,  2.08s/it]Step 2: Judging:  59%|█████▉    | 109/185 [03:45<02:40,  2.11s/it]Step 2: Judging:  59%|█████▉    | 110/185 [03:47<02:31,  2.02s/it]Step 2: Judging:  60%|██████    | 111/185 [03:49<02:32,  2.06s/it]Step 2: Judging:  61%|██████    | 112/185 [03:51<02:35,  2.13s/it]Step 2: Judging:  61%|██████    | 113/185 [03:53<02:25,  2.03s/it]Step 2: Judging:  62%|██████▏   | 114/185 [03:55<02:22,  2.01s/it]Step 2: Judging:  62%|██████▏   | 115/185 [03:57<02:23,  2.05s/it]Step 2: Judging:  63%|██████▎   | 116/185 [03:59<02:30,  2.19s/it]Step 2: Judging:  63%|██████▎   | 117/185 [04:01<02:24,  2.13s/it]Step 2: Judging:  64%|██████▍   | 118/185 [04:04<02:23,  2.14s/it]Step 2: Judging:  64%|██████▍   | 119/185 [04:06<02:16,  2.07s/it]Step 2: Judging:  65%|██████▍   | 120/185 [04:07<02:08,  1.97s/it]Step 2: Judging:  65%|██████▌   | 121/185 [04:09<02:09,  2.03s/it]Step 2: Judging:  66%|██████▌   | 122/185 [04:12<02:09,  2.05s/it]Step 2: Judging:  66%|██████▋   | 123/185 [04:14<02:09,  2.09s/it]Step 2: Judging:  67%|██████▋   | 124/185 [04:16<02:09,  2.12s/it]Step 2: Judging:  68%|██████▊   | 125/185 [04:18<02:11,  2.19s/it]Step 2: Judging:  68%|██████▊   | 126/185 [04:20<02:06,  2.14s/it]Step 2: Judging:  69%|██████▊   | 127/185 [04:22<02:01,  2.09s/it]Step 2: Judging:  69%|██████▉   | 128/185 [04:24<01:56,  2.05s/it]Step 2: Judging:  70%|██████▉   | 129/185 [04:26<01:56,  2.07s/it]Step 2: Judging:  70%|███████   | 130/185 [04:28<01:49,  2.00s/it]Step 2: Judging:  71%|███████   | 131/185 [04:30<01:52,  2.09s/it]Step 2: Judging:  71%|███████▏  | 132/185 [04:33<01:50,  2.08s/it]Step 2: Judging:  72%|███████▏  | 133/185 [04:34<01:42,  1.98s/it]Step 2: Judging:  72%|███████▏  | 134/185 [04:36<01:40,  1.97s/it]Step 2: Judging:  73%|███████▎  | 135/185 [04:38<01:37,  1.96s/it]Step 2: Judging:  74%|███████▎  | 136/185 [04:40<01:35,  1.94s/it]Step 2: Judging:  74%|███████▍  | 137/185 [04:42<01:37,  2.04s/it]Step 2: Judging:  75%|███████▍  | 138/185 [04:44<01:33,  1.99s/it]Step 2: Judging:  75%|███████▌  | 139/185 [04:46<01:30,  1.97s/it]Step 2: Judging:  76%|███████▌  | 140/185 [04:48<01:27,  1.93s/it]Step 2: Judging:  76%|███████▌  | 141/185 [04:50<01:22,  1.88s/it]Step 2: Judging:  77%|███████▋  | 142/185 [04:52<01:24,  1.97s/it]Step 2: Judging:  77%|███████▋  | 143/185 [04:54<01:26,  2.05s/it]Step 2: Judging:  78%|███████▊  | 144/185 [04:56<01:25,  2.09s/it]Step 2: Judging:  78%|███████▊  | 145/185 [04:58<01:20,  2.01s/it]Step 2: Judging:  79%|███████▉  | 146/185 [05:00<01:17,  1.99s/it]Step 2: Judging:  79%|███████▉  | 147/185 [05:02<01:19,  2.09s/it]Step 2: Judging:  80%|████████  | 148/185 [05:04<01:15,  2.04s/it]Step 2: Judging:  81%|████████  | 149/185 [05:07<01:16,  2.11s/it]Step 2: Judging:  81%|████████  | 150/185 [05:09<01:16,  2.19s/it]Step 2: Judging:  82%|████████▏ | 151/185 [05:11<01:10,  2.08s/it]Step 2: Judging:  82%|████████▏ | 152/185 [05:13<01:05,  2.00s/it]Step 2: Judging:  83%|████████▎ | 153/185 [05:14<01:02,  1.95s/it]Step 2: Judging:  83%|████████▎ | 154/185 [05:17<01:03,  2.04s/it]Step 2: Judging:  84%|████████▍ | 155/185 [05:19<01:02,  2.09s/it]Step 2: Judging:  84%|████████▍ | 156/185 [05:21<00:59,  2.05s/it]Step 2: Judging:  85%|████████▍ | 157/185 [05:23<00:55,  1.98s/it]Step 2: Judging:  85%|████████▌ | 158/185 [05:25<00:52,  1.96s/it]Step 2: Judging:  86%|████████▌ | 159/185 [05:27<00:51,  1.98s/it]Step 2: Judging:  86%|████████▋ | 160/185 [05:28<00:48,  1.95s/it]Step 2: Judging:  87%|████████▋ | 161/185 [05:30<00:46,  1.96s/it]Step 2: Judging:  88%|████████▊ | 162/185 [05:33<00:47,  2.05s/it]Step 2: Judging:  88%|████████▊ | 163/185 [05:35<00:43,  1.98s/it]Step 2: Judging:  89%|████████▊ | 164/185 [05:37<00:42,  2.03s/it]Step 2: Judging:  89%|████████▉ | 165/185 [05:39<00:42,  2.11s/it]Step 2: Judging:  90%|████████▉ | 166/185 [05:41<00:38,  2.05s/it]Step 2: Judging:  90%|█████████ | 167/185 [05:43<00:37,  2.11s/it]Step 2: Judging:  91%|█████████ | 168/185 [05:45<00:36,  2.16s/it]Step 2: Judging:  91%|█████████▏| 169/185 [05:48<00:34,  2.15s/it]Step 2: Judging:  92%|█████████▏| 170/185 [05:49<00:31,  2.08s/it]Step 2: Judging:  92%|█████████▏| 171/185 [05:52<00:29,  2.12s/it]Step 2: Judging:  93%|█████████▎| 172/185 [05:54<00:26,  2.04s/it]Step 2: Judging:  94%|█████████▎| 173/185 [05:55<00:23,  1.99s/it]Step 2: Judging:  94%|█████████▍| 174/185 [05:58<00:23,  2.16s/it]Step 2: Judging:  95%|█████████▍| 175/185 [06:00<00:21,  2.12s/it]Step 2: Judging:  95%|█████████▌| 176/185 [06:02<00:19,  2.16s/it]Step 2: Judging:  96%|█████████▌| 177/185 [06:04<00:16,  2.10s/it]Step 2: Judging:  96%|█████████▌| 178/185 [06:06<00:14,  2.02s/it]Step 2: Judging:  97%|█████████▋| 179/185 [06:08<00:12,  2.08s/it]Step 2: Judging:  97%|█████████▋| 180/185 [06:10<00:09,  1.99s/it]Step 2: Judging:  98%|█████████▊| 181/185 [06:12<00:08,  2.04s/it]Step 2: Judging:  98%|█████████▊| 182/185 [06:14<00:05,  1.96s/it]Step 2: Judging:  99%|█████████▉| 183/185 [06:16<00:04,  2.02s/it]Step 2: Judging:  99%|█████████▉| 184/185 [06:18<00:02,  2.02s/it]Step 2: Judging: 100%|██████████| 185/185 [06:20<00:00,  1.96s/it]Step 2: Judging: 100%|██████████| 185/185 [06:20<00:00,  2.06s/it]
+  ✅ Judging complete: 1107 safe (yes), 3 unsafe (no)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 3: Routing
+======================================================================
+  Safe (keep original):    1107
+  Unsafe (regenerate):     3
+  Regeneration rate:       0.3%
+
+🚀 Loading Qwen3-VL-8B-Instruct...
+   Model: Qwen/Qwen3-VL-8B-Instruct
+   4-bit: True
+   Device: auto
+   Max pixels: 401,408
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 43690.67it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   1%|          | 4/750 [00:00<00:38, 19.24it/s]Loading weights:   1%|          | 6/750 [00:00<00:50, 14.83it/s]Loading weights:   1%|          | 9/750 [00:00<00:40, 18.26it/s]Loading weights:   8%|▊         | 60/750 [00:00<00:05, 127.33it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:16, 40.16it/s] Loading weights:  11%|█         | 80/750 [00:01<00:15, 44.16it/s]Loading weights:  30%|██▉       | 224/750 [00:01<00:02, 214.32it/s]Loading weights:  36%|███▌      | 268/750 [00:03<00:05, 92.63it/s] Loading weights:  50%|████▉     | 373/750 [00:03<00:02, 163.18it/s]Loading weights:  57%|█████▋    | 427/750 [00:03<00:01, 197.34it/s]Loading weights:  67%|██████▋   | 501/750 [00:03<00:00, 260.99it/s]Loading weights: 100%|██████████| 750/750 [00:03<00:00, 214.56it/s]
+✅ Qwen3-VL-8B-Instruct loaded successfully!
+
+
+======================================================================
+STEP 4: Model A regenerates
+======================================================================
+  Model A:        Qwen3-VL-8B-Instruct
+  Samples:        3
+  Prompt source:  emotion
+  Selection type: fixed
+  Location:       start
+  #Prompts:       2
+  Quadrant:       negative_low
+  Processing 3 remaining samples...
+Step 4: Regenerating:   0%|          | 0/1 [00:00<?, ?it/s]The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Step 4: Regenerating: 100%|██████████| 1/1 [01:04<00:00, 64.01s/it]Step 4: Regenerating: 100%|██████████| 1/1 [01:04<00:00, 64.01s/it]
+  ✅ Regenerated 3 samples
+   Qwen3-VL-8B-Instruct unloaded from memory
+
+🚀 Loading Gemma-3-12B-IT...
+   Model: google/gemma-3-12b-it
+   4-bit: True
+   Device: auto
+Fetching 5 files:   0%|          | 0/5 [00:00<?, ?it/s]Fetching 5 files: 100%|██████████| 5/5 [00:00<00:00, 14604.12it/s]
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:00<02:20,  7.55it/s]Loading weights:   0%|          | 3/1065 [00:00<02:20,  7.56it/s]Loading weights:   0%|          | 4/1065 [00:00<02:45,  6.41it/s]Loading weights:   0%|          | 5/1065 [00:00<03:15,  5.42it/s]Loading weights:   1%|          | 10/1065 [00:01<01:44, 10.05it/s]Loading weights:   1%|          | 11/1065 [00:01<02:03,  8.52it/s]Loading weights:   1%|          | 13/1065 [00:01<02:20,  7.48it/s]Loading weights:   1%|▏         | 14/1065 [00:01<02:43,  6.43it/s]Loading weights:   2%|▏         | 16/1065 [00:02<02:24,  7.27it/s]Loading weights:   2%|▏         | 17/1065 [00:02<02:37,  6.64it/s]Loading weights:   2%|▏         | 18/1065 [00:02<03:06,  5.63it/s]Loading weights:   2%|▏         | 23/1065 [00:02<01:40, 10.35it/s]Loading weights:   2%|▏         | 25/1065 [00:03<01:55,  8.97it/s]Loading weights:   2%|▏         | 26/1065 [00:03<02:13,  7.79it/s]Loading weights:  14%|█▎        | 146/1065 [00:03<00:04, 184.48it/s]Loading weights:  25%|██▌       | 271/1065 [00:03<00:02, 370.19it/s]Loading weights:  36%|███▌      | 380/1065 [00:03<00:01, 513.58it/s]Loading weights:  44%|████▍     | 471/1065 [00:03<00:01, 446.13it/s]Loading weights:  50%|█████     | 536/1065 [00:04<00:02, 231.70it/s]Loading weights:  60%|█████▉    | 637/1065 [00:04<00:01, 315.70it/s]Loading weights:  68%|██████▊   | 725/1065 [00:04<00:00, 393.51it/s]Loading weights:  86%|████████▌ | 913/1065 [00:04<00:00, 638.73it/s]Loading weights: 100%|██████████| 1065/1065 [00:05<00:00, 211.85it/s]
+✅ Gemma-3-12B-IT loaded successfully!
+
+
+======================================================================
+STEP 5: Model B decides (original A vs regenerated B)
+======================================================================
+  Model B: Gemma-3-12B-IT
+  Samples: 3
+  Processing 3 remaining samples...
+Step 5: Deciding:   0%|          | 0/1 [00:00<?, ?it/s]Step 5: Deciding: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it]Step 5: Deciding: 100%|██████████| 1/1 [00:01<00:00,  1.77s/it]
+  ✅ Decide complete: 0 kept original (A), 3 chose regenerated (B)
+   Gemma-3-12B-IT unloaded from memory
+
+======================================================================
+STEP 6: Assembling final results
+======================================================================
+  Total:                   1110
+  Step 2 — Safe (yes):     1107
+  Step 2 — Unsafe (no):    3 (0.3%)
+  Step 5 — Chose regen:    3
+  Step 5 — Kept original:  1107
+  Final regen rate:        0.3%
+  Results:  /workspace/results/method1/qwen3_vl_8b_instruct__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi2/method1_results_20260506_052525.json
+  Summary:  /workspace/results/method1/qwen3_vl_8b_instruct__gemma_3_12b_it/vlsafe/fixed/negative_low/start/multi2/method1_summary_20260506_052525.json
+
+======================================================================
+✅ METHOD 1 PIPELINE COMPLETE — FULL PIPELINE
+======================================================================
+

@@ -1,0 +1,10 @@
+{
+  "finding": "mmvp_baseline",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-03-20T11:14:12.176658",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/mmvp_baseline",
+  "datasets": {
+    "mmvp_full_baseline": 300
+  },
+  "total_samples": 300
+}

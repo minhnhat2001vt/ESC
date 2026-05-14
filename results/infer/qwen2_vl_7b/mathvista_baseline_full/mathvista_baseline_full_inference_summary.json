@@ -1,0 +1,10 @@
+{
+  "finding": "mathvista_baseline_full",
+  "model": "Qwen2-VL-7B",
+  "timestamp": "2026-03-20T11:08:23.261376",
+  "output_dir": "/workspace/results/infer/qwen2_vl_7b/mathvista_baseline_full",
+  "datasets": {
+    "mathvista_full_baseline": 1000
+  },
+  "total_samples": 1000
+}

@@ -1,0 +1,6 @@
+table,setting,status,total,safe,unsafe,uncertain,asr,safe_rate,uncertain_rate,infer_path
+1,gemma3-12b,ok,1110,974,128,8,0.11531531531531532,0.8774774774774775,0.007207207207207207,/workspace/results/method1/qwenAbl1/qwen2_vl_7b__gemma_3_12b_it/vlsafe/random/method1_results_20260308_111002.json
+1,pixtral-12b,ok,1110,959,140,11,0.12612612612612611,0.8639639639639639,0.00990990990990991,/workspace/results/method1/qwenAbl1/qwen2_vl_7b__pixtral_12b/vlsafe/random/method1_results_20260308_112615.json
+1,qwen2.5-vl-7b,ok,1110,929,167,14,0.15045045045045044,0.8369369369369369,0.012612612612612612,/workspace/results/method1/qwenAbl1/qwen2_vl_7b__qwen2_vl_7b/vlsafe/random/method1_results_20260308_142748.json
+1,internvl2.5-8b,ok,1110,962,137,11,0.12342342342342343,0.8666666666666667,0.00990990990990991,/workspace/results/method1/qwen2_vl_7b__internvl2_5_8b/vlsafe/random/method1_results_20260309_035319.json
+1,llava-1.5-7b,ok,1110,907,187,16,0.16846846846846847,0.8171171171171171,0.014414414414414415,/workspace/results/method1/qwenAbl1/qwen2_vl_7b__llava_1_5_7b/vlsafe/random/method1_results_20260308_182154.json

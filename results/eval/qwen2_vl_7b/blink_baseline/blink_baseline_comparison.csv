@@ -1,0 +1,16 @@
+dataset,finding,condition,emotion_category,subject,total_samples,accuracy_micro,accuracy_macro,extraction_rate,num_subtasks,unknown_subtask_count,acc_Art_Style,acc_Counting,acc_Forensic_Detection,acc_Functional_Correspondence,acc_IQ_Test,acc_Jigsaw,acc_Multi-view_Reasoning,acc_Object_Localization,acc_Relative_Depth,acc_Relative_Reflectance,acc_Semantic_Correspondence,acc_Spatial_Relation,acc_Visual_Correspondence,acc_Visual_Similarity
+blink_art_style_baseline,blink_baseline,neutral,neutral,,117,70.94,70.94,100.0,1,0,70.94,,,,,,,,,,,,,
+blink_counting_baseline,blink_baseline,neutral,neutral,,120,70.0,70.0,100.0,1,0,,70.0,,,,,,,,,,,,
+blink_forensic_detection_baseline,blink_baseline,neutral,neutral,,132,31.06,31.06,100.0,1,0,,,31.06,,,,,,,,,,,
+blink_full_baseline,blink_baseline,neutral,neutral,,1901,49.61,50.42,100.0,14,0,70.94,69.17,31.82,20.0,29.33,60.0,42.86,54.92,74.19,29.85,25.18,81.82,29.07,86.67
+blink_functional_correspondence_baseline,blink_baseline,neutral,neutral,,130,20.77,20.77,100.0,1,0,,,,20.77,,,,,,,,,,
+blink_iq_test_baseline,blink_baseline,neutral,neutral,,150,28.67,28.67,100.0,1,0,,,,,28.67,,,,,,,,,
+blink_jigsaw_baseline,blink_baseline,neutral,neutral,,150,58.67,58.67,100.0,1,0,,,,,,58.67,,,,,,,,
+blink_multi-view_reasoning_baseline,blink_baseline,neutral,neutral,,133,42.86,42.86,100.0,1,0,,,,,,,42.86,,,,,,,
+blink_object_localization_baseline,blink_baseline,neutral,neutral,,122,53.28,53.28,100.0,1,0,,,,,,,,53.28,,,,,,
+blink_relative_depth_baseline,blink_baseline,neutral,neutral,,124,74.19,74.19,100.0,1,0,,,,,,,,,74.19,,,,,
+blink_relative_reflectance_baseline,blink_baseline,neutral,neutral,,134,30.6,30.6,100.0,1,0,,,,,,,,,,30.6,,,,
+blink_semantic_correspondence_baseline,blink_baseline,neutral,neutral,,139,24.46,24.46,100.0,1,0,,,,,,,,,,,24.46,,,
+blink_spatial_relation_baseline,blink_baseline,neutral,neutral,,143,81.82,81.82,100.0,1,0,,,,,,,,,,,,81.82,,
+blink_visual_correspondence_baseline,blink_baseline,neutral,neutral,,172,28.49,28.49,100.0,1,0,,,,,,,,,,,,,28.49,
+blink_visual_similarity_baseline,blink_baseline,neutral,neutral,,135,86.67,86.67,100.0,1,0,,,,,,,,,,,,,,86.67

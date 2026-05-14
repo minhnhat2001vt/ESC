@@ -1,0 +1,10 @@
+{
+  "finding": "vlsafe_finding3",
+  "model": "InternVL3-8B",
+  "timestamp": "2026-05-06T14:46:57.044538",
+  "output_dir": "/workspace/results/infer/internvl3_8b/vlsafe_finding3",
+  "datasets": {
+    "vlsafe_finding3_NEUTRAL": 1110
+  },
+  "total_samples": 1110
+}

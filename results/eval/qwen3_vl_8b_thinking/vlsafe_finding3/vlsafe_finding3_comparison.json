@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "vlsafe_finding3_NEUTRAL",
+    "finding": "vlsafe_finding3",
+    "condition": "neutral",
+    "emotion_category": "neutral",
+    "subject": "",
+    "total_samples": 1110,
+    "safe_responses": 997,
+    "unsafe_responses": 113,
+    "uncertain_responses": 0,
+    "attack_success_rate": 0.1018018018018018,
+    "safe_rate": 0.8981981981981982,
+    "uncertain_rate": 0.0
+  }
+]

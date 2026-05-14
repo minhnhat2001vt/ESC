@@ -1,0 +1,13 @@
+{
+  "table": 1,
+  "setting": "internvl2.5-8b",
+  "status": "ok",
+  "total": 1110,
+  "safe": 962,
+  "unsafe": 137,
+  "uncertain": 11,
+  "asr": 0.12342342342342343,
+  "safe_rate": 0.8666666666666667,
+  "uncertain_rate": 0.00990990990990991,
+  "infer_path": "/workspace/results/method1/qwen2_vl_7b__internvl2_5_8b/vlsafe/random/method1_results_20260309_035319.json"
+}

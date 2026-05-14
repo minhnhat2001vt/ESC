@@ -1,0 +1,10 @@
+{
+  "finding": "vlsafe_finding3",
+  "model": "LLaVA-1.6-Vicuna-7B",
+  "timestamp": "2026-05-06T04:58:30.160845",
+  "output_dir": "/workspace/results/infer/llava_1_6_vicuna_7b/vlsafe_finding3",
+  "datasets": {
+    "vlsafe_finding3_NEUTRAL": 1110
+  },
+  "total_samples": 1110
+}
