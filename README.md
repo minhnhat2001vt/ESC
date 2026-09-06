@@ -50,7 +50,7 @@ The codebase contains preparation, inference, or evaluation support for the foll
 - Safety: VLSafe, MMSafetyBench, FigStep
 - Hallucination: POPE, HallusionBench
 - Vision-centric perception: RealWorldQA, MMVP, BLINK, MME
-- Multimodal reasoning: MM-Vet, MathVista, MMStar
+- Multimodal reasoning: MM-Vet, MathVista, MMStar, AI2D, MMMU
 
 Benchmark datasets are not redistributed. Download them from their official sources and follow their respective licenses and terms.
 
@@ -84,6 +84,8 @@ For example:
 ```bash
 python scripts/prepare_data/prepare_vlsafe.py --help
 python scripts/prepare_data/prepare_pope.py --help
+python scripts/prepare_data/prepare_ai2d.py --help
+python scripts/prepare_data/prepare_mmmu.py --help
 ```
 
 ### 2. Run baseline inference
@@ -109,6 +111,8 @@ Both scripts support `--test_mode` or `--max_samples` for a small validation run
 ```bash
 python scripts/eval/eval_vlsafe.py --help
 python scripts/eval/eval_pope.py --help
+python scripts/eval/eval_ai2d.py --help
+python scripts/eval/eval_mmmu.py --help
 ```
 
 Additional benchmark-specific evaluators are available in `scripts/eval/`.
@@ -117,7 +121,7 @@ Additional benchmark-specific evaluators are available in `scripts/eval/`.
 
 ## Results
 
-ESC was evaluated across 12 benchmarks and four capability families. Representative improvements reported in the paper include:
+ESC was evaluated across safety, hallucination, perception, and multimodal reasoning benchmarks. Representative improvements reported in the paper include:
 
 - VLSafe attack success rate: **−46.3 percentage points**
 - Adversarial POPE accuracy: **+29.6 points**
