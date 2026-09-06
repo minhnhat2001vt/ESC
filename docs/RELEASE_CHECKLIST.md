@@ -23,8 +23,8 @@ This checklist tracks the conversion of the internal experiment workspace into a
 - [ ] Add a model-free pipeline smoke test (portable path configuration already has a unit test)
 - [x] Add automated Python and shell syntax checks in GitHub Actions
 - [ ] Verify installation from a fresh Linux environment
-- [ ] Document dataset acquisition and expected directory layouts
-- [ ] Document exact commands for the paper's main tables
+- [ ] Document dataset acquisition and expected directory layouts (AI2D and MMMU preparation scripts now include their expected layouts)
+- [ ] Document exact commands for the paper's main tables (AI2D/MMMU scripts and supplied summaries are now included)
 - [x] Add the MIT license
 - [ ] Run a secret scan over the full Git history
 - [ ] Add a tagged release after the pull request is approved
