@@ -16,16 +16,16 @@ This checklist tracks the conversion of the internal experiment workspace into a
 
 ## Required before public release
 
-- [ ] Confirm the canonical scripts used for the final paper tables
-- [ ] Replace hard-coded `/workspace/...` and `/home/...` paths with CLI or environment-based configuration
-- [ ] Consolidate versioned and rebuttal-era method scripts into supported entry points
+- [x] Confirm the camera-ready ESC scripts and expose them as `run_esc_safety.py` and `run_esc_vqa.py`
+- [ ] Replace hard-coded paths across maintained scripts (completed for the canonical ESC, baseline, VLSafe, and POPE paths)
+- [x] Create release-facing entry points from the confirmed camera-ready scripts
 - [ ] Remove or archive broken and obsolete utilities
 - [ ] Add a small smoke-test fixture that does not require downloading a full benchmark
 - [ ] Add syntax/import checks in GitHub Actions
 - [ ] Verify installation from a fresh Linux environment
 - [ ] Document dataset acquisition and expected directory layouts
 - [ ] Document exact commands for the paper's main tables
-- [ ] Select and add an open-source license
+- [x] Add the MIT license
 - [ ] Run a secret scan over the full Git history
 - [ ] Add a tagged release after the pull request is approved
 
