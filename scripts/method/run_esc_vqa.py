@@ -1,23 +1,7 @@
 """
-ESC inference pipeline for VQA benchmarks (camera-ready)
+ESC inference pipeline for VQA benchmarks
 
 For VQA benchmarks: POPE, RealWorldQA, MM-Vet, HallusionBench
-
-CAMERA-READY BEHAVIOR:
-1. Step 1: Now preserves `full_question` from conversations[0]["value"]
-2. Step 2: Uses `full_question` (not `original_question`) in judge prompt
-3. Step 4: Uses `full_question` + emotion prompt for regeneration
-4. Step 5: Uses `full_question` in decide prompt
-5. **CAMERA-READY BEHAVIOR**: Properly handles <image> token — emotion prompt is inserted
-   AFTER the <image> token, not before it.
-6. **CAMERA-READY BEHAVIOR**: Handles HallusionBench mixed QA/VQA format:
-   - visual_input="0" (text_only): No image, uses placeholder for VLM inference
-   - visual_input="1" or "2": Normal VQA with image
-
-This ensures:
-- MCQ format instructions are preserved during regeneration
-- The model sees the same question format (with options) in both original and regen
-- Text-only samples (HallusionBench) don't crash due to empty image_path
 
 A complete, self-contained pipeline that orchestrates all 6 steps:
 
