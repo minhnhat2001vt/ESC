@@ -1,11 +1,5 @@
 """
-ESC inference pipeline for safety benchmarks (camera-ready)
-
-CAMERA-READY BEHAVIOR:
-1. Step 1: Now preserves `full_question` from conversations[0]["value"]
-2. Step 2: Uses `full_question` (not `original_question`) in judge prompt
-3. Step 4: Uses `full_question` + emotion prompt for regeneration
-4. Step 5: Uses `full_question` in decide prompt
+ESC inference pipeline for safety benchmarks
 
 A complete, self-contained pipeline that orchestrates all 6 steps:
 
