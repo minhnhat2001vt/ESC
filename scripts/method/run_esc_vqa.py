@@ -3,14 +3,14 @@ ESC inference pipeline for VQA benchmarks (camera-ready)
 
 For VQA benchmarks: POPE, RealWorldQA, MM-Vet, HallusionBench
 
-FIXES APPLIED:
+CAMERA-READY BEHAVIOR:
 1. Step 1: Now preserves `full_question` from conversations[0]["value"]
 2. Step 2: Uses `full_question` (not `original_question`) in judge prompt
 3. Step 4: Uses `full_question` + emotion prompt for regeneration
 4. Step 5: Uses `full_question` in decide prompt
-5. **NEW FIX (v3)**: Properly handles <image> token — emotion prompt is inserted
+5. **CAMERA-READY BEHAVIOR**: Properly handles <image> token — emotion prompt is inserted
    AFTER the <image> token, not before it.
-6. **NEW FIX (v3)**: Handles HallusionBench mixed QA/VQA format:
+6. **CAMERA-READY BEHAVIOR**: Handles HallusionBench mixed QA/VQA format:
    - visual_input="0" (text_only): No image, uses placeholder for VLM inference
    - visual_input="1" or "2": Normal VQA with image
 
@@ -266,8 +266,8 @@ QUADRANT_PREFIXES = ("POSITIVE_HIGH", "NEGATIVE_HIGH", "NEGATIVE_LOW", "POSITIVE
 
 
 # ============================================================================
-# REBUTTAL ADDITION: PSYCH (EmotionPrompt by Li et al. 2023) + NEUTRAL prompts
-# (Mirror of inference_method1_ver3.py — see that file for full docstring.)
+# PROMPT CONTROL: PSYCH (EmotionPrompt by Li et al. 2023) + NEUTRAL prompts
+# (Mirror of run_esc_safety.py — see that file for full docstring.)
 # ============================================================================
 
 PSYCH_PROMPTS = {
@@ -330,7 +330,7 @@ def select_prompt(
     seed: int = None,
 ) -> Tuple[str, str]:
     """
-    Generalized prompt selector. See inference_method1_ver3.py for full docstring.
+    Generalized prompt selector. See run_esc_safety.py for full docstring.
     """
     if seed is not None:
         random.seed(seed)
@@ -590,7 +590,7 @@ def step1_load_neutral_responses(
     """
     Load or generate Model A's neutral (no emotion) responses.
     
-    FIXED: Now preserves `full_question` for use in subsequent steps.
+    Now preserves `full_question` for use in subsequent steps.
     """
 
     if model_a_results_path:
@@ -767,7 +767,7 @@ def step2_judge_safety(
     """
     Model B judges each (image + query + response) as safe (yes) or unsafe (no).
     
-    FIXED: Uses `full_question` instead of `original_question`.
+    Uses `full_question` instead of `original_question`.
     """
     print(f"\n{'='*70}")
     print("STEP 2: Model B judges correctness (yes/no)")
@@ -897,7 +897,7 @@ def step4_regenerate_with_emotion(
     image_dir: str = "",
     location: str = "start",
     multiple_emotion: int = 1,
-    # ── REBUTTAL ADDITION ──────────────────────────────────────────────
+    # ── PROMPT CONTROL ──────────────────────────────────────────────
     prompt_source: str = "emotion",
     psych_id: str = None,
     neutral_text: str = DEFAULT_NEUTRAL_TEXT,
@@ -907,9 +907,9 @@ def step4_regenerate_with_emotion(
     Regenerate unsafe samples by injecting prompt(s) into the query.
 
     FIXED v2: Uses `full_question` instead of `original_question`.
-    FIXED v3: Properly handles <image> token — emotion is inserted AFTER <image>.
-    REBUTTAL ADDITION: prompt_source controls what gets injected. See
-    inference_method1_ver3.py for the full description.
+    CAMERA-READY: Properly handles <image> token — emotion is inserted AFTER <image>.
+    PROMPT CONTROL: prompt_source controls what gets injected. See
+    run_esc_safety.py for the full description.
     """
     if not unsafe_results:
         print(f"\n{'='*70}")
@@ -998,7 +998,7 @@ def step4_regenerate_with_emotion(
                 is_text_only_flags.append(is_text_only)
 
                 if emo_concat:
-                    # FIX v3: Use helper function to properly handle <image> token
+                    # Image-token handling: Use helper function to properly handle <image> token
                     q_with_emotion = insert_emotion_into_question(
                         base_question=r['full_question'],
                         emotion_text=emo_concat,
@@ -1129,7 +1129,7 @@ def step5_decide(
     Model B compares the original response (A) vs the regenerated response (B)
     and picks the safer one.
     
-    FIXED: Uses `full_question` instead of `original_question`.
+    Uses `full_question` instead of `original_question`.
     """
     if not regen_results:
         print(f"\n{'='*70}")
@@ -1295,7 +1295,7 @@ def step6_assemble(
 
     summary = {
         "method": "method1_detect_then_regenerate",
-        "version": "vqa_fixed_v3",
+        "version": "camera_ready_vqa",
         "timestamp": datetime.now().isoformat(),
         "model_a": final_results[0].get("model", "unknown") if final_results else "unknown",
         "model_b": final_results[0].get("judge_model", "unknown") if final_results else "unknown",
@@ -1307,10 +1307,10 @@ def step6_assemble(
         "step5_kept_original": kept_original,
         "final_regeneration_rate": chose_regen / total if total > 0 else 0,
         "results_file": os.path.basename(results_path),
-        "fix_notes": [
+        "implementation_notes": [
             "VQA version with same fixes as safety benchmarks",
             "v2: Uses full_question consistently across all steps",
-            "v3: Properly handles <image> token — emotion inserted AFTER <image>",
+            "Image-token handling: inserts emotion — emotion inserted AFTER <image>",
             "Preserves MCQ format instructions for VQA benchmarks",
         ],
     }
@@ -1441,7 +1441,7 @@ def run_pipeline(args):
     model_a_short = model_short_name(MODEL_REGISTRY[args.model_a]["name"]) if args.model_a else "precomputed"
     model_b_short = model_short_name(MODEL_REGISTRY[args.model_b]["name"])
 
-    # ── REBUTTAL ADDITION: tag output dir with prompt_source so different
+    # ── PROMPT CONTROL: tag output dir with prompt_source so different
     #    conditions don't collide. Default "emotion" preserves backward-compat.
     prompt_source = getattr(args, "prompt_source", "emotion")
     psource_tag = "" if prompt_source == "emotion" else f"_{prompt_source}"
@@ -1484,7 +1484,7 @@ def run_pipeline(args):
     ckpt_step5 = os.path.join(output_dir, "_checkpoint_step5_decided.json")
 
     print(f"\n{'='*70}")
-    print("METHOD 1: DETECT-THEN-REGENERATE — VQA PIPELINE (FIXED v3)")
+    print("METHOD 1: DETECT-THEN-REGENERATE — VQA PIPELINE (CAMERA-READY)")
     print(f"{'='*70}")
     print(f"  Model A:         {args.model_a or '(from file)'}")
     print(f"  Model B:         {args.model_b}")
@@ -1499,9 +1499,9 @@ def run_pipeline(args):
     if args.test_mode:
         print(f"  ⚠️  TEST MODE: max 5 samples — full diagnostics enabled")
     print(f"{'='*70}")
-    print(f"  FIXES APPLIED:")
+    print(f"  CAMERA-READY BEHAVIOR:")
     print(f"    v2: Using full_question consistently (preserves MCQ format)")
-    print(f"    v3: Emotion inserted AFTER <image> token (not before)")
+    print(f"    Image-token handling: emotion inserted AFTER <image> token (not before)")
     print(f"{'='*70}")
 
     max_samples = 5 if args.test_mode else args.max_samples
@@ -1601,7 +1601,7 @@ def run_pipeline(args):
             image_dir=IMAGE_DIR,
             location=args.location,
             multiple_emotion=args.multiple_emotion,
-            # ── REBUTTAL ADDITION ──
+            # ── PROMPT CONTROL ──
             prompt_source=getattr(args, "prompt_source", "emotion"),
             psych_id=getattr(args, "psych_id", None),
             neutral_text=getattr(args, "neutral_text", DEFAULT_NEUTRAL_TEXT),
@@ -1678,7 +1678,7 @@ def run_pipeline(args):
             os.remove(ckpt)
 
     print(f"\n{'='*70}")
-    print("✅ METHOD 1 VQA PIPELINE COMPLETE (6 Steps) — FIXED v3")
+    print("✅ METHOD 1 VQA PIPELINE COMPLETE (6 Steps) — CAMERA-READY")
     print(f"{'='*70}\n")
 
     return final_results
@@ -1689,14 +1689,14 @@ def run_pipeline(args):
 # ============================================================================
 def main():
     parser = argparse.ArgumentParser(
-        description="Method 1: Detect-then-Regenerate — VQA Pipeline (FIXED v3)",
+        description="Method 1: Detect-then-Regenerate — VQA Pipeline (CAMERA-READY)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 VQA Benchmarks supported: POPE, RealWorldQA, MM-Vet, HallusionBench
 
-FIXES APPLIED:
+CAMERA-READY BEHAVIOR:
   v2: Uses full_question consistently (preserves MCQ options and instructions)
-  v3: Properly handles <image> token — emotion inserted AFTER <image>
+  Image-token handling: inserts emotion — emotion inserted AFTER <image>
 
 Examples:
   # RealWorldQA test:
@@ -1752,7 +1752,7 @@ Examples:
                         help="Ablation: skip Step 2 (verifier judge) — treat ALL as incorrect")
     parser.add_argument("--abl2", action="store_true",
                         help="Ablation: skip Step 5 (verifier decide) — always use regenerated")
-    # ── REBUTTAL ADDITION ──────────────────────────────────────────────────
+    # ── PROMPT CONTROL ──────────────────────────────────────────────────
     parser.add_argument("--prompt_source", type=str, default="emotion",
                         choices=["emotion", "psychological", "neutral", "none"],
                         help="What to inject in the regen step. "
@@ -1791,7 +1791,7 @@ Examples:
     if args.multiple_emotion < 1:
         parser.error(f"Multiple emotion count must be >= 1.")
 
-    # ── REBUTTAL ADDITION: validation now dispatches on prompt_source ──
+    # ── PROMPT CONTROL: validation now dispatches on prompt_source ──
     if args.prompt_source == "emotion":
         if args.selection_type == "fixed" and not args.quadrant:
             parser.error("--quadrant is required when --prompt_source=emotion and "
