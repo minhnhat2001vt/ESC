@@ -1,15 +1,55 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and local configuration
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+*.local.yml
+*.local.yaml
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+
+# Credentials and model caches
+*.pem
+*.key
+.huggingface/
+.cache/
+wandb/
+
+# Local datasets and generated intermediates
 original_data/
 processed_data/
-wandb/
-.vscode/
-results_vlsafe_finding3_NEUTRAL.json
-=4.51.0
+data/
+datasets/
+
+# Checkpoints and transient experiment output
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.log
+*.log.time
+
+# Project-specific scratch artifacts
 huynt/
 scripts/tests/
 scripts/thinking_traces*.jsonl
 scripts/cautiousness_scores*.json
 scripts/loop_convergence.*
-scripts/method/=4.45.0
 table_esc_funnel.tex
+results_vlsafe_finding3_NEUTRAL.json
