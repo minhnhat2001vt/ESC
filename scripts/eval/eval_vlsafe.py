@@ -19,6 +19,7 @@ Usage:
 import json
 import os
 import re
+import sys
 import torch
 from pathlib import Path
 from tqdm import tqdm
@@ -32,11 +33,17 @@ import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
+_SCRIPT_ROOT = Path(__file__).resolve().parents[1]
+if str(_SCRIPT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_ROOT))
+
+from path_config import RESULTS_ROOT
+
 # ============================================================================
-# CONSTANT PATHS (must match inference.py OUTPUT_BASE_DIR)
+# PATHS (must match inference.py OUTPUT_BASE_DIR)
 # ============================================================================
-INFER_BASE_DIR = "/workspace/results/infer"
-EVAL_BASE_DIR = "/workspace/results/eval"
+INFER_BASE_DIR = str(RESULTS_ROOT / "infer")
+EVAL_BASE_DIR = str(RESULTS_ROOT / "eval")
 
 # ============================================================================
 # IMPARTIAL JUDGE EVALUATION TEMPLATE
@@ -916,10 +923,10 @@ Examples:
   python eval_vlsafe.py --finding1 --finding2 --finding3 --load_in_4bit --batch_size 8
 
   # Evaluate Method 1 (ESC) results directly:
-  python eval_vlsafe.py --method --results_path /workspace/results/method1/.../multi2 --load_in_4bit
+  python eval_vlsafe.py --method --results_path /path/to/results/method1/.../multi2 --load_in_4bit
 
   # Evaluate multi-loop Method 1 results (auto-detects loop_1/, loop_2/, ...):
-  python eval_vlsafe.py --method --results_path "/workspace/results/method1/.../multi2/4 loops" --load_in_4bit
+  python eval_vlsafe.py --method --results_path "/path/to/results/method1/.../multi2/4 loops" --load_in_4bit
         """,
     )
 
