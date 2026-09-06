@@ -54,6 +54,25 @@ The codebase contains preparation, inference, or evaluation support for the foll
 
 Benchmark datasets are not redistributed. Download them from their official sources and follow their respective licenses and terms.
 
+## Data and output paths
+
+By default, the supported scripts resolve paths relative to the repository:
+
+| Purpose | Default | Override |
+|---|---|---|
+| Original datasets | `original_data/` | `ESC_DATA_ROOT` |
+| Processed datasets | `processed_data/` | `ESC_PROCESSED_ROOT` |
+| Results | `results/` | `ESC_RESULTS_ROOT` |
+| Logs | `logs/` | `ESC_LOGS_ROOT` |
+
+For example:
+
+```bash
+export ESC_DATA_ROOT=/data/esc/original_data
+export ESC_PROCESSED_ROOT=/data/esc/processed_data
+export ESC_RESULTS_ROOT=/data/esc/results
+```
+
 ## Reproducing the workflow
 
 The current research code follows this sequence:
@@ -79,8 +98,8 @@ python scripts/inference_baseline.py --help
 Safety-oriented and general VQA benchmarks currently use separate entry points:
 
 ```bash
-python scripts/method/inference_method1_rebut.py --help
-python scripts/method/vqa_inference_method1_rebut.py --help
+python scripts/method/run_esc_safety.py --help
+python scripts/method/run_esc_vqa.py --help
 ```
 
 Both scripts support `--test_mode` or `--max_samples` for a small validation run before a full evaluation.
@@ -113,4 +132,4 @@ If this repository is useful in your research, please cite the ECCV 2026 paper. 
 
 ## License
 
-A source-code license will be added before the public release. Until then, no permission to reuse, modify, or redistribute the code is granted.
+This project is released under the [MIT License](LICENSE).
