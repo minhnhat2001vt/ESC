@@ -36,16 +36,23 @@ import json
 import os
 import random
 import argparse
+import sys
 from pathlib import Path
 from datetime import datetime
+
+_SCRIPT_ROOT = Path(__file__).resolve().parents[1]
+if str(_SCRIPT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_ROOT))
+
+from path_config import ORIGINAL_DATA_ROOT, PROCESSED_DATA_ROOT
 
 # ============================================================================
 # CONSTANT PATHS
 # ============================================================================
-DATA_DIR = "/workspace/original_data/vlsafe"
+DATA_DIR = str(ORIGINAL_DATA_ROOT / "vlsafe")
 JSONL_FILE = os.path.join(DATA_DIR, "harmlessness_examine.jsonl")
 IMAGE_DIR = os.path.join(DATA_DIR, "imgs")
-OUTPUT_BASE_DIR = "/workspace/processed_data"
+OUTPUT_BASE_DIR = str(PROCESSED_DATA_ROOT)
 
 # ============================================================================
 # EMOTION PROMPTS (same as MM-SafetyBench pipeline)
