@@ -1,7 +1,7 @@
 """
 ESC inference pipeline for VQA benchmarks
 
-For VQA benchmarks: POPE, RealWorldQA, MM-Vet, HallusionBench
+For VQA benchmarks: POPE, RealWorldQA, MM-Vet, HallusionBench, MME, MMVP, BLINK, MathVista, MMStar, AI2D, MMMU
 
 A complete, self-contained pipeline that orchestrates all 6 steps:
 
@@ -90,6 +90,8 @@ MMVP_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mmvp")
 BLINK_DATA_DIR = str(PROCESSED_DATA_ROOT / "blink_baseline")
 MATHVISTA_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mathvista")
 MMSTAR_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mmstar")
+AI2D_DATA_DIR = str(ORIGINAL_DATA_ROOT / "ai2d")
+MMMU_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mmmu")
 # ============================================================================
 # MODEL REGISTRY
 # ============================================================================
@@ -1460,6 +1462,10 @@ def run_pipeline(args):
         IMAGE_DIR = MATHVISTA_DATA_DIR
     elif args.benchmark == 'mmstar':
         IMAGE_DIR = MMSTAR_DATA_DIR
+    elif args.benchmark == 'ai2d':
+        IMAGE_DIR = AI2D_DATA_DIR
+    elif args.benchmark == 'mmmu':
+        IMAGE_DIR = MMMU_DATA_DIR
     else:
         raise ValueError(f"Unknown benchmark: {args.benchmark}")
 
@@ -1726,7 +1732,7 @@ Examples:
     parser.add_argument("--test_mode", action="store_true",
                         help="Run on 5 samples only")
     parser.add_argument("--benchmark", default='pope',
-                        choices=['pope', 'rwqa', 'mmvet', 'hallusion', 'mme', 'mmvp', 'blink', 'mathvista', 'mmstar'],
+                        choices=['pope', 'rwqa', 'mmvet', 'hallusion', 'mme', 'mmvp', 'blink', 'mathvista', 'mmstar', 'ai2d', 'mmmu'],
                         help="VQA benchmark to run")
     parser.add_argument("--location", default='start',
                         choices=['start', 'end'])
