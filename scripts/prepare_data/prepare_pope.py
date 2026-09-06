@@ -58,17 +58,23 @@ Usage:
 import json
 import os
 import argparse
+import sys
 from pathlib import Path
 
+_SCRIPT_ROOT = Path(__file__).resolve().parents[1]
+if str(_SCRIPT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_ROOT))
+
+from path_config import ORIGINAL_DATA_ROOT, PROCESSED_DATA_ROOT
 
 # ============================================================================
 # CONSTANT PATHS
 # ============================================================================
-DATA_DIR        = "/workspace/original_data/pope"
-IMAGE_DIR       = os.path.join(DATA_DIR, "images")
-ANNOTATIONS_JSONL     = os.path.join(DATA_DIR, "annotations.jsonl")
-TINY_ID_LIST_JSON     = os.path.join(DATA_DIR, "TinyVersion_ID_List.json")
-OUTPUT_BASE_DIR = "/workspace/processed_data"
+DATA_DIR = str(ORIGINAL_DATA_ROOT / "pope")
+IMAGE_DIR = os.path.join(DATA_DIR, "images")
+ANNOTATIONS_JSONL = os.path.join(DATA_DIR, "annotations.jsonl")
+TINY_ID_LIST_JSON = os.path.join(DATA_DIR, "TinyVersion_ID_List.json")
+OUTPUT_BASE_DIR = str(PROCESSED_DATA_ROOT)
 
 # POPE 3 canonical split names
 POPE_SPLITS = ["random", "popular", "adversarial"]
