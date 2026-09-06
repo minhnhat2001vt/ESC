@@ -1,0 +1,31 @@
+name: Code quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "release/**"
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Compile Python sources
+        run: python -m compileall -q scripts tests
+
+      - name: Validate shell syntax
+        run: find scripts -type f -name "*.sh" -print0 | xargs -0 -n1 bash -n
+
+      - name: Test portable path configuration
+        run: python -m unittest discover -s tests -v
