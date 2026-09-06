@@ -20,8 +20,8 @@ This checklist tracks the conversion of the internal experiment workspace into a
 - [ ] Replace hard-coded paths across maintained scripts (completed for the canonical ESC, baseline, VLSafe, and POPE paths)
 - [x] Create release-facing entry points from the confirmed camera-ready scripts
 - [ ] Remove or archive broken and obsolete utilities
-- [ ] Add a small smoke-test fixture that does not require downloading a full benchmark
-- [ ] Add syntax/import checks in GitHub Actions
+- [ ] Add a model-free pipeline smoke test (portable path configuration already has a unit test)
+- [x] Add automated Python and shell syntax checks in GitHub Actions
 - [ ] Verify installation from a fresh Linux environment
 - [ ] Document dataset acquisition and expected directory layouts
 - [ ] Document exact commands for the paper's main tables
