@@ -25,4 +25,4 @@ These files evaluate the 857 single-image validation examples prepared by `scrip
 
 ## Raw-output examples
 
-The files in `examples/ai2d_baseline_sample.json` and `examples/mmmu_baseline_sample.json` contain three records each and are included only to demonstrate the input schema expected by the evaluators. They are not full benchmark results.
+The files in `examples/ai2d_baseline_sample.json` and `examples/mmmu_baseline_sample.json` are synthetic, one-record examples included only to demonstrate the input schema expected by the evaluators. They contain no benchmark questions and are not benchmark results.
