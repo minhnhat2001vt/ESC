@@ -1,0 +1,116 @@
+# ESC: Emotional Self-Correction for Reliable Vision-Language Models
+
+Official implementation and evaluation artifacts for **ESC: Emotional Self-Correction for Reliable Vision-Language Models**, accepted at **ECCV 2026**.
+
+- [Project page](https://genai4e.github.io/ESC/)
+- Paper and code links are available from the project page.
+
+## Overview
+
+Vision-language models can produce fluent answers even when the visual evidence disagrees. ESC uses emotional feedback as a structured test-time control signal that prompts a model to reconsider uncertain or incorrect responses—without retraining the target model or revealing the ground-truth answer.
+
+The ESC pipeline has four stages:
+
+1. **Verify** the initial response.
+2. **Select** an emotional feedback cue.
+3. **Revise** the response using the cue.
+4. **Decide** whether to retain the original response or use the revision.
+
+## Repository structure
+
+```text
+.
+├── scripts/
+│   ├── model/          # Model adapters
+│   ├── prepare_data/   # Benchmark preprocessing
+│   ├── method/         # ESC inference
+│   └── eval/           # Benchmark evaluation
+├── results/            # Raw experimental outputs and summarized results
+├── logs/               # Original experiment logs
+└── environment.yml     # Conda environment used for the experiments
+```
+
+The repository preserves the raw result files used during experimentation. They are intentionally retained for traceability, although they make the repository large.
+
+## Installation
+
+The experiments were run on Linux with NVIDIA GPUs and Python 3.10.
+
+```bash
+conda env create -f environment.yml
+conda activate esc
+```
+
+Some model checkpoints require accepting their license on Hugging Face and authenticating locally with a Hugging Face token. API-based evaluators read credentials from environment variables; credentials must never be committed to the repository.
+
+## Benchmarks
+
+The codebase contains preparation, inference, or evaluation support for the following benchmark families:
+
+- Safety: VLSafe, MMSafetyBench, FigStep
+- Hallucination: POPE, HallusionBench
+- Vision-centric perception: RealWorldQA, MMVP, BLINK, MME
+- Multimodal reasoning: MM-Vet, MathVista, MMStar
+
+Benchmark datasets are not redistributed. Download them from their official sources and follow their respective licenses and terms.
+
+## Reproducing the workflow
+
+The current research code follows this sequence:
+
+### 1. Prepare a benchmark
+
+For example:
+
+```bash
+python scripts/prepare_data/prepare_vlsafe.py --help
+python scripts/prepare_data/prepare_pope.py --help
+```
+
+### 2. Run baseline inference
+
+```bash
+python scripts/inference_baseline.py --list_models
+python scripts/inference_baseline.py --help
+```
+
+### 3. Run ESC
+
+Safety-oriented and general VQA benchmarks currently use separate entry points:
+
+```bash
+python scripts/method/inference_method1_rebut.py --help
+python scripts/method/vqa_inference_method1_rebut.py --help
+```
+
+Both scripts support `--test_mode` or `--max_samples` for a small validation run before a full evaluation.
+
+### 4. Evaluate outputs
+
+```bash
+python scripts/eval/eval_vlsafe.py --help
+python scripts/eval/eval_pope.py --help
+```
+
+Additional benchmark-specific evaluators are available in `scripts/eval/`.
+
+> **Release note:** This repository originated as an internal experiment workspace. The release branch is consolidating paths, canonical entry points, and reproducibility commands before the repository is made public. See [the release checklist](docs/RELEASE_CHECKLIST.md) for the remaining work.
+
+## Results
+
+ESC was evaluated across 12 benchmarks and four capability families. Representative improvements reported in the paper include:
+
+- VLSafe attack success rate: **−46.3 percentage points**
+- Adversarial POPE accuracy: **+29.6 points**
+- RealWorldQA accuracy: **+14.5 points**
+- AI2D accuracy: **+2.5 points**
+
+See the paper and project page for the complete experimental protocol and results.
+
+## Citation
+
+If this repository is useful in your research, please cite the ECCV 2026 paper. Machine-readable citation metadata is provided in [`CITATION.cff`](CITATION.cff).
+
+## License
+
+A source-code license will be added before the public release. Until then, no permission to reuse, modify, or redistribute the code is granted.
