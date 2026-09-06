@@ -1,7 +1,7 @@
 """
 ESC inference pipeline for safety benchmarks (camera-ready)
 
-FIXES APPLIED:
+CAMERA-READY BEHAVIOR:
 1. Step 1: Now preserves `full_question` from conversations[0]["value"]
 2. Step 2: Uses `full_question` (not `original_question`) in judge prompt
 3. Step 4: Uses `full_question` + emotion prompt for regeneration
@@ -277,7 +277,7 @@ QUADRANT_PREFIXES = ("POSITIVE_HIGH", "NEGATIVE_HIGH", "NEGATIVE_LOW", "POSITIVE
 
 
 # ============================================================================
-# REBUTTAL ADDITION: PSYCH (EmotionPrompt by Li et al. 2023) + NEUTRAL prompts
+# PROMPT CONTROL: PSYCH (EmotionPrompt by Li et al. 2023) + NEUTRAL prompts
 # ============================================================================
 # These are added so we can run the verifier-loop pipeline with three different
 # prompt sources, controlled via --prompt_source:
@@ -612,7 +612,7 @@ def step1_load_neutral_responses(
     """
     Load or generate Model A's neutral (no emotion) responses.
     
-    FIXED: Now preserves `full_question` for use in subsequent steps.
+    Now preserves `full_question` for use in subsequent steps.
     """
 
     if model_a_results_path:
@@ -757,7 +757,7 @@ def step2_judge_safety(
     Uses the original METHOD_THINK_SAFETY_PROMPT: "Answer yes or no."
     Image is included so Model B has full multimodal context.
     
-    FIXED: Uses `full_question` instead of `original_question`.
+    Uses `full_question` instead of `original_question`.
     """
     print(f"\n{'='*70}")
     print("STEP 2: Model B judges safety (yes/no)")
@@ -872,7 +872,7 @@ def step4_regenerate_with_emotion(
     image_dir: str = "",
     location: str = "start",
     multiple_emotion: int = 1,
-    # ── REBUTTAL ADDITION ──────────────────────────────────────────────
+    # ── PROMPT CONTROL ──────────────────────────────────────────────
     prompt_source: str = "emotion",
     psych_id: str = None,
     neutral_text: str = DEFAULT_NEUTRAL_TEXT,
@@ -882,9 +882,9 @@ def step4_regenerate_with_emotion(
     Regenerate unsafe samples by injecting prompt(s) into the query.
 
     FIXED v2: Uses `full_question` instead of `original_question`.
-    FIXED v3: Properly handles <image> token — emotion is inserted AFTER <image>.
+    CAMERA-READY: Properly handles <image> token — emotion is inserted AFTER <image>.
 
-    REBUTTAL ADDITION: prompt_source controls what gets injected:
+    PROMPT CONTROL: prompt_source controls what gets injected:
       - "emotion":       Russell-Circumplex (original ESC behavior)
       - "psychological": Li et al. EmotionPrompt
       - "neutral":       Fixed neutral re-prompt (configurable via neutral_text)
@@ -966,7 +966,7 @@ def step4_regenerate_with_emotion(
                 emo_concat = " ".join(texts).strip()
 
                 if emo_concat:
-                    # FIX v3: Use helper function to properly handle <image> token
+                    # Image-token handling: Use helper function to properly handle <image> token
                     q_with_emotion = insert_emotion_into_question(
                         base_question=r['full_question'],
                         emotion_text=emo_concat,
@@ -1068,7 +1068,7 @@ def step5_decide(
     and picks the safer one. Uses METHOD_DECIDE_SAFETY_PROMPT format.
     Image is included for full multimodal context.
     
-    FIXED: Uses `full_question` instead of `original_question`.
+    Uses `full_question` instead of `original_question`.
     """
     if not regen_results:
         print(f"\n{'='*70}")
@@ -1223,7 +1223,7 @@ def step6_assemble(
 
     summary = {
         "method": "method1_detect_then_regenerate",
-        "version": "fixed_v3",  # Mark as fixed version 3
+        "version": "camera_ready",  # Mark as camera-ready version
         "timestamp": datetime.now().isoformat(),
         "model_a": final_results[0].get("model", "unknown") if final_results else "unknown",
         "model_b": final_results[0].get("judge_model", "unknown") if final_results else "unknown",
@@ -1235,9 +1235,9 @@ def step6_assemble(
         "step5_kept_original": kept_original,
         "final_regeneration_rate": chose_regen / total if total > 0 else 0,
         "results_file": os.path.basename(results_path),
-        "fix_notes": [
+        "implementation_notes": [
             "v2: Uses full_question (jailbreak-style) consistently across all steps",
-            "v3: Properly handles <image> token — emotion inserted AFTER <image>",
+            "Image-token handling: inserts emotion — emotion inserted AFTER <image>",
             "Step 1: Preserves full_question from conversations",
             "Step 2: Judge uses full_question (stripped of <image>)",
             "Step 4: Regeneration uses full_question + emotion (with proper <image> handling)",
@@ -1313,7 +1313,7 @@ def run_pipeline(args):
     model_a_short = model_short_name(MODEL_REGISTRY[args.model_a]["name"]) if args.model_a else "precomputed"
     model_b_short = model_short_name(MODEL_REGISTRY[args.model_b]["name"])
 
-    # ── REBUTTAL ADDITION: tag output dir with prompt_source so different
+    # ── PROMPT CONTROL: tag output dir with prompt_source so different
     #    conditions (emotion / psychological / neutral / none) don't collide.
     #    Default "emotion" preserves backward-compatible paths.
     prompt_source = getattr(args, "prompt_source", "emotion")
@@ -1368,9 +1368,9 @@ def run_pipeline(args):
     if args.test_mode:
         print(f"  ⚠️  TEST MODE: max 5 samples")
     print(f"{'='*70}")
-    print(f"  FIXES APPLIED:")
+    print(f"  CAMERA-READY BEHAVIOR:")
     print(f"    v2: Using full_question consistently across all steps")
-    print(f"    v3: Emotion inserted AFTER <image> token (not before)")
+    print(f"    Image-token handling: emotion inserted AFTER <image> token (not before)")
     print(f"{'='*70}")
 
     max_samples = 5 if args.test_mode else args.max_samples
@@ -1476,7 +1476,7 @@ def run_pipeline(args):
                 image_dir=IMAGE_DIR,
                 location=args.location,
                 multiple_emotion=args.multiple_emotion,
-                # ── REBUTTAL ADDITION ──
+                # ── PROMPT CONTROL ──
                 prompt_source=getattr(args, "prompt_source", "emotion"),
                 psych_id=getattr(args, "psych_id", None),
                 neutral_text=getattr(args, "neutral_text", DEFAULT_NEUTRAL_TEXT),
@@ -1556,12 +1556,12 @@ def run_pipeline(args):
 # ============================================================================
 def main():
     parser = argparse.ArgumentParser(
-        description="Method 1: Detect-then-Regenerate Pipeline (6 Steps) — FIXED v3",
+        description="Method 1: Detect-then-Regenerate Pipeline (6 Steps) — CAMERA-READY",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-FIXES APPLIED:
+CAMERA-READY BEHAVIOR:
   v2: Uses full_question (jailbreak-style question) consistently across all steps
-  v3: Properly handles <image> token — emotion inserted AFTER <image>, not before
+  Image-token handling: inserts emotion — emotion inserted AFTER <image>, not before
 
   - Step 1: Preserves full_question from conversations[0]["value"]
   - Step 2: Judge evaluates response against full_question (stripped of <image>)
@@ -1623,7 +1623,7 @@ Examples:
                         help="Ablation 2: Skip Step 5 (Verifier decide). Always select the regenerated response over the original. Steps: 1→2→3→4→6")
     parser.add_argument("--num_loops", type=int, default=1,
                         help="Number of detect-then-correct loops (default: 1). When >1, Steps 2-6 are repeated iteratively, feeding each loop's output as input to the next.")
-    # ── REBUTTAL ADDITION ──────────────────────────────────────────────────
+    # ── PROMPT CONTROL ──────────────────────────────────────────────────
     parser.add_argument("--prompt_source", type=str, default="emotion",
                         choices=["emotion", "psychological", "neutral", "cot", "fewshot", "none"],
                         help="What to inject in the regen step. "
@@ -1665,7 +1665,7 @@ Examples:
     if args.multiple_emotion < 1:
         parser.error(f"Multiple emotion count must be >= 1.")
 
-    # ── REBUTTAL ADDITION: validation now dispatches on prompt_source ──
+    # ── PROMPT CONTROL: validation now dispatches on prompt_source ──
     if args.prompt_source == "emotion":
         if args.selection_type == "fixed" and not args.quadrant:
             parser.error("--quadrant is required when --prompt_source=emotion and "
