@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "evaluator": "eval_ai2d.py (AI2D official protocol — accuracy)",
+    "evaluation_date": "2026-06-23T10:13:36.861475",
+    "evaluation_method": "ai2d_accuracy",
+    "reference": "Kembhavi et al., A Diagram Is Worth A Dozen Images (2016)",
+    "result_file": "results_ai2d_full_baseline.json",
+    "response_field": "response",
+    "model": "Qwen2-VL-7B",
+    "total_samples": 3088
+  },
+  "summary": {
+    "total_samples": 3088,
+    "correct": 1883,
+    "extracted": 3088,
+    "overall_accuracy": 60.98,
+    "extraction_rate": 100.0
+  },
+  "scores": {
+    "overall_accuracy": 60.98
+  },
+  "by_num_choices": {
+    "unknown": {
+      "total": 3088,
+      "correct": 1883,
+      "accuracy": 60.98
+    }
+  }
+}

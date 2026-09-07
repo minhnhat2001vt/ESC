@@ -24,6 +24,7 @@ Usage:
 
 import json
 import os
+import sys
 import re
 import argparse
 import numpy as np
@@ -39,11 +40,17 @@ try:
 except ImportError:
     HAS_PANDAS = False
 
+_SCRIPT_ROOT = Path(__file__).resolve().parents[1]
+if str(_SCRIPT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SCRIPT_ROOT))
+
+from path_config import RESULTS_ROOT
+
 # ============================================================================
-# CONSTANT PATHS
+# PATHS
 # ============================================================================
-INFER_BASE_DIR = "results/infer"
-EVAL_BASE_DIR = "results/eval"
+INFER_BASE_DIR = str(RESULTS_ROOT / "infer")
+EVAL_BASE_DIR = str(RESULTS_ROOT / "eval")
 
 
 # ============================================================================

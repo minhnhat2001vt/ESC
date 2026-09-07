@@ -1,17 +1,25 @@
 #!/bin/bash
 # ==============================================================================
-# POPE — 4 conditions × 2 models + auto-evaluation (FULL RERUN)
+# POPE — 4 conditions × 2 models + automatic evaluation
 # ==============================================================================
 
-SCRIPT="python3 /workspace/scripts/method/vqa_inference_method1_rebut.py"
-EVAL_SCRIPT="/workspace/scripts/eval/eval_pope.py"
+set -euo pipefail
 
-LLAVA_BASELINE="/workspace/results/infer/llava_1_5_7b/pope_baseline/results_pope_full_baseline.json"
-QWEN_BASELINE="/workspace/results/infer/qwen2_vl_7b/pope_baseline/results_pope_full_baseline.json"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+RESULTS_ROOT="${ESC_RESULTS_ROOT:-${REPO_ROOT}/results}"
+LOGS_ROOT="${ESC_LOGS_ROOT:-${REPO_ROOT}/logs}"
+PYTHON="${PYTHON:-python3}"
 
-RESULTS_BASE="/workspace/results/method1"
-BS=38
-LOG_DIR="/workspace/logs/pope_t2_3"
+SCRIPT="${PYTHON} ${REPO_ROOT}/scripts/method/run_esc_vqa.py"
+EVAL_SCRIPT="${PYTHON} ${REPO_ROOT}/scripts/eval/eval_pope.py"
+
+LLAVA_BASELINE="${RESULTS_ROOT}/infer/llava_1_5_7b/pope_baseline/results_pope_full_baseline.json"
+QWEN_BASELINE="${RESULTS_ROOT}/infer/qwen2_vl_7b/pope_baseline/results_pope_full_baseline.json"
+
+RESULTS_BASE="${RESULTS_ROOT}/method1"
+BS="${BATCH_SIZE:-38}"
+LOG_DIR="${LOGS_ROOT}/pope_matrix"
 mkdir -p $LOG_DIR
 
 EMO_FLAGS="--selection_type fixed --quadrant negative_low --location start --multiple_emotion 1"
@@ -73,7 +81,7 @@ run_and_eval() {
 }
 
 echo "============================================================"
-echo "POPE — 4 conditions × 2 models + eval (FULL RERUN)"
+echo "POPE — 4 conditions × 2 models + evaluation"
 echo "Start time: $(date)"
 echo "Logs: $LOG_DIR"
 echo "============================================================"

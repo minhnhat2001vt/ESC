@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "evaluator": "eval_mmmu.py (official MMMU protocol — micro-averaged accuracy)",
+    "evaluation_date": "2026-06-23T09:23:16.757146",
+    "evaluation_method": "mmmu_official",
+    "reference": "Yue et al., MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark (CVPR 2024)",
+    "result_file": "results_mmmu_full_baseline.json",
+    "response_field": "response",
+    "model": "LLaVA-1.5-7B",
+    "total_samples": 857,
+    "note": "Multi-choice uses random fallback when extraction fails (official MMMU behavior). Open questions: no fallback."
+  },
+  "summary": {
+    "total_samples": 857,
+    "correct": 297,
+    "overall_accuracy": 34.66
+  },
+  "scores": {
+    "overall_accuracy": 34.66
+  },
+  "by_question_type": {
+    "multiple_choice": {
+      "total": 805,
+      "correct": 295,
+      "accuracy": 36.65
+    },
+    "open": {
+      "total": 52,
+      "correct": 2,
+      "accuracy": 3.85
+    }
+  },
+  "by_subject": {
+    "unknown": {
+      "total": 857,
+      "correct": 297,
+      "accuracy": 34.66
+    }
+  },
+  "by_discipline": {
+    "unknown": {
+      "total": 857,
+      "correct": 297,
+      "accuracy": 34.66
+    }
+  },
+  "by_difficulty": {
+    "unknown": {
+      "total": 857,
+      "correct": 297,
+      "accuracy": 34.66
+    }
+  }
+}

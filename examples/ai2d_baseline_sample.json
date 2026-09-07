@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ai2d_example_0001",
+    "model": "example-model",
+    "scenario": "ai2d",
+    "category": "",
+    "image_type": "mixed",
+    "question_id": "ai2d_example_0001",
+    "question_type": "multiple_choice",
+    "finding": "baseline",
+    "gt_answer": "B",
+    "pope_split": "",
+    "original_question": "Which labeled component completes the illustrated process?",
+    "full_question": "<image>\\nWhich labeled component completes the illustrated process?\\n(A) First option\\n(B) Second option\\n(C) Third option\\n(D) Fourth option\\nAnswer with the option's letter from the given choices directly.",
+    "emotion_category": "neutral",
+    "emotion_prompt_name": "",
+    "emotion_prompt_text": "",
+    "emotion_location": "text",
+    "image_path": "ai2d_images/example.png",
+    "image_list": [],
+    "response": "B",
+    "response_length": 1
+  }
+]

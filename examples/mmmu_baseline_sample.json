@@ -1,0 +1,24 @@
+[
+  {
+    "id": "mmmu_example_0001",
+    "model": "example-model",
+    "scenario": "mmmu",
+    "category": "",
+    "image_type": "mixed",
+    "question_id": "mmmu_example_0001",
+    "question_type": "multiple_choice",
+    "finding": "baseline",
+    "gt_answer": "C",
+    "pope_split": "",
+    "original_question": "Which option best explains the relationship shown in the provided figure?",
+    "full_question": "<image>\\nWhich option best explains the relationship shown in the provided figure?\\n(A) First option\\n(B) Second option\\n(C) Third option\\n(D) Fourth option\\nAnswer with the option's letter from the given choices directly.",
+    "emotion_category": "neutral",
+    "emotion_prompt_name": "",
+    "emotion_prompt_text": "",
+    "emotion_location": "text",
+    "image_path": "images/example.png",
+    "image_list": [],
+    "response": "C",
+    "response_length": 1
+  }
+]

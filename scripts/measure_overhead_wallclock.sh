@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# Wall-clock measurement for the rebuttal's overhead reporting.
+# Wall-clock measurement for ESC overhead reporting.
 #
 # Runs baseline inference and ESC inference on the SAME GPU, SAME batch size,
 # SAME sample subset, and reports per-sample wall-clock difference.
@@ -21,13 +21,17 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+LOGS_ROOT="${ESC_LOGS_ROOT:-${REPO_ROOT}/logs}"
+
 # Defaults
-PIPELINE_BASELINE="${PIPELINE_BASELINE:-/workspace/scripts/inference_baseline.py}"
-PIPELINE_SAFETY="${PIPELINE_SAFETY:-/workspace/scripts/method/inference_method1_rebut.py}"
+PIPELINE_BASELINE="${PIPELINE_BASELINE:-${REPO_ROOT}/scripts/inference_baseline.py}"
+PIPELINE_SAFETY="${PIPELINE_SAFETY:-${REPO_ROOT}/scripts/method/run_esc_safety.py}"
 VERIFIER="${VERIFIER:-gemma3-12b}"
 BATCH_SIZE="${BATCH_SIZE:-6}"
 MAX_SAMPLES="${MAX_SAMPLES:-100}"   # use a subset for fast wall-clock measurement
-LOG_DIR="${LOG_DIR:-/workspace/logs/rebuttal_wallclock}"
+LOG_DIR="${LOG_DIR:-${LOGS_ROOT}/wallclock}"
 mkdir -p "$LOG_DIR"
 
 MODEL=""

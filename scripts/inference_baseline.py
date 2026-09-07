@@ -59,29 +59,30 @@ from model.gemma4 import Gemma4Model
 from model.internvl3 import InternVL3Model
 from model.qwen3_thinking import Qwen3VLThinkingModel
 from utils import *
+from path_config import ORIGINAL_DATA_ROOT, PROCESSED_DATA_ROOT, RESULTS_ROOT
 warnings.filterwarnings('ignore')
 
 
 # ============================================================================
 # CONSTANT PATHS
 # ============================================================================
-MMSAFETY_DATA_DIR = "/workspace/original_data/MMSafety"
-MMSAFETY_IMAGE_DIR = "/workspace/original_data/MMSafety/imgs"
-DATA_DIR = "/workspace/original_data/vlsafe"
-VLSAFE_IMAGE_DIR = "/workspace/original_data/vlsafe/imgs"
-PROCESSED_DIR = "/workspace/processed_data"
-OUTPUT_BASE_DIR = "/workspace/results/infer"
+MMSAFETY_DATA_DIR = str(ORIGINAL_DATA_ROOT / "MMSafety")
+MMSAFETY_IMAGE_DIR = str(ORIGINAL_DATA_ROOT / "MMSafety" / "imgs")
+DATA_DIR = str(ORIGINAL_DATA_ROOT / "vlsafe")
+VLSAFE_IMAGE_DIR = str(ORIGINAL_DATA_ROOT / "vlsafe" / "imgs")
+PROCESSED_DIR = str(PROCESSED_DATA_ROOT)
+OUTPUT_BASE_DIR = str(RESULTS_ROOT / "infer")
 
-FIGSTEP_IMAGE_DIR = "/workspace/original_data/figstep/images"
-HALLUSION_DATA_DIR= "/workspace/original_data/hallusion_bench"
-MMVET_IMAGE_DIR   = "/workspace/original_data/mm-vet/images"
-RWQA_DATA_DIR     = "/workspace/original_data/RealWorldQA"
-POPE_IMAGE_DIR    = "/workspace/original_data/pope/images"
-MME_DATA_DIR = "/workspace/original_data/mme"
-MMVP_BASELINE_DIR = "/workspace/original_data/mmvp"
-BLINK_BASELINE_DIR = "/workspace/processed_data/blink_baseline"
-MATHVISTA_DATA_DIR = "/workspace/original_data/mathvista"
-MMSTAR_DATA_DIR = "/workspace/original_data/mmstar"
+FIGSTEP_IMAGE_DIR = str(ORIGINAL_DATA_ROOT / "figstep" / "images")
+HALLUSION_DATA_DIR = str(ORIGINAL_DATA_ROOT / "hallusion_bench")
+MMVET_IMAGE_DIR = str(ORIGINAL_DATA_ROOT / "mm-vet" / "images")
+RWQA_DATA_DIR = str(ORIGINAL_DATA_ROOT / "RealWorldQA")
+POPE_IMAGE_DIR = str(ORIGINAL_DATA_ROOT / "pope" / "images")
+MME_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mme")
+MMVP_BASELINE_DIR = str(ORIGINAL_DATA_ROOT / "mmvp")
+BLINK_BASELINE_DIR = str(PROCESSED_DATA_ROOT / "blink_baseline")
+MATHVISTA_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mathvista")
+MMSTAR_DATA_DIR = str(ORIGINAL_DATA_ROOT / "mmstar")
 
 # Image base directories per finding
 IMAGE_BASE_DIRS = {

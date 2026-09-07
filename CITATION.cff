@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite our ECCV 2026 paper."
+title: "ESC: Emotional Self-Correction for Reliable Vision-Language Models"
+type: software
+authors:
+  - family-names: Nguyen
+    given-names: Tien-Huy
+  - family-names: Nguyen
+    given-names: Minh-Nhat
+  - family-names: Nguyen
+    given-names: Nhat-Huy
+  - family-names: Nguyen
+    given-names: Hung-Viet
+  - family-names: Nguyen
+    given-names: Huy Minh Nhat
+  - family-names: Nguyen
+    given-names: Thanh-Huy
+  - family-names: Nguyen
+    given-names: Cuong Tuan
+  - family-names: Le
+    given-names: Hoang M.
+  - family-names: Nguyen
+    given-names: Dat
+  - family-names: Huynh
+    given-names: Phat Kim
+  - family-names: Xu
+    given-names: Min
+  - family-names: Bagci
+    given-names: Ulas
+repository-code: "https://github.com/minhnhat2001vt/ESC"
+url: "https://genai4e.github.io/ESC/"
+license: "MIT"
