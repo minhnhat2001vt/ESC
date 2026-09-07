@@ -1,3 +1,9 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=ESC&fontSize=85&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Emotional%20Self-Correction%20for%20Reliable%20Vision-Language%20Models&descAlignY=55&descSize=19" width="100%"/>
+
+</div>
+
 # ESC: Emotional Self-Correction for Reliable Vision-Language Models
 
 Official implementation and evaluation artifacts for **ESC: Emotional Self-Correction for Reliable Vision-Language Models**, accepted at **ECCV 2026**.
