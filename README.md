@@ -2,6 +2,15 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=ESC&fontSize=85&fontColor=ffffff&animation=fadeIn&fontAlignY=32&desc=Emotional%20Self-Correction%20for%20Reliable%20Vision-Language%20Models&descAlignY=55&descSize=19" width="100%"/>
 
+<img src="https://raw.githubusercontent.com/GenAI4E/ESC-Emotional-Self-Correction/main/assets/corgi_logo.png" width="110"/>
+
+[![Project Page](https://img.shields.io/badge/🌐_Project_Page-4285F4?style=for-the-badge)](https://genai4e.github.io/ESC/)
+[![arXiv](https://img.shields.io/badge/arXiv-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2607.02089)
+[![License](https://img.shields.io/badge/License-MIT-2ea44f?style=for-the-badge)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=600&size=22&pause=1200&color=F75C7E&center=true&vCenter=true&multiline=true&repeat=true&width=820&height=65&lines=%F0%9F%8E%89+Accepted+to+ECCV+2026+%E2%80%94+Main+Technical+Track;Training-Free+%C2%B7+Plug-and-Play+%C2%B7+Emotion+as+a+Control+Signal" alt="typing-svg" />
+
 </div>
 
 # ESC: Emotional Self-Correction for Reliable Vision-Language Models
